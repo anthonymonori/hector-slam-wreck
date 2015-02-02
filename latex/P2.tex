@@ -1,0 +1,99 @@
+\input{setup/Preamble.tex}
+\input{setup/Hyphenations.tex}
+\input{setup/Macros.tex}
+
+\begin{document}
+\sloppy
+\pagenumbering{roman}
+
+\input{sections/frontpage.tex}
+\cleardoublepage
+\input{sections/titlepage.tex}
+\date{\today}
+\cleardoublepage
+
+\tableofcontents
+
+\cleardoublepage
+
+
+\input{sections/preface.tex}
+
+\pagenumbering{arabic}
+%Chapter 1  ------------
+\chapter{Introduction}\label{ch:introduction}
+
+\input{sections/ch1-intro.tex}
+
+\input{sections/ch1-initiatingproblem.tex}
+
+%Chapter 2  ------------
+\chapter{Problem Analysis}\label{ch:problem_analysis}
+
+\input{sections/ch2-intro.tex}
+
+%Chapter 3  ------------
+\clearpage
+\chapter{Problem Definition}\label{ch:problem_definition}
+
+%\input{sections/ch3-problemanalysisconclusion.tex}
+
+%\input{sections/ch3-problemdelimitation.tex}
+
+
+
+\input{sections/ch3-hypothesis.tex}
+
+\input{sections/ch3-problemdefinition.tex}
+
+%Chapter 4  ------------
+\clearpage
+\chapter{Development}\label{ch:development}
+
+\input{sections/ch4-description.tex}
+
+%\input{sections/ch4-design.tex}
+
+%\input{sections/ch4-specifications.tex}
+
+%\input{sections/ch4-documentation.tex}
+
+%\input{sections/ch4-testing.tex}
+
+%Chapter 5  -----------
+\clearpage
+\chapter{Discussion}\label{ch:discussion}
+
+\input{sections/ch5-discussion.tex}
+
+%Chapter 6  -----------
+\clearpage
+\chapter{Conclusion}\label{ch:conclusion}
+
+\input{sections/ch6-conclusion.tex}
+
+%Latex part of the report -------------
+
+%\chapter{\LaTeX}\label{ch:latex}
+
+%\input{sections/ch6-1-latex.tex}
+
+%--------------------------
+
+%Chapter 7  -----------
+\clearpage
+\chapter{Perspective}\label{ch:perspective}
+
+\input{sections/ch7-perspective.tex}
+
+\clearpage
+\Urlmuskip=0mu plus 1mu\relax
+\sloppy
+\bibliographystyle{unsrt}
+\bibliography{citations}{}
+
+%Other chapters ------------
+\chapter{Appendix}\label{ch:appendix}
+\input{sections/appendix.tex}
+
+\end{document}
