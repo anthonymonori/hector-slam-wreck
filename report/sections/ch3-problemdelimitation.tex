@@ -1,0 +1,19 @@
+\section{Problem Delimitation}
+Based on previous discussions, the following pieces have been selected:
+
+\begin{description}
+  \item[Fail-constant lock:] \hfill \\
+  Because it gives more control over the behaviour of the lock, and the unreliability is not a big issue.
+  \item[Normally closed relay:] \hfill \\
+  Since the solenoid does not require constant power.
+  \item[Short range RFID reader:] \hfill \\
+  Long range does not give any significant advantages in this case.
+\end{description}
+
+\subsection{Prototype}
+The main limiting factor for us is time. In the time frame of this project we cannot build a full scope product, finding all the parts, ordering, and assembling them completely would take too long. Furthermore we do not have the tools to build a full scope product either. Hence we will build a prototype as a proof of concept.
+
+
+For our prototype, we decided to use a one fail-closed solenoid as opposed to a fail-constant locking mechanism. Fail-closed solenoids are easier to operate, cheaper, and easy to find, but they are not as flexible. We will implement this locking mechanism on a 1:1 scaled bicycle rack.
+This prototype will not have all the features we wish to have for the final product, but the the goal is to show the interaction between an RFID reader and a locking mechanism, through a micro-controller.
+
