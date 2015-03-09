@@ -1,32 +1,29 @@
 GPS theory
 
-The Global Positioning System (GPS) is a space-based satellite navigation system that provides location and time information in all weather conditions, anywhere on or near the Earth where there is an unobstructed line of sight to four or more GPS satellites.[1] The system provides critical capabilities to military, civil, and commercial users around the world. The United States government created the system, maintains it, and makes it freely accessible to anyone with a GPS receiver.
+"The Global Positioning System (GPS) is a space-based satellite navigation system that provides location and time information in all weather conditions, anywhere on or near the Earth where there is an unobstructed line of sight to four or more GPS satellites. The system provides critical capabilities to military, civil, and commercial users around the world. The United States government created the system, maintains it, and makes it freely accessible to anyone with a GPS receiver."[http://www.loc.gov/rr/scitech/mysteries/global.html]
 
-In addition to GPS, other systems are in use or under development. The Russian Global Navigation Satellite System (GLONASS) was developed contemporaneously with GPS, but suffered from incomplete coverage of the globe until the mid-2000s. There are also the planned European Union Galileo positioning system, India's Indian Regional Navigation Satellite System, and the Chinese Beidou Navigation Satellite System.
+The GPS satellites carry each an atomic clock and position the user when he is connected to 4 or more satellite. The satellites measure the time it take for the signal to go back and forth between the satellites and a GPS receiver.[http://www.loc.gov/rr/scitech/mysteries/global.html] There is also in development and space "GPS" system that would use the X-ray signal from dying stars to give up you location in space with about error of 5 km.[http://www.bbc.com/news/science-environment-17557581]
 
-NEEDS MORE TEXT, CHANGE TEXT AND BIBTEX IT
+Both of those systems would not benefit our project in space since we would need a high accuracy location of each picture to make a 3D map model. Maybe later in the future when people will be moving to Mars another GPS system will be put up there. But for now we would need to use encoders and short to medium range high accuracy signals. But the signal systems would need to be different for what planet we would go to. 
 
 Photogrammetry theory
 
-Photogrammetry is the science of making measurements from photographs, especially for recovering the exact positions of surface points. Moreover, it may be used to recover the motion pathways of designated reference points located on any moving object, on its components and in the immediately adjacent environment. Photogrammetry may employ high-speed imaging and remote sensing in order to detect, measure and record complex 2-D and 3-D motion fields (see also sonar, radar, lidar etc.). Photogrammetry feeds the measurements from remote sensing and the results of imagery analysis into computational models in an attempt to successively estimate, with increasing accuracy, the actual, 3-D relative motions within the researched field.
+"Photogrammetry is the practice of determining the geometric properties of objects from
+photographic images. This is done by comparing and matching pixels or reference points across a series
+of photos.[http://um3d.dc.umich.edu/documents/123D-Catch-Field-Guide-1.pdf]"
 
 
-low altitude aerial photograph for use in Photogrammetry - Location Three Arch Bay, Laguna Beach CA.
-Its applications include satellite tracking of the relative positioning alterations in all Earth environments (e.g. tectonic motions etc.), the research on the swimming of fish, of bird or insect flight, other relative motion processes (International Society for Photogrammetry and Remote Sensing). The quantitative results of photogrammetry are then used to guide and match the results of computational models of the natural systems, thus helping to invalidate or confirm new theories, to design novel vehicles or new methods for predicting or/and controlling the consequences of earthquakes, tsunamis, any other weather types, or used to understand the flow of fluids next to solid structures and many other processes.
+In the simplest example, the distance between two points that lie on a plane parallel to the photographic image plane can be determined by measuring their distance on the image, if the scale (s) of the image is known. This is done by multiplying the measured distance by $1/s$.[http://www.geodetic.com/v-stars/what-is-photogrammetry.aspx]
 
-Photogrammetry is as old as modern photography, can be dated to the mid-nineteenth century, and its detection component has been emerging from radiolocation, multilateration and radiometry while its 3-D positioning estimative component (based on modeling) employs methods related to triangulation, trilateration and multidimensional scaling.
+Algorithms for photogrammetry typically attempt to minimize the sum of the squares of errors over the coordinates and relative displacements of the reference points. This minimization is known as bundle adjustment and is often performed using the Levenberg–Marquardt algorithm.[http://www.geodetic.com/v-stars/what-is-photogrammetry.aspx]
 
-In the simplest example, the distance between two points that lie on a plane parallel to the photographic image plane can be determined by measuring their distance on the image, if the scale (s) of the image is known. This is done by multiplying the measured distance by %1/s.
+Photogrammetry could also be used in our project with AUV or a rover. The is no need for outside reference points to make the 3D model. But this setup is much more complicated to setup and maintain without an outside assistance. It would also need more pictures and higher resolution so more space on hard drives are needed. The algorithm needed to make the 3D model from the picture will need a lot of power and memory. So on board rendering would be really hard.
 
-Algorithms for photogrammetry typically attempt to minimize the sum of the squares of errors over the coordinates and relative displacements of the reference points. This minimization is known as bundle adjustment and is often performed using the Levenberg–Marquardt algorithm.
+For higher resolution maps and more detailed the use of photogrammy is beneficial. But to start with it would be easier to take another approach.
 
-NEEDS MORE TEXT, CHANGE TEXT AND BIBTEX IT
+Reference points theory
 
-Stereophotogrammetry
-
-Stereoscopy (also called stereoscopics or 3D imaging) is a technique for creating or enhancing the illusion of depth in an image by means of stereopsis for binocular vision. The word stereoscopy derives from Greek (stereos), meaning "firm, solid", and FIX HERE, meaning "to look, to see". Any stereoscopic image is called stereogram. Originally, stereogram referred to a pair of stereo images which could be viewed using a stereoscope.
-
-Most stereoscopic methods present two offset images separately to the left and right eye of the viewer. These two-dimensional images are then combined in the brain to give the perception of 3D depth. This technique is distinguished from 3D displays that display an image in three full dimensions, allowing the observer to increase information about the 3-dimensional objects being displayed by head and eye movements.
+To make a 2D or a 3D map a reference point is needed. It can be GPS point of every picture taken. It can be comparing two pictures together and overlapping them. You can also combine both options. But with the lack of GPS in space and the cost of memory and power to make an overlapping 3D map, we need some other way. For an example Mars has a thin atmosphere on it. So using sound sensors is possible. The sensors would need to be calibrated for a difference in speed of sound on Mars. Other sensors like light (x-ray, laser and others) can also be used. That would mean setting up and array of sensors so the rover or AUV could connect to them and know it's position. The use of encoders and the wheels of the rover is also a anther solution but you would need to be sure to have error calculation in it. Because sometimes tires will move in a circle but there is no traction.[http://www.tandfonline.com/doi/full/10.1080/19475683.2013.868826#abstract]  
 
 %http://en.wikipedia.org/wiki/Stereoscopy
 
