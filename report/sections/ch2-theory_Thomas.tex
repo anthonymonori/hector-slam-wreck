@@ -15,11 +15,8 @@ The individual robot in the insect family is simple, but the whole robot fleet c
 \clearpage
 \section{Path finding and mapping}
 
-Pathfinding is done by a computer, where it uses plotting to find the shortest path between two different points. It can be viewed as a more efficient way of navigating a maze.
-There exists pathfinding algorithms that are used for software simulations, but also for mobile robot navigation. 
-
-A common pathfinding algorithm is A* (A star) and its extended version D*.
-%Needs some more transitioning information
+Pathfinding is done by a computer, where it uses plotting to find the shortest path between two different points. It can be viewed as a more efficient way of navigating a maze. The main objective is getting from some location to a goal location.
+There exists pathfinding algorithms that are used for software simulations, but also for mobile robot navigation. A common pathfinding algorithm is A* (pronounced A star) and its extended version named D* (Dynamic A*).
 
 \begin{figure}[H]
 \centering
@@ -30,22 +27,36 @@ A common pathfinding algorithm is A* (A star) and its extended version D*.
 
 The A* algorithm is most commonly used in video games. The algorithm determines that cost of movement from the start to the given generated destination(G), in relation to the estimated cost of movement to its final destination(H). Based on the current destination the possible surrounding paths are analysed and the path with the F value(F = G + H)becomes the chosen path.\cite{astar}
 
+In the early stages of robot automation, it was assumed that the environment around the robot was known and the path was generated based on this. This was okay until the robot started to meet inconsistencies and obstacles in the path (This being discrepancies between the true state and the world state), the robot then either had to re-plan completely from scratch or alter the plan through trial-and-error. Computational wise, it would require too much power to re-plan from scratch (Even though this is the optimal choice) and most of the time trial-and-error does not yield an optimal outcome.
 
 
-%maybe add one of the block images from (good source on A*) http://www.policyalmanac.org/games/aStarTutorial.htm
-%Intro to A* http://www.raywenderlich.com/4946/introduction-to-a-pathfinding
-%Possible more A* information http://heyes-jones.com/astar.php
-%Robots using A*? http://www.pdx.edu/computer-science/sites/www.pdx.edu.computer-science/files/TR%2012-02.pdf
-%Robots using A* for navigation? http://ais.informatik.uni-freiburg.de/publications/papers/thesis_bennewitz.pdf
+\clearpage
+\begin{figure}[H]
+        \centering
+        \begin{subfigure}[H]{0.4\textwidth}
+                \includegraphics[width=\textwidth]{images/completemap.jpg}
+                \caption{Complete Map}
+                \label{fig:completemap}
+        \end{subfigure}%
+\quad
+        \begin{subfigure}[H]{0.4\textwidth}
+                \includegraphics[width=\textwidth]{images/optimisticmap.jpg}
+                \caption{Optimistic Map}
+                \label{fig:optimisticmap}
+        \end{subfigure}
+        \caption{Mapping simulations with D*\cite{dstar}}\label{fig:animals}
+\end{figure}
+
+The D* algorithm creates an initial path based on assumed and known information, it then edits the path based on new information it receives whilst navigating the path. The final version of the edited plan is equivalent to replanning the whole thing from scratch, but avoids the limitations of the computation power.
+Whenever an on-board sensor receives information about an obstacle, the algorithm can edit the path based on what possible routes there are available near by.
+D* is fast at navigating large scale unknown environments because during its exploration its able to edit and repair its desired path and navigate towards its goal. It would require too much effort to re-plan everything from scratch every time it failed, especially for large scale environments.\cite{dstar}\cite{moredstar}
+
+The figure(a) shows the map where the given robot knowns it's environment (The grey boxes) and can therefore easily determine the optimal path or the "Complete Map" in this case. Figure (b) on the other hand shows the "Optimistic Map", since before navigating on the planned path it assumes that there are no obstacles. Whenever the robot meets an obstacle during the optimistic map, it adjust it's course to continue towards its goal. On figure (b) it only displays the obstacles which it met during its navigation along the path.
 
 
-%D*, the extended version of A*
-%Information regarding D*
-%http://www.frc.ri.cmu.edu/~axs/dynamic_plan.html
-%http://www.frc.ri.cmu.edu/~axs/doc/icra94.pdf
-%http://idm-lab.org/project-a.html
 
 
+\clearpage
 Simple autonomous robots navigate by the use of infrared LEDs or by the use of photo-resistors and LEDS, by following lines drawn on a surface.\\
 %http://www.ikalogic.com/line-tracking-sensors-and-algorithms/ <-- for the line tracking 
 Some autonomous robots and vehicles use multiples of different range sensors and other sensory equipment, to map and locate themselves in indoor and outdoor environments. The map that is generated can be used to keep track of static items in the environment such as structures and difference in terrain, but the map also distinguishes non-static items such as humans and other moving objects. Since the maps are created by the vehicle itself whilst exploring, this technology can be used with or without GPS\cite{rangesens}\cite{rangesensarc}.  Robots and vehicles have been created using this technology to explore known and unknown environments. Because of advanced algorithms and hardware these autonomous devices are capable of performing tasks more efficiently than humans, but also in places that are unsafe and hard to reach.
@@ -55,10 +66,9 @@ Autonomous robots also use these tools to work together. Using a shared map, the
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=.7]{images/laserrangemap.jpg}
-	\caption{Laser range map}
+	\caption{Laser Range Map\cite{laserrangepic}}
 	\label{fig:laserrangemap}
 \end{figure}
-%http://www.jaychakravarty.com/?p=75
 
 Laser range finders and sonar arrays are used to navigate and determine the shortest possible path to a given destination. The sensory equipment is used to give the autonomous robot a sense of distance towards objects in an environment, giving it vital data regarding optimal travel directions\cite{lasersonar}.
 
