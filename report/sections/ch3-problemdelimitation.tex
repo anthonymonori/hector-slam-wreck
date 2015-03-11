@@ -2,18 +2,20 @@
 Based on previous discussions, the following pieces have been selected:
 
 \begin{description}
-  \item[Fail-constant lock:] \hfill \\
-  Because it gives more control over the behaviour of the lock, and the unreliability is not a big issue.
-  \item[Normally closed relay:] \hfill \\
-  Since the solenoid does not require constant power.
-  \item[Short range RFID reader:] \hfill \\
-  Long range does not give any significant advantages in this case.
+  \item[Rover:] \hfill \\
+  A 4 wheel rover to move the sensor around.
+  \item[Laser:] \hfill \\
+  Long range laser for 2D mapping.
+  \item[Ultra-sonic sensor:] \hfill \\
+  For close proximity warning, navigation and reference points.
+  \item[Raspberry Pi:] \hfill \\
+  As a control computer for navigation and processing of 2D map.
 \end{description}
 
 \subsection{Prototype}
 The main limiting factor for us is time. In the time frame of this project we cannot build a full scope product, finding all the parts, ordering, and assembling them completely would take too long. Furthermore we do not have the tools to build a full scope product either. Hence we will build a prototype as a proof of concept.
 
+For prototype we decided to use a laser for making a 2D map as a proof of concept but the capability of implementing cameras for 3D mapping. A laser can be used for 3D mapping, but it would be easier to make a 3D map from cameras and it would also give you a better picture of the surroundings.
 
-For our prototype, we decided to use a one fail-closed solenoid as opposed to a fail-constant locking mechanism. Fail-closed solenoids are easier to operate, cheaper, and easy to find, but they are not as flexible. We will implement this locking mechanism on a 1:1 scaled bicycle rack.
-This prototype will not have all the features we wish to have for the final product, but the the goal is to show the interaction between an RFID reader and a locking mechanism, through a micro-controller.
+This prototype will not have all the features we wish to have for the final product, but the the goal is to show the interaction between an laser sensor for 2D mapping and a rover navigating through unknown terrain, using a Raspberry Pi.
 
