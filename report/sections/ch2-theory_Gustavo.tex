@@ -1,13 +1,14 @@
 \clearpageg
 \section{Sensors}
-Sensors are used to gather information about their environment. Sensors are a key aspect of recognisance missions, as without them, only crude human-estimate measurements can be made. When using automated vehicles to explore an enviroment, sensors can be said to be the most important thing.
-
-\subsection{Image Based}
-Image based sensors are usually just simple cameras. The pictures the sensor takes, must be mathematically processed to yield any useful data. Commonly, image based sensors are used in pairs in order to generate stereoscopic images.
-%Sereoscopy is really complicated
-
 \subsection{Pressure Based}
 Pressure based sensors work by simply measuring how much pressure there is in a point in space. They can be used to measure the vertical distance between two points in a planet with an atmosphere\cite{barometric1}\cite{barometric2}. By combining height information with the data gathered by other sensors, it is possible to create a crude three-dimensional map.
+
+\subsection{Image Based}
+Image based sensors are usually just cameras. The pictures the sensor takes, must be mathematically processed to yield any useful data. The two most common types of image sensors are stereoscopic, and projected.
+
+A projected image sensor is very simple, some known image is projected on the environment (a grid, for example), then a camera takes a picture. Since the projection is known, it is simple to detect the distance of an object on the image based on what the projection looks like. This method is limited to how fine the projected image is.
+
+Stereoscopy is more complicated, but more reliable. Two photos of the same scene, but from different vantage points, are taken. Small sections of one of the images are taken, and overlayed onto the other image. By finding the place on the other image where the small section fits, the algorithm can determine the depth of each pixel in that subsection. This procedure is repeated untill the whole image has been processed.
 
 \subsection{Rangefinder}%NOTE: This section might be a little rambly
 A rangefinder is a device that measures the distance between itself, and a point some distance away from it. Rangefinders work based on the principle that the speed of an object is defined to be distance traveled over time traveled, which means that distance traveled is the speed of an object times the amount of time it traveled. To put this in math terms: \{v=d/t\} or \{d=t*v\}.
