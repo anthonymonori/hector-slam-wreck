@@ -25,7 +25,7 @@ There exists different pathfinding algorithms that are used for software simulat
 \label{fig:sub2}
 \end{figure}
 
-The A* algorithm is most commonly used in video games. The algorithm determines the cost of movement from the start to the given generated destination(G), in relation to the estimated cost of movement to its final destination(H). Based on the current destination the possible surrounding paths are analysed and the path with the smallest F value(F = G + H)becomes the chosen path.\cite{astar}
+The A* algorithm is most commonly used in video games. The algorithm splits a known map into nodes (these can be any geometric shape, for example squares), and assigns a cost to each node. It also notes which nodes cannot be moves on, such as pits or walls. Based on this map, it determines the cost of movement from its position to some adjacent node(G), and estimates the cost of movement from that node to its final destination(H). It assigns this node with the value F which is the sum of G and H. It continues checking adjacent nodes with the same procedure, ocasionally changing the calculated path based on the F values of various nodes.\cite{astar}
 
 In the early stages of robot automation, it was always assumed that the environment around the robot was known and the path was generated based on this. This was okay until the robot started to meet inconsistencies and obstacles in its path (This being discrepancies between the true state and the world state), the robot then either had to re-plan completely from scratch or alter the plan through trial-and-error. Computational wise, it would require too much power to re-plan from scratch (Even though this is the optimal choice) and most of the time trial-and-error does not yield an optimal outcome.
 
