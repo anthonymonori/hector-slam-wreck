@@ -1,34 +1,30 @@
-\clearpage
+\clearpageg
 \section{Sensors}
-In order to get data about forgein environments, sensors are necessary.
+Sensors are used to gather information about their environment. Sensors are a key aspect of recognisance missions, as without them, only crude human-estimate measurements can be made. When using automated vehicles to explore an enviroment, sensors can be said to be the most important thing.
 
 \subsection{Image Based}
-Image based sensors are usually just simple cameras. The pictures the sensor takes, must be mathematically processed to yield any useful data.
-%TODO: I don't know anything about image sensors
-\subsection{Rangefinder}
-%how it works
+Image based sensors are usually just simple cameras. The pictures the sensor takes, must be mathematically processed to yield any useful data. Commonly, image based sensors are used in pairs in order to generate stereoscopic images.
+%Sereoscopy is really complicated
+
+\subsection{Pressure Based}
+Pressure based sensors work by simply measuring how much pressure there is in a point in space. They can be used to measure the vertical distance between two points in a planet with an atmosphere\cite{barometric1}\cite{barometric2}. By combining height information with the data gathered by other sensors, it is possible to create a crude three-dimensional map.
+
+\subsection{Rangefinder}%NOTE: This section might be a little rambly
 A rangefinder is a device that measures the distance between itself, and a point some distance away from it. Rangefinders work based on the principle that the speed of an object is defined to be distance traveled over time traveled, which means that distance traveled is the speed of an object times the amount of time it traveled. To put this in math terms: \{v=d/t\} or \{d=t*v\}.
-%%sound and light
+
 Most rangefinders work on either sound or light. Both sound and light based rangefinders work by emitting a pulse in a specific direction, and counting how long it takes for the pulse to come back. Since the pulse has traveled back and forth, the distance is calculated as \(1/2*v*t\), where \(v\) is the speed of the pulse, and \(t\) is the time between the emission and the detection.
 
-%%%scattering
 The pulse will travel from the rangefinder, straight to whatever object is in front of it. Often, the pulse is not normal to the object it hits, meaning the pulse is at an angle relative to the object, so the pulse will not reflect back to the rangefinder. However, a small portion of the pulse will scatter upon impact, meaning the rangefinder might still detect the pulse once it comes back.
 %TODO: Image
 
-%%%refaction
+This requires the rangefinder to know what the speed of the pulse is, which is a problem in unknown environments. For a rangefinder to be reliably used in such environments, it needs either to have the speed of its pulse precalculated, or it needs to measure the speed of the pulse by itself. Also, in situations where the speed of the pulse varies, a rangefinder is either not useful, or it needs a more complicated model of the environment it is in.
+
+The main cause for a pulse to travel at a different speed than expected is in situations where the environment the sensor is in varies in density, which depends on temperature\cite{refraction}. Hence, a simple rangefinder is not fit for an evironment that varies heavily in temperature.
+%TODO: (Image?)
+
+Sound moves faster through denser mediums, where light travels slower. The speed of light is less affected by density than sound is. In earth-like atmospheres, light only travels 0.03\% slower in air when compared to the vacuum.\cite{refraction}\cite{speedOfSound}.
+%TODO: Image http://arxiv.org/pdf/1003.1508.pdf
+
 Another issue in environments with a high variation in density is refraction. Refraction is a phenomenon that occurs when a wave switches between mediums where it travels at different speeds. This change in mediums causes the wave to change it's direction. cite{snell:Wolf, K. B. (1995), "Geometry and dynamics in refracting systems", European Journal of Physics 16: 14–20.} Refraction would cause rangefinders to become effectively blind, as neither their direction nor the length measured can be trusted.
 %TODO: image{http://4.bp.blogspot.com/-Y4zXYZDJekI/Ud5C-rzi_0I/AAAAAAAACSc/EYYxL9cmy3M/s1600/Picture18.png}
 
-This requires the rangefinder to know what the speed of the pulse is, which is a problem in unknown environments. For a rangefinder to be reliably used in such environments, it needs either to have the speed of its pulse precalculated, or it needs to measure the speed of the pulse by itself. Also, in situations where the speed of the pulse varies, a rangefinder is either not useful, or it needs a more complicated model of the environment it is in.
-
-The main cause for a pulse to travel slower than expected is in situations where the environment the sensor is in varies in density, which depends on temperature\cite{refraction}. Hence, a simple rangefinder is not fit for an evironment that varies heavily in temperature.
-%TODO: (Image?)
-
-
-Sound moves faster through denser mediums, where light travels slower.
-
-The speed of light is less affected by density than sound is. In earth-like atmospheres, light only travels 0.03\% slower in air when compared to the vacuum.\cite{refraction}\cite{speedOfSound}.
-%TODO: Image http://arxiv.org/pdf/1003.1508.pdf
-
-\subsection{Pressure Based}
-Pressure based sensors work by simply measuring how much pressure there is in a point in space. They can be used to measure the vertical distance between two points in a planet with an atmosphere\cite{barometric1}\cite{barometric2}.
