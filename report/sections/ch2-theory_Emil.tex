@@ -2,9 +2,10 @@
 
 \textit{"The Global Positioning System (GPS) is a space-based satellite navigation system that provides location and time information in all weather conditions, anywhere on or near the Earth where there is an unobstructed line of sight to four or more GPS satellites. The system provides critical capabilities to military, civil, and commercial users around the world. The United States government created the system, maintains it, and makes it freely accessible to anyone with a GPS receiver."\cite{GPS1}}
 
-The GPS satellites carry each an atomic clock and position the user when he is connected to 4 or more satellite. The satellites measure the time it take for the signal to go back and forth between the satellites and a GPS receiver.\cite{GPS1} There is also in development and space "GPS" system that would use the X-ray signal from dying stars to give up you location in space with about error of 5 km.\cite{GPS2}
+The GPS satellites each carry an atomic clock and positions the user when connected to 4 or more satellites. The satellites measure the time it take for the signal to go back and forth between the satellites and a GPS receiver.\cite{GPS1} There is also in development and space "GPS" system that would use the X-ray signal from dying stars to give up you location in space with an error rate of about 5 km.\cite{GPS2}
 
-Both of those systems would not benefit our project in space since we would need a high accuracy location of each picture to make a 3D map model. Maybe later in the future when people will be moving to Mars another GPS system will be put up there. But for now we would need to use encoders and short to medium range high accuracy signals. But the signal systems would need to be different for what planet we would go to. 
+Both of those systems would not benefit this project in space since we would need a high accuracy location of each picture to make a map and a model. Later in the future when people will be moving to Mars another GPS system will be put in place up there. But for now we would need to use encoders and short to medium range high accuracy signals. But the signal systems would need to be different for what planet we would go to. 
+%Unsure what this means^ - Thomas
 
 \section{Photogrammetry theory}
 
@@ -13,17 +14,17 @@ photographic images. This is done by comparing and matching pixels or reference 
 of photos."\cite{Photogrammetry}}
 
 
-In the simplest example, the distance between two points that lie on a plane parallel to the photographic image plane can be determined by measuring their distance on the image, if the scale (s) of the image is known. This is done by multiplying the measured distance by $1/s$.\cite{photo}
+As a simple example, the distance between two points that lie on a plane parallel to the photographic image plane can be determined by measuring their distance on the image, if the scale (s) of the image is known. This is done by multiplying the measured distance by $1/s$.\cite{photo}
 
 Algorithms for photogrammetry typically attempt to minimize the sum of the squares of errors over the coordinates and relative displacements of the reference points. This minimization is known as bundle adjustment and is often performed using the Levenberg–Marquardt algorithm.\cite{photo}
 
-Photogrammetry could also be used in our project with AUV or a rover. The is no need for outside reference points to make the 3D model. But this setup is much more complicated to setup and maintain without an outside assistance. It would also need more pictures and higher resolution so more space on hard drives are needed. The algorithm needed to make the 3D model from the picture will need a lot of power and memory. So on board rendering would be really hard.
+Photogrammetry could also be used in our project with an AUV or a rover. There is no need for outdoor reference points to make the 3D model. But this technology is much more complicated to set-up and maintain without an outside assistance, which is major inconvenience when used for space exploration. It would also takes a large quantity of pictures in a high resolution so more space on hard drives are needed. The algorithm needs to create the 3D model from the pictures, which will need a lot of computing power and memory. So doing on board rendering would be really hard and resource consuming.
 
 For higher resolution maps and more detailed the use of photogrammy is beneficial. But to start with it would be easier to take another approach.
 
 \section{Reference points theory}
 
-To make a 2D or a 3D map a reference point is needed. It can be GPS point of every picture taken. It can be comparing two pictures together and overlapping them. You can also combine both options. But with the lack of GPS in space and the cost of memory and power to make an overlapping 3D map, we need some other way. For an example Mars has a thin atmosphere on it. So using sound sensors is possible. The sensors would need to be calibrated for a difference in speed of sound on Mars. Other sensors like light (x-ray, laser and others) can also be used. That would mean setting up and array of sensors so the rover or AUV could connect to them and know it's position. The use of encoders and the wheels of the rover is also a anther solution but you would need to be sure to have error calculation in it. Because sometimes tires will move in a circle but there is no traction.\cite{reference} 
+To make a 2D or 3D map a reference point is needed. It can be GPS positions of every picture taken. It can also be comparing two pictures together and overlapping them. It is also possible to combine both options. But with the lack of GPS in space and the cost of memory and power to make an overlapping 3D map, another solution is needed. For an example Mars has a thin atmosphere on it, so using sound sensors is a possibility. The sensors would need to be calibrated to work correctly on Mars, since there is a difference in the speed of sound. Other sensors such as light (x-ray, laser and so forth) can also be used. That would mean setting up and array of sensors so the rover or AUV could connect to them and know its position. The use of encoders and the wheels of the rover is also an other solution, but this requires error calculation in it, since sometimes tires will attempt to move in a circle but there is no traction to help create the movement.\cite{reference} 
 
 %http://en.wikipedia.org/wiki/Stereoscopy
 
