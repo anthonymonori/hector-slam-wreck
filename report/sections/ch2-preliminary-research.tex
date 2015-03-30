@@ -27,28 +27,9 @@ For higher resolution maps and more detailed the use of photogrammetry is benefi
 
 To make a 2D or 3D map, a reference point is needed. It can be GPS positions of every picture taken or it can also be comparing two pictures together and overlapping them. It is also possible to combine both options, but with the lack of GPS in space and the cost of memory and power to make an overlapping 3D map, another solution is needed. For an example, Mars has a thin atmosphere, so using sound sensors could be a possibility. The sensors would need to be calibrated to work correctly on Mars, since there is a difference in the speed of sound. Other sensors such as light (X-ray, laser, etc.) can also be used. That would mean setting up and array of sensors, so a rover or an AUV could potentially connect to them and know their position. The use of encoders and the wheels of the rover is also another solution, but this requires error calculation in it, since sometimes tires will attempt to move in a circle but there is no traction to help create the movement\cite{reference}.
 
-%TODO: At some point, remove this
-% ------------------------------------------ Links for Emil 
-% Stereoscopy
-% http://en.wikipedia.org/wiki/Stereoscopy
+\subsection{SLAM}
 
-% Good talk about making 3D maps on Mars
-% http://content.stamen.com/how_to_make_3d_maps_of_mars
-
-% Ultra sharp 3D maps
-% http://video.mit.edu/watch/ultrasharp-3-d-maps-66/
-
-% GPS links
-% http://en.wikipedia.org/wiki/Global_Positioning_System
-% http://www.gps.gov/systems/gps/space/
-% http://spectrum.ieee.org/aerospace/space-flight/interplanetary-gps-comes-a-step-closer
-% http://science.howstuffworks.com/how-is-gps-used-in-spaceflight.htm
-
-% UAV 3D mapping
-% http://www.geometh.ethz.ch/uav_g/proceedings/neitzel
-
-% 3D mapping reference points
-% http://digital.csic.es/bitstream/10261/30058/1/doc1.pdf
+Simultaneous Localization and Mapping (SLAM) is a system where you take multiple measurements of a surrounding and add them all together to make a 2D or 3D map. Need to add more here
 
 \subsection{Sensors}
 \subsubsection{Pressure Based}
@@ -62,6 +43,9 @@ A projected image sensor is very simple, %subjective? what?
  some known image is projected on the environment (a grid, for example), then a camera takes a picture. Since the projection is known, it is simple to detect the distance of an object on the image based on what the projection looks like. This method is limited to how fine the projected image is. %what qualifies a fine image?
 
 Stereoscopy, also known as stereophotogrammetry, is more complicated, but also more reliable. Two photos of the same scene, but from different vantage points, are taken. Small sections of one of the images are taken, and overlayed onto the other image. By finding the place on the other image where the small section fits, the algorithm can determine the depth of each pixel in that subsection. This procedure is repeated until the whole image has been processed.
+
+\subsection{Optical-flow sensor}
+Optical-flow sensor is a camera mounted on a PCB board that compares changes in pixels to look out for drift and movement in a system. The concept is the same as your computer mouse follows. It will tell you the movement of your vehicle in a XY-grid. We will implement this sensor for our reference points. Need to add more here
 
 \subsubsection{Rangefinder}%NOTE: This section might be a little rambly
 A rangefinder is a device that measures the distance between itself, and a point some at a certain distance away from it. Rangefinders work based on the principle that the speed of an object is defined to be \textit{distance travelled over time travelled}, which means that the distance travelled is the speed of an object times the amount of time it travelled. To put this in math terms: \(v=d/t\) or \(d=t*v\).
