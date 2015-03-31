@@ -6,7 +6,7 @@ Based on previous discussions, the following equipment has been selected:
   A 4 wheel rover to move the sensor around.
   \item[Laser:] \hfill \\
   Long range laser for 2D mapping.
-  \item[Brushless DC motor:} \hfill \\
+  \item[Brushless DC motor:] \hfill \\
   Used to spin the laser a full circle.
   \item[Ultra-sonic sensor:] \hfill \\
   For close proximity warning, navigation.
@@ -14,6 +14,10 @@ Based on previous discussions, the following equipment has been selected:
   As a control computer for navigation and processing of 2D map.
   \item[Optical-flow sensor:] \hfill \\
   Used for looking at a movement of the rover for reference points.
+  \item[Motor controller:] \hfill \\
+  Used to power the motors used on the rover.
+  \item[Power source:] \hfill \\
+  %TODO: Add missing information here%
 \end{description}
 
 \subsection{Prototype}
@@ -21,7 +25,7 @@ The main limiting-factor for us is time. In the time-frame of this project, we c
 
 For the prototype, we decided to use a laser for making a 2D map as a proof of concept, but the capability of implementing cameras for 3D mapping. A laser can be used for 3D mapping, but it would be easier to make a 3D map from cameras and it would also give a better picture of the surroundings.
 
-Implementation of a optical flow sensor is for reference points. We will be using Simultaneous Localization and Mapping (SLAM) system for the mapping. The laser will be mounted on top and spin 360$^[\cicl]$ using a brushless DC motor. The optical flow will tell the system about the movement of the rover on a XY grid. 
+Implementation of a optical flow sensor is for reference points. We will be using Simultaneous Localization and Mapping (SLAM) system for the mapping. The laser will be mounted on top and spin 360$^{\circ}$ using a brushless DC motor. The optical flow will tell the system about the movement of the rover on a XY grid. 
 
 This prototype will not have all the features we wish to have for the final product, but the goal is to show the interaction between an laser sensor for 2D mapping and a rover navigating through unknown terrain, using a Raspberry Pi.
 
