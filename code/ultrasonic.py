@@ -16,7 +16,6 @@ def getdist():
     GPIO.output(TRIGGER, True)
     time.sleep(0.00001)
     GPIO.output(TRIGGER, False)
-    start = time.time()
     #When echo goes high the time starts
     while GPIO.input(ECHO)==0:
         pass    
