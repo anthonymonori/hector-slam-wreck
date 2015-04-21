@@ -20,16 +20,18 @@ int main(int argc,char *argv[]) {
     }
     // else start main loop
     else {
+        //finite loop for now
         for (i=0;i<5;i++) {
             res = lidar_read(fd);
             st = lidar_status(fd);
             ver = lidar_version(fd);
 
             printf("%3.0d cm \n", res);
-            lidar_status_print(st);
-            printf("%d", ver);
+            //lidar_status_print(st);
+            //printf("%d", ver);
 
             delay(del);
         }
+
     }
 }
