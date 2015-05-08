@@ -16,17 +16,24 @@ A rangefinder is a device that measures the distance between itself, and a point
 Most rangefinders work on either sound or light. Both sound and light based rangefinders work by emitting a pulse in a specific direction, and counting how long it takes for the pulse to come back. Since the pulse has travelled back and forth, the distance is calculated as \(1/2*v*t\), where \(v\) is the speed of the pulse, and \(t\) is the time between the emission and the detection.
 
 The pulse will travel from the rangefinder, straight to whatever object is in front of it. Often, the pulse is not normal to the object it hits, meaning the pulse is at an angle relative to the object, so the pulse will not reflect back to the rangefinder. However, a small portion of the pulse will scatter upon impact, meaning the rangefinder might still detect the pulse once it comes back.
-%TODO: Image
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.4\linewidth]{images/rangefinder.jpg}
+        %http://i.stack.imgur.com/Jg1nW.jpg
+\end{figure}
 
 This requires the rangefinder to know what the speed of the pulse is, which is a problem in unknown environments. For a rangefinder to be reliably used in such environments, it needs either to have the speed of its pulse precalculated, or it needs to measure the speed of the pulse by itself. Also, in situations where the speed of the pulse varies, a rangefinder is either not useful, or it needs a more complicated model of the environment it is in.
 
 The main cause for a pulse to travel at a different speed than expected is in situations where the environment the sensor is in varies in density, which depends on temperature\cite{refraction}. Hence, a simple rangefinder is not fit for an environment that varies heavily in temperature.
-%TODO: (Image?)
 
 Sound moves faster through denser mediums, where light travels slower. The speed of light is less affected by density than sound is. In earth-like atmospheres, light only travels 0.03\% slower in air when compared to the vacuum.\cite{refraction}\cite{speedOfSound}.
-%TODO: Image http://arxiv.org/pdf/1003.1508.pdf
 
 Another issue in environments with a high variation in density is refraction. Refraction is a phenomenon that occurs when a wave switches between mediums where it travels at different speeds. This change in mediums causes the wave to change it's direction. cite{snell:Wolf, K. B. (1995), "Geometry and dynamics in refracting systems", European Journal of Physics 16: 14–20.} Refraction would cause rangefinders to become effectively blind, as neither their direction nor the length measured can be trusted.
-%TODO: image{http://4.bp.blogspot.com/-Y4zXYZDJekI/Ud5C-rzi_0I/AAAAAAAACSc/EYYxL9cmy3M/s1600/Picture18.png}
 %A cite needs to be fixed above - Thomas
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.4\linewidth]{images/refraction.png}
+        %http://4.bp.blogspot.com/-Y4zXYZDJekI/Ud5C-rzi_0I/AAAAAAAACSc/EYYxL9cmy3M/s1600/Picture18.png
+\end{figure}
 
