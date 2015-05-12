@@ -15,6 +15,15 @@ The dipswitches on the motor controller enables many different configuration opt
 
 Since the GPIO pins on a raspberry pi are rated at 3.3V will be using the controller in 4x sensitivity mode also. This changes the logic level range from 0V-5V with zero at 2.5V, to a logic range of 1.875V-3.125V with zero at 2.5V.  
 This makes the controller more compatible with the raspberry pi.
+
+The Raspberry has no analog outputs, therefore to obtain the necessary signals to control the motors PWM (Pulse width modulation) will is used. Using the following calculations the length of the duty-cycles was determined,
+
+$3.3V(\frac{zero_v}{100}) = 2.5V\quad zero_v = 75.75\%$ \\
+$3.3V(\frac{forward_v}{100}) = 3.125V\quad forward_v = 94.69\%$ \\
+$3.3V(\frac{reverse_v}{100}) = 1.875V\quad reverse_v = 56.81\%$ \\
+
+
+
 %Talk about how the signalling works
 %Possibly add a diagram
 
