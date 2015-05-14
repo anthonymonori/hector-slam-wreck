@@ -36,39 +36,42 @@
 *********************************************************************/
 #include <ros/ros.h>
 #include <sensor_msgs/LaserScan.h>
-
+#include <iostream>
 int main(int argc, char** argv){
   ros::init(argc, argv, "laser_scan_publisher");
 
   ros::NodeHandle n;
   ros::Publisher scan_pub = n.advertise<sensor_msgs::LaserScan>("scan", 50);
 
-  unsigned int num_readings = 100;
-  double laser_frequency = 40;
+  unsigned int num_readings = 100; //This might be the number of readings in one packet. probably set to 200
+  double laser_frequency = 40; //how many spins in one second
   double ranges[num_readings];
   double intensities[num_readings];
 
   int count = 0;
   ros::Rate r(1.0);
   while(n.ok()){
+    /////////////////////////////////////////////////////
     //generate some fake data for our laser scan
     for(unsigned int i = 0; i < num_readings; ++i){
-      ranges[i] = count;
-      intensities[i] = 100 + count;
+      ranges[i] = count;//the distance for one measurement. In meters
+      intensities[i] = 100 + count;//we probably don't need this
     }
-    ros::Time scan_time = ros::Time::now();
+    ros::Time scan_time = ros::Time::now();//we might not need this
+    /////////////////////////////////////////////////////
 
-    //populate the LaserScan message
+    //sets up the relevant info about the laser
     sensor_msgs::LaserScan scan;
     scan.header.stamp = scan_time;
     scan.header.frame_id = "laser_frame";
-    scan.angle_min = -1.57;
+    scan.angle_min = -1.57;//angles in radians
     scan.angle_max = 1.57;
     scan.angle_increment = 3.14 / num_readings;
-    scan.time_increment = (1 / laser_frequency) / (num_readings);
-    scan.range_min = 0.0;
-    scan.range_max = 100.0;
+    scan.time_increment = (1 / laser_frequency) / (num_readings); //time between measurements in seconds
+    scan.range_min = 0.0;//the distance range. in meters
+    scan.range_max = 100.0;//set to 40 or less for our laser
 
+    //publish the data to /scan
     scan.ranges.resize(num_readings);
     scan.intensities.resize(num_readings);
     for(unsigned int i = 0; i < num_readings; ++i){
