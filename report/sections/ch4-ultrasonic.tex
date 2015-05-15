@@ -32,11 +32,8 @@ The final pin labelled C is the common ground for the three voltage dividers.
 	\caption{The HC-SR04 timing chart\cite{hcsr04timingchart}}
 \end{figure}
 
-A 10us pulse is sent from the sensor using the trigger pin, the echo pin receives a HIGH-pulse equivalent to how long it took to hear the echo. This means that length of this high-pulse is proportional to how far away the object is that distance is being measured between.\cite{ultrasonichowitworks}
+A 10us pulse is sent from the sensor using the trigger pin, the echo pin receives a HIGH-pulse equivalent to how long it took to hear the echo. This means that length of this high-pulse is proportional to how far away the object is that distance is being measured between.\cite{ultrasonichowitworks}\\
 
-$distance = \frac{(stoptime-startime) * 34000}{2}$
-
-The above calculation is done using the speed of sound which is $speed = 340m/s$, which in centimetres is $34000cm/s$.
 
 \lstinputlisting[firstline=31, lastline=49, title=ultrasonic.py, language=Python]{../code/autonomous-rover/triple-ultrasonic-test.py}
 
