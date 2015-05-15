@@ -1,7 +1,7 @@
 \clearpage
-\section{Close proximity detection}
+\section{Ultrasonicsensor}
 
-During the autonomous navigation the rover will be using 4 ultrasonic sensors for close proximity detection. These sensors will be placed on each of the four sides of the rover, at the same height as the wheels to help detect objects within a close distance of the rover.
+During the autonomous navigation the rover will be using 3 ultrasonic sensors for close proximity detection. These sensors will be placed on each of the four sides of the rover, at the same height as the wheels to help detect objects within a close distance of the rover.
 
 \begin{figure}[H]
 	\centering
@@ -14,7 +14,17 @@ To avoid damaging the Raspberry pi  when using these ultrasonic sensor a voltage
 When the sensors are initially powered on they require a few milliseconds to initialize, before they can be used to take measurements. This is recommended in the datasheet.
 
 The HC-SR04 operates using 4 pins: Vcc, Trigger, Echo, Gnd.
-The trigger pin on the sensor is connected to a GPIO-OUT and the echo pin is connected to a GPIO-IN.
+The trigger pin on the sensor is connected to a GPIO-OUT and the echo pin is connected to a GPIO-IN. The echo pin outputs a 5V signal into the the Raspberry Pi's GPIO, so to protect the board the following setup has been created.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.3\linewidth]{images/vd_labelled.jpg}
+	\caption{The common ultrasonic board}
+\end{figure}
+
+The circuit in the figure above it a set of three voltage dividers. The advantage of the board is that instead of using 12 pins for the three ultrasonic sensors they only end up using 8 pins, since the board above combines their 5V Vcc's and the ground pins into two common pins.  
+The pins at the top of the figure labelled C is there output from the ultrasonic sensors, which at that time is 5V. The pin B is the connection to the Raspberry Pi, where the voltage divider has limited the voltage to be 3.3V instead of the original 5V.  
+The final pin labelled C is the common ground for the three voltage dividers.
 
 \begin{figure}[H]
 	\centering
@@ -28,8 +38,7 @@ $distance = \frac{(stoptime-startime) * 34000}{2}$
 
 The above calculation is done using the speed of sound which is $speed = 340m/s$, which in centimetres is $34000cm/s$.
 
-\clearpage
-\lstinputlisting[firstline=14, lastline=32, title=ultrasonic.py, language=Python]{../code/ultrasonic-module/ultrasonic.py}
+\lstinputlisting[firstline=31, lastline=49, title=ultrasonic.py, language=Python]{../code/autonomous-rover/triple-ultrasonic-test.py}
 
 The snippet of code above is the function that gets the distance between the ultrasonic sensor module and the current object in front of it.
 On line 3 the trigger output is set to High for 10us to create the ultrasonic burst. When the burst returns the input pin ECHO goes high for the duration of the pulse, which is measured by the subtracting the stop time from the start time.

@@ -1,0 +1,16 @@
+\clearpage
+\section{Close proximity detection}
+
+The close proximity system consists of two main components, which are the readings from the ultrasonic sensors and the control of the rover using the motor controller.
+
+%Possible figure of the three ultrasonic sensors viewing-areas 
+
+The vision for the close
+
+%getdist()
+%\lstinputlisting[firstline=31, lastline=49, title=getdist(), language=Python]{../code/autonomous-rover/triple-ultrasonic-test.py}
+
+\lstinputlisting[firstline=128, lastline=156, title=main, language=Python]{../code/autonomous-rover/obstacle-avoidance.py}
+
+The core idea behind the current algorithm, is that per loop the three ultrasonic sensors mounted on the front of the vehicle all gather three separate measurements. Then afterwards the measurements are compared in three statements. If the distance recorded by the left facing ultrasonic sensor is less than the threshold distance set as the variable \textit{avoid\_at}, the rover will then turn towards the right for the amount of seconds that the \textit{turn\_time} variable is set to. The same thing goes for the ultrasonic sensor faced to right, but instead the rover turns to the left when the threshold is exceeded.
+If the threshold is exceeded at the center ultrasonic sensor, it determines whether the optimal path is to turn left or right depending on which direction has the largest distance measurement. This mean that if an object is detected by the center ultrasonic sensor, the rover will then determine whether the distance measured to the left is greater than the distance measured to the right. The rover will then turn in the direction in which the distance measurement is greatest, since this means that the rover will have a longer distance until the rover meets an object.
