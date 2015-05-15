@@ -24,6 +24,7 @@ dist_right = 0
 dist_center = 0
 
 avoid_at = 50 #cm
+turn_time = 0.5 #seconds
 
 print("Pin def succes")
 
@@ -135,24 +136,24 @@ try:
         if dist_left < avoid_at:
             right()
             print("dist_left < " + str(avoid_at) + " --> Turning right")
-            time.sleep(1)
+            time.sleep(turn_time)
             print("Going forward")
             forward()
         elif dist_right < avoid_at:
             print("dist_right < " + str(avoid_at) + " --> Turning left")
             left()
-            time.sleep(1)
+            time.sleep(turn_time)
             forward()
         elif dist_center < avoid_at:
             print("dist_center < " + str(avoid_at) + " --> Detecting optimal direction")
             if dist_left < dist_right:
                 print("dist_left < dist_right --> Turning right")
                 right()
-                time.sleep(1)
+                time.sleep(turn_time)
             else:
                 print("dist_left > dist_right --> Turning right")
                 left()
-                time.sleep(1)
+                time.sleep(turn_time)
 
 except KeyboardInterrupt:
     pass
