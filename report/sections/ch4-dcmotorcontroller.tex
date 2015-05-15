@@ -9,7 +9,7 @@ The chassis used for the rover has 4 pre-installed DC motors, which are all four
 	\caption{Pololu DRV8833\cite{DRV8833pic}}
 \end{figure}
 
-The driver uses a 2.7-10.8V supply voltage to operate, which is supplied to the motor controller by an external battery pack. This battery pack is used to power the motor controller and the four DC motors on the rover. The DRV8833 has two separate DC motor outputs labelled as BOUT and AOUT, that can independently controlled by their matching inputs from the microcontroller, since this rover operates using 4 DC motors each of the outputs from the motor controller will operate two DC motors.
+The driver uses a 2.7-10.8V supply voltage to operate, which is supplied to the motor controller by an external battery pack. This battery pack is used to power the motor controller and the four DC motors on the rover. The DRV8833 has two separate DC motor outputs labelled as BOUT and AOUT, that can be independently controlled by their matching inputs from the microcontroller, since this rover uses 4 DC motors, each of the outputs from the motor controller will be connected to 2 DC motors.
 
 The advantage of this particular motor controller is the fact that it supports analog and digital inputs. Since the Raspberry Pi has no analog outputs the controller will be given digital inputs. 
 
@@ -26,13 +26,13 @@ The advantage of this particular motor controller is the fact that it supports a
 \end{tabular}
 \end{table}
 
-To achieve the desired directions as shown in the table above, the pins must be set to high and low accordingly. The input pins on the motor controller also allow for control with PWM (Pulse Width Modulation), which will change the length of the duty cycle and influence the speed of which the rover is moving at\cite{DRV8833}. %Code for testing the directions of the motors can be found in the appendix.  <-- Only if we have the room for it in the appendix
+The table above shows the possible combinations of pins to achieve different desired directions, where the pins must be set to high and low according to what is the direction of choice. The input pins on the motor controller also allow for control with PWM (Pulse Width Modulation), which will change the length of the duty cycle and influence the speed of which the rover is moving at\cite{DRV8833}. %Code for testing the directions of the motors can be found in the appendix.  <-- Only if we have the room for it in the appendix
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=.5\linewidth]{images/labelled.jpg}
 \end{figure}
 
-To enable easier access to the pins on the motor controller, as custom board was created for ease of use. The green terminals A and B are connection terminals for the AOUT and BOUT respectively. The terminal C is for the battery pack that supplies the voltage, this case it is 5 AA batteries. The label D is the Pololu DRV8833 and the final label E are the connections to the Rasperry Pi. 
+To enable easier access to the pins on the motor controller, as custom board was created for ease of use. The green terminals A and B are connection terminals for the AOUT and BOUT respectively. The terminal C is for the battery pack that supplies the voltage, which in this case is 5 AA batteries. The label D is the Pololu DRV8833 and the final label E are the connections to the Rasperry Pi. 
 
 Operating the motor controller requires 5 pins from the Raspberry Pi, 4 to control the input pins on the DRV8833 and a ground pin.
