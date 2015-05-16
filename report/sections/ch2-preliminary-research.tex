@@ -48,6 +48,7 @@ Stereoscopy, also known as stereophotogrammetry, is more complicated, but also m
 Optical-flow sensor is a camera mounted on a PCB board that compares changes in pixels to look out for drift and movement in a system. The concept is the same as your computer mouse follows. It will tell you the movement of your vehicle in a XY-grid. We will implement this sensor for our reference points. Need to add more here
 
 \subsubsection{Rangefinder}%NOTE: This section might be a little rambly
+%TODO:Integrate this article in here: http://kb.pulsedlight3d.com/support/solutions/articles/5000554104-reflectivity
 A rangefinder is a device that measures the distance between itself, and a point some at a certain distance away from it. Rangefinders work based on the principle that the speed of an object is defined to be \textit{distance travelled over time travelled}, which means that the distance travelled is the speed of an object times the amount of time it travelled. To put this in math terms: \(v=d/t\) or \(d=t*v\).
 
 Most rangefinders work on either sound or light. Both sound- and light-based rangefinders work by emitting a pulse in a specific direction, and counting how long it takes for the pulse to come back. Since the pulse has travelled back and forth, the distance is calculated as \(1/2*v*t\), where \(v\) is the speed of the pulse, and \(t\) is the time between the emission and the detection.
@@ -63,11 +64,11 @@ The main cause for a pulse to travel at a different speed than expected is in si
 Sound moves faster through denser mediums, where light travels slower. The speed of light is less affected by density than sound is. In earth-like atmospheres, light only travels 0.03\% slower in air when compared to the vacuum.\cite{refraction}\cite{speedOfSound}.
 %TODO: Image http://arxiv.org/pdf/1003.1508.pdf
 
-Another issue in environments with a high variation in density is refraction. Refraction is a phenomenon that occurs when a wave switches between mediums where it travels at different speeds. This change causes the wave to change its direction. %What is this? Please format it correctly! - Anthony (next row)
+Another issue in environments with a high variation in density is refraction. Refraction is a phenomenon that occurs when a wave switches between mediums where it travels at different speeds. This change causes the wave to change its direction. %TODO:What is this? Please format it correctly! - Anthony (next row)
 %cite{snell:Wolf, K. B. (1995), "Geometry and dynamics in refracting systems", European Journal of Physics 16: 14–20.} 
 Refraction would cause rangefinders to become effectively blind, as neither their direction nor the length measured can be trusted.
 %TODO: image{http://4.bp.blogspot.com/-Y4zXYZDJekI/Ud5C-rzi_0I/AAAAAAAACSc/EYYxL9cmy3M/s1600/Picture18.png}
-%A cite needs to be fixed above - Thomas
+%TODO:A cite needs to be fixed above - Thomas
 
 \clearpage
 \subsection{Autonomous Vehicles and Robots}
