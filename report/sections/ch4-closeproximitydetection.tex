@@ -3,9 +3,17 @@
 
 The close proximity system consists of two main components, which are the readings from the ultrasonic sensors and the control of the rover using the motor controller.
 
-%Possible figure of the three ultrasonic sensors viewing-areas 
+%Picture of the three mounted ultra sonic sensors 
 
-The vision of the rover is currently limited to three different measurements, which results in a few blind spots. 
+The three ultra sonic sensors are mounted as close as possible to each other, while still covering the greatest amount of vision on the front of the rover. Naturally, this causes two blind spot in between the ultrasonic sensors, to have an idea of how large the blind spot is, the following measurements and calculations have been made.
+
+%Insert picture of calculations
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.5\linewidth]{images/hcsr04angle.png}
+\end{figure}
+The ultrasonic sensor performs best at a $30\deg$ reading angle. This angle helps determine the area of which the ultrasonic sensor can read upon. The larger the angle, the less of a blindspot there will be when two or more ultrasonic sensors are placed on a line similar to how they are mounted on the rover\cite{hcsr40datesheet}.
 
 \lstinputlisting[firstline=128, lastline=156, title=main, language=Python]{../code/autonomous-rover/obstacle-avoidance.py}
 
