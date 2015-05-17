@@ -57,11 +57,9 @@ int main(int argc, char** argv){
     double laser_frequency = 0.5/*MIGHT CHANGE*/; //how many spins in one second
     double ranges[num_readings];
 
-    //ros::Rate fullScan(0.1/*MIGHT CHANGE*/);
-    //ros::Rate singleStep(0.25/*MIGHT CHANGE*/);
     while(n.ok()){
         ros::Time scan_time = ros::Time::now();
-        
+
         //sets up the relevant info about the laser
         sensor_msgs::LaserScan scan;
         scan.header.frame_id = "laser";
@@ -78,11 +76,8 @@ int main(int argc, char** argv){
         scan.ranges.resize(num_readings);
         for(unsigned int i = 0; i < num_readings; ++i){
             scan.ranges[i] = lidar_read(fd)/100.0;
-//            std::cout << scan.ranges[i] << std::endl;
-//            singleStep.sleep();
         }
 
         scan_pub.publish(scan);
-//        fullScan.sleep();
     }
 }
