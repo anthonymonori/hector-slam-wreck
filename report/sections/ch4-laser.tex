@@ -6,6 +6,12 @@ A SoC (System-on-a-Chip) solution for optical distance measurements applications
 
 %How the laser works
 
+At distances less than a meter, the beam is about the size of the lens, at distances longer than that you can estimate it using this equation: 
+\\ d/100 = bsize \\
+where d = distance and bsize = the beam size at that specific distance, in whatever units you measured it in. The actual spread is ~8 milli-radians or ~1/2 degree. 
+%REF: http://kb.pulsedlight3d.com/support/solutions/articles/5000566352-what-is-the-spread-of-the-laser-beam-
+
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=.4]{images/internallidar.png}
