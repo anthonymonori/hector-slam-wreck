@@ -51,26 +51,27 @@ int main(int argc, char** argv){
     ros::init(argc, argv, "laser_scan_publisher");
 
     ros::NodeHandle n;
-    ros::Publisher scan_pub = n.advertise<sensor_msgs::LaserScan>("scan", 50);
+    ros::Publisher scan_pub = n.advertise<sensor_msgs::LaserScan>("scan", 10);
 
     unsigned int num_readings = 200; //number of readings in one packet.
-    double laser_frequency = 40/*MIGHT CHANGE*/; //how many spins in one second
+    double laser_frequency = 0.5/*MIGHT CHANGE*/; //how many spins in one second
     double ranges[num_readings];
 
-    ros::Rate fullScan(0.1/*MIGHT CHANGE*/);
-    ros::Rate singleStep(0.25/*MIGHT CHANGE*/);
+    //ros::Rate fullScan(0.1/*MIGHT CHANGE*/);
+    //ros::Rate singleStep(0.25/*MIGHT CHANGE*/);
     while(n.ok()){
         ros::Time scan_time = ros::Time::now();
         
         //sets up the relevant info about the laser
         sensor_msgs::LaserScan scan;
         scan.header.frame_id = "laser";
-        scan.angle_min = -1.57;//angles in radians
-        scan.angle_max = 1.57;
-        scan.angle_increment = 3.14 / num_readings;
+        scan.angle_min = -3.14;//angles in radians
+        scan.angle_max = 3.14;
+        scan.angle_increment = 6.28 / 200;
         scan.time_increment = (1 / laser_frequency) / (num_readings); //time between measurements in seconds
         scan.range_min = 0.1;//the distance range. in meters
         scan.range_max = 40.0;//set to 40 or less for our laser
+        scan.scan_time = 0.02;
         scan.header.stamp = scan_time;
 
         //publish the data to /scan
@@ -82,6 +83,6 @@ int main(int argc, char** argv){
         }
 
         scan_pub.publish(scan);
-        fullScan.sleep();
+//        fullScan.sleep();
     }
 }
