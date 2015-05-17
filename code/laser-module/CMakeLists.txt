@@ -1,5 +1,0 @@
-cmake_minimum_required (VERSION 2.6)
-project (StartLaser)
-include_directories(include)
-add_executable(StartLaser src/laser.c src/lidarLite.c include/lidarLite.h)
-target_link_libraries (StartLaser wiringPi wiringPiDev pthread)
