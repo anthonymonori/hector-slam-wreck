@@ -40,7 +40,7 @@
 #include "lidarLite.h"
 
 int main(int argc, char** argv){
-    int fd = lidar_init(true);
+    int fd = lidar_init(false);//set to true for printouts
     // If init failed
     if (fd == -1) {
         printf("initialization error\n");
@@ -52,11 +52,11 @@ int main(int argc, char** argv){
     ros::Publisher scan_pub = n.advertise<sensor_msgs::LaserScan>("scan", 50);
 
     unsigned int num_readings = 200; //number of readings in one packet.
-    double laser_frequency = 40; //how many spins in one second
+    double laser_frequency = 40/*MIGHT CHANGE*/; //how many spins in one second
     double ranges[num_readings];
 
-    ros::Rate fullScan(1.0);
-    ros::Rate singleStep(0.25);
+    ros::Rate fullScan(1.0/*MIGHT CHANGE*/);
+    ros::Rate singleStep(0.25/*MIGHT CHANGE*/);
     while(n.ok()){
         //sets up the relevant info about the laser
         sensor_msgs::LaserScan scan;
