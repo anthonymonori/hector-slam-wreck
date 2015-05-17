@@ -1,0 +1,17 @@
+<launch>
+
+<node name="laser_scan_publisher" pkg="laser_scan_publisher_tutorial"  type="laser_scan_publisher">
+
+<node name="tf_broadcaster" pkg="robot_setup_tf"  type="tf_broadcaster">
+
+<node name="tf_listener" pkg="robot_setup_tf"  type="tf_listener">
+
+<param name="frame_id" type="string" value="laser"/>
+
+<param name="base_frame" value="base_link"/>
+<param name="odom_frame" value="base_link"/>
+
+<param name="use_odom" value="false"/>
+<param name="use_imu" value="false"/>
+
+</launch>
