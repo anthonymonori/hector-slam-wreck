@@ -57,14 +57,14 @@ int main(int argc, char** argv){
     double laser_frequency = 40/*MIGHT CHANGE*/; //how many spins in one second
     double ranges[num_readings];
 
-    ros::Rate fullScan(1.0/*MIGHT CHANGE*/);
+    ros::Rate fullScan(0.1/*MIGHT CHANGE*/);
     ros::Rate singleStep(0.25/*MIGHT CHANGE*/);
     while(n.ok()){
         ros::Time scan_time = ros::Time::now();
         
         //sets up the relevant info about the laser
         sensor_msgs::LaserScan scan;
-        scan.header.frame_id = "laser_frame";
+        scan.header.frame_id = "laser";
         scan.angle_min = -1.57;//angles in radians
         scan.angle_max = 1.57;
         scan.angle_increment = 3.14 / num_readings;
@@ -76,7 +76,7 @@ int main(int argc, char** argv){
         //publish the data to /scan
         scan.ranges.resize(num_readings);
         for(unsigned int i = 0; i < num_readings; ++i){
-            scan.ranges[i] = lidar_read(fd);
+            scan.ranges[i] = lidar_read(fd)/100.0;
 //            std::cout << scan.ranges[i] << std::endl;
 //            singleStep.sleep();
         }
