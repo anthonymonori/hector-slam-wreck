@@ -25,6 +25,7 @@ The core idea behind the current algorithm, is that per loop of the main code, t
 If the threshold distance is exceeded at the center ultrasonic sensor, it determines whether the optimal path is to turn left or right depending on which direction has the largest distance measurement. This means that if an object is detected by the center ultrasonic sensor, the rover will then determine whether the distance measured to the left is greater than the distance measured to the right. The rover will then turn in the direction in which the distance measurement is greatest, since this theory means that the rover will have a longer distance until the rover meets an object.
 
 %getdist()
+\clearpage
 \lstinputlisting[firstline=31, lastline=49, title=getdist(), language=Python]{../code/autonomous-rover/triple-ultrasonic-test.py}
 
 At the start of the navigation loop seen in the \textit{main} code, the \textit{getdist()} function i run three separate times with different arguments, measurements are gathered every 200ms, where the datasheet recommends a measurements cycle of at least 60ms. The arguments are clearly labelled to help determine what measurement is coming from what ultrasonic sensor.
