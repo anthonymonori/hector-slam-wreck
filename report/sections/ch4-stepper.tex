@@ -1,18 +1,22 @@
 \clearpage
 \section{Stepper motor}
-Stepper motors are electrical motors that can be precisely controlled.
-It divides a full rotation into a discrete amount of steps, each equally big.
+Stepper motors are electrical motors that can be precisely controlled. They divide a full rotation into a discrete amount of steps, each equally big.
 
 Stepper motors are usually used with a specific circuit to control them, a stepper-motor controller.
 
 The stepper motor we used in our project is NEMA-17 Bipolar Stepper Motor.
-Step: 1.8deg
 \cite{steppermotor}
 The stepper motor controller we used is an EasyDriver
 \cite{steppercontroller}
 (Image: how we connected the stepper motor and its controller)
 
-Since the stepper motor we use divides a full cycle into 200 steps, this means that the maximum resulustion possible is 1.8 degrees. At a dictance of 1m, 1.8degrees can resolve a distance of ~3.1cm, and this increases linearly with a larger distance.
+
+The library we used for the stepper-motor controller allow for microstepping. Microstepping allows further division of a step, by manipulating the rise and fall of voltages.
+This stepper motor has 8 microsteps per step. One microstep is a change from a low voltage to a high voltage.
+
+\lstinputlisting[firstline=1, lastline=20, title=Arduino_Code, language=C++]{../code/arduino_code}
+
+Since the stepper motor we use divides a full cycle into 200 steps, this means that the resulustion is 1.8 degrees per step. At a dictance of 1m, 1.8degrees can resolve a distance of ~3.1cm, and this increases linearly with a larger distance.
 
 $\frac{x}{sin(1.8deg)} = \frac{1m}{sin(89.1deg)}$
 $x = \frac{sin(1.8deg)}{sin(89.1deg)}m$
