@@ -23,8 +23,10 @@ To attach the different sensors to the rover, different enclosures and brackets 
 
 The enclosures for the ultrasonic sensors have be designed to place all of the sensors at the same height on each side of the chassis, to ensure that the measurements are similar.
 
-%TODO: Add pictures of the mounted sensors
-
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.6\linewidth]{images/mounted_ultrasonic_sensors.jpg}
+\end{figure}
 The design for the Lidar laser enclosure was found on the internet, which was already made by someone, who had created a similar project. The enclosure enables the sensor to rotate 360degrees using 3D printed gears driven by a stepper motor.\cite{lidarenclosure}.
 
 The enclosure design required a high-end 3D printer due to it's size and print time. The prints were completed within a day.
@@ -52,3 +54,9 @@ The enclosure design required a high-end 3D printer due to it's size and print t
 The idea of using a separate enclosure driven by a stepper motor to rotate the laser sensor is to constantly get a 360 degree map of the environment by rotating the sensor separately from the chassis, rather than rotating the chassis to do so. This way, we can also keep regenerating the map while the chassis is on the move.  The idea behind a stepper motor is that it is possible to get the exact step to a full-circle.
 
 %TODO: Write about assembly
+The project ended up being assembled in two separate parts: The rover with the ultrasonic sensors and the Lidar by itself.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.6\linewidth]{images/build_ultrasonic.jpg}
+\end{figure}
