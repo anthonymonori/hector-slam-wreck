@@ -14,7 +14,7 @@ The stepper motor controller we used is an EasyDriver
 The library we used for the stepper-motor controller allow for microstepping. Microstepping allows further division of a step, by manipulating the rise and fall of voltages.
 This stepper motor has 8 microsteps per step. One microstep is a change from a low voltage to a high voltage.
 
-\lstinputlisting[firstline=1, lastline=20, title=Arduino_Code, language=C++]{../code/arduino_code}
+%\lstinputlisting[firstline=1, lastline=20, title=Arduino_Code, language=C++]{../code/arduino_code}
 
 Since the stepper motor we use divides a full cycle into 200 steps, this means that the resulustion is 1.8 degrees per step. At a dictance of 1m, 1.8degrees can resolve a distance of ~3.1cm, and this increases linearly with a larger distance.
 
