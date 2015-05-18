@@ -16,7 +16,23 @@ The close proximity system consists of two main components, which are the readin
 \end{figure}
 
 The vision of the rover, which relies on the distance measurements from the sensors above, is currently limited to three different measurements. This unfortunately results in some blind spots between the ultrasonic sensors.
-The ultrasonic sensor performs best at a $30\deg$ reading angle. This angle helps determine the area of which the ultrasonic sensor can read upon. The larger the angle, the less of a blind spot there will be between two ultrasonic sensors, depending on how they are mounted on the rover.\cite{hcsr40datesheet}.
+The ultrasonic sensor performs best at a $30\degree$ reading angle. This angle helps determine the area of which the ultrasonic sensor can read upon. The larger the angle, the less of a blind spot there will be between two ultrasonic sensors, depending on how they are mounted on the rover.\cite{hcsr40datesheet}.
+
+\clearpage
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{images/blindspot_calc.jpg}
+\end{figure}
+
+The blind spot can be determined by finding the length $x$ on the figure above. The cones indicate the area of which the ultrasonic sensors covers, for both $15\degree$ and $30\degree$. Some versions of the ultrasonic sensor perform best at an $15\degree$ angle, so two different calculations have been made to help determine where the blind spots for this particular setup are located.
+The length $x$ marked on the sketch above indicates where a blind spot with the ultrasonic sensors begin. To find the length $x$, the equation $tan(\Theta)d = x$. The length d is half of the length between the center of each ultrasonic sensor and it stays constant for both calculated cases. $\Theta$ is found my measuring the angle and the value of $\Theta$ changes depending on the ultrasonic sensors operates at $15\degree$ or $30\degree$.
+
+$\Theta_1 = 65\degree$\quad\quad$d = 3.5cm$\quad\quad$tan(65\degree)3.5cm =  7.506cm$\\
+$\Theta_2 = 80\degree$\quad\quad$d = 3.5cm$\quad\quad$tan(80\degree)3.5cm =  19.849cm$
+
+The rover has two theoritical blind spots on either side of the center mounted ultrasonic sensors at a measuring angle of $15\degree$ the blind spot is $34.7cm^2$ and at $30\degree$ the blind is $13.1cm^2$. 
+
+During testing these measurements will be used to figure out what specific ultrasonic sensors the rover is equipped with, to help identify possible issues that might occur with how it operates.
 
 \clearpage
 \lstinputlisting[firstline=128, lastline=156, title=main, language=Python]{../code/autonomous-rover/obstacle-avoidance.py}
