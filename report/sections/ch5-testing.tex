@@ -25,22 +25,29 @@ The first was to figure out the location of the rovers blind spots. To figure ou
 
 \begin{figure}[H]
 	\centering
-	\begin{subfigure}[H]{0.4\textwidth}
+	\begin{subfigure}[H]{0.3\textwidth}
+		\includegraphics[width=\textwidth]{images/test-blindspotcmd.jpg}
+		\subcaption{Blind spot readings}
+	\end{subfigure}%
+	\quad
+	\begin{subfigure}[H]{0.3\textwidth}
 		\includegraphics[width=\textwidth]{images/blindspot_test.jpg}
 		\subcaption{Measuring the blind spot}
 	\end{subfigure}%
 	\quad
-	\begin{subfigure}[H]{0.4\textwidth}
+	\begin{subfigure}[H]{0.3\textwidth}
 		\includegraphics[width=\textwidth]{images/testing-course.jpg}
 		\subcaption{The testing course}
 	\end{subfigure}
 \end{figure}
 
-Through testing we determined that the ultrasonic sensors used for the particular project has a measuring angle of $15\degree$. This increases the rovers risk of running into a blind spot, since the blind areas are much larger than with the sensors with the larger viewing angle.\\
+Through testing we determined that the ultrasonic sensors used for the particular project has a measuring angle of $15\degree$. This increases the rovers risk of running into a blind spot, since the blind areas are much larger than with the sensors with the larger viewing angle. The left-most figure shows the readings from the ultrasonic sensors, while the pen on the center figure was being moved back and forth. The center figure display where the tipping point(14.5cm from the sensors) is for the blind spot, if the test had been performed with a slimmer object compared to the pen, the blind spot threshold would be closer to the calculated one at around 19cm.\\
 The testing course has been created arbitrarily, with the purpose of placing some objects for the rover to detect, avoid and navigate around.
+
 
 When the distance threshold is set to a lower length (e.g 20cm), the rover ends up getting too close to objects before determining a new path. If the distance threshold is set to a high value (e.g 50cm), the rover has an easier time navigation/avoiding objects in its path, the downside is though that with a large distance threshold value, the rover never reaches certain parts of the course, because it detects today many nearby objects and therefore does not approach the area.
 
+\clearpage
 \begin{figure}[H]
 	\centering
 	\begin{subfigure}[H]{0.4\textwidth}

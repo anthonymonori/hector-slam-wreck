@@ -1,5 +1,34 @@
-During the initial stages of the project the goal was that we developed an autonomous mapping vehicle. Unfortunately gathering the data and creating a map using SLAM proved to be much harder than first anticipated. 
-We decided early on that ROS would be the most optimal choice for our main operating system, as it seem well documented and easy to use. People had previously used a Raspberry Pi and ROS to produce maps of different environments using SLAM.
+The table below displays how well we achieved the testing goals set by us during the problem definition. We have only managed to achieve 1 out of the 3 original requirements.
+%Maybe some sort of elaboration
 
-Within a few days of working with the Lidar we managed to get some solid distance readings from the device.
-Though from the start we experienced many issues just getting ROS to run on the Raspberry Pi, this set us back quite a bit.
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|l|}
+		\hline
+		\textbf{Requirement} & \textbf{Test} \\ \hline
+		The rover can be controlled using a remote device. & FAILED \\ \hline
+		The rover should navigate autonomously through a maze. & FAILED \\ \hline
+		The laser sensor should make a usable 2D map of its surroundings. & PASSED\\ \hline
+	\end{tabular}
+\end{table}
+
+During the initial stages of the project the goal was that we developed an autonomous mapping vehicle. Unfortunately there were many complications and set-backs preventing us from achieving the original goal. 
+Early in the project we decided that ROS would be the core of our prototype, because at the time it seemed like the most optimal choice for our main operating system. There is a lot of documentation and resources about ROS and people had also previously succesfully run ROS and created maps using SLAM on the Raspberry Pi.
+
+Initially the installation process proved to be quite the challenge. Many of the packages would not play well with Raspbian, even though we firmly believed that the packages should work. After spending too much time on getting it to work on Raspbian we switched to Ubuntu ARM, where the installation process was a breeze compared to previously.
+
+Using the $I_2C$ interface on the Raspberry Pi we were able to gather measurement data from the Lidar, transmitting this and interepting this data was the next big issue that was encountered using ROS. Many of the resource available regarding gathering data from Lidars were regarding USB-based devices. %expand 
+
+%In the beginning of our development period we had some downtime caused by shipping times.
+
+We then realised that this point we would not have the time and resource to able to make a completely autonomous vehicle, so we decided to split the prototype into two separate parts: Navigation and Mapping.\\
+What we then aimed to achieve with the Lidar was to produce a map using SLAM. %Add more here, when we know how well it went.
+
+The close proximity detection system, is a low-intelligence autonomous navigation system for the rover. At the current moment the navigation system functions successfully by navigating obstacle courses without too many issues.\\
+As described in the testing chapter, the rover gets stuck in some corners due to the equality of the measurements, this can be fixed by reversing the rover when the threshold for the side mounted sensors is exceeded.
+
+%add part about SLAM testing
+
+Currently, when the mapping device is mounted to the rover, the rover is able to navigating areas whilst the mapping devices creates a map. Due to the low-intelligence of the rover, it is not able to distinguish unknown places from known places, it functions purely by avoiding an object and thereafter determining an optimal direction away from said object.
+%talk about slam integration. 
+
