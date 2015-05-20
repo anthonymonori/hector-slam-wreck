@@ -1,16 +1,14 @@
 \clearpage
-\section{Setting up ROS for mapping}
+\section{Configuring ROS for mapping}
 
-During the initial stages of using ROS we attempted to get the installation up and running on the raspbian operating system for the Raspberry Pi. During the gathering of the different necessary packages needed for ROS, some unforeseen issues were encountered. Specifically the GMapping package caused some issues, since it required Python 2.7.1 and upwards. Even though a python version fitting the requirement was installed by default on the raspbian, the GMapping package would not recognize it. Through troubleshooting it was then discovered that GMapping was looking for Python-2.7.1-ubuntu, instead of the Python-2.7.1-debian that was installed together with the Raspbian operating system.
-
-Instead of continuing to deal with the ROS issues on the raspbian installation, Ubuntu ARM was instead installed on the Raspberry Pi.
-The installation process using Ubuntu ARM was much faster and more fluent compared to installing ROS on the raspbian installation. During the installation of ROS on Ubuntu a new package named Hector-slam was discovered. 
+During the installation of ROS on Ubuntu a new package named Hector-slam was discovered. 
 %TODO add additional information here
 This package allows ROS to generate a map without the use of the GMapping package. Its biggest advantage is that it does not rely on odometry to know whether the reference frame has changed.
 
 \subsection{something}
 During our development, we gained a deep understanding of how all the moving parts in ROS work together.
 
+%TODO: Talk about SSHing into ROS here - Anthony will do that.
 
 \begin{figure}[H]
 	\centering
