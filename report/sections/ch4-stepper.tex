@@ -16,7 +16,7 @@ The stepper motor controller we used is an EasyDriver.\cite{steppercontroller}
 
 \lstinputlisting[firstline=1, lastline=20, title=Arduino\_Code, language=C++, label=arduinocode1]{../code/arduino_code}
 
-Since the stepper motor we use divides a full cycle into 200 steps, this means that the resulustion is 1.8 degrees per step. At a dictance of 1m, 1.8degrees can resolve a distance of ~3.1cm, and this increases linearly with a larger distance.~\ref{arduinocode1}
+Since the stepper motor we use divides a full cycle into 200 steps, this means that the resolustion is 1.8 degrees per step. At a dictance of 1m, 1.8degrees can resolve a distance of ~3.1cm, and this increases linearly with a larger distance.~\ref{arduinocode1}
 
 $\frac{x}{sin(1.8deg)} = \frac{1m}{sin(89.1deg)}$ \\
 $x = \frac{sin(1.8deg)}{sin(89.1deg)}m$ \\
