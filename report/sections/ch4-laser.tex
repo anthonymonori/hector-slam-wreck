@@ -99,20 +99,29 @@ In order to determine how long it takes for the lidarLite lidar\_read function t
 
 This code was run with the settings of 1000 and 2000, each version was run 3 times.
 
-%TODO: format data nicely
 Measurements of how long it takes to run lidar\_read
-1000: 24.372s,24.476s,24.490s;avg:24.446s
-2000: 48.400s,48.111s,48.172s;avg:48.228s
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|l|l|l|l|} \hline
+            Number of Calls & Measurements & & & Average \\ \hline
+            1000 & 24.372s & 24.476s & 24.490s & 24.446s \\ \hline
+            2000 & 48.400s & 48.111s & 48.172s & 48.228s \\ \hline
+	\end{tabular}
+	\caption{Data from testing}
+\end{table}
 
 According to this data we can isolate the time it takes to execute the lidar\_read function from everything else:
 
-$t_{total} = n*t_{lidar} + t_{rest}$
+$t_{total} = n*t_{lidar} + t_{rest}$ \\
 
-$24.446s = 1000*t_{lidar} + t_{rest}$
-$48.228s = 2000*t_{lidar} + t_{rest}$
-Subtract the two equations
-$23.782s = 1000*t_{lidar}$
-$t_{lidar} = 0.023782s \approx 0.024s$
+$24.446s = 1000*t_{lidar} + t_{rest}$ \\
+$48.228s = 2000*t_{lidar} + t_{rest}$ \\
+
+Subtract the two equations:
+
+$23.782s = 1000*t_{lidar}$ \\
+$t_{lidar} = 0.023782s \approx 0.024s$ \\
 
 
 This proved ineffective, since the rotation and measurements were independent of eachother, which caused the measurements to be skewed over time.
