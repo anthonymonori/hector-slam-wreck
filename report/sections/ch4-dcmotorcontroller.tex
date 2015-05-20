@@ -1,7 +1,7 @@
 \clearpage
 \section{Motorcontroller}
 
-The chassis used for the rover has 4 pre-installed DC motors, which are all four used for movement. To control the direction of the rover a Pololu DRV8833 motor controller has been connected to the motors. The motor controller is in charge of operating the steering motions, forward motion and reversing motions of the rover.
+The chassis used for the rover has 4 pre-installed DC motors, which are all four used for movement. To control the direction of the rover a Pololu DRV8833 motor controller has been connected to the motors and the Raspberry Pi. The motor controller is in charge of operating the steering motions, forward motion and reversing motions of the rover.
 
 \begin{figure}[H]
 	\centering
@@ -15,24 +15,24 @@ The advantage of this particular motor controller is the fact that it supports a
 
 \begin{table}[H]
 \centering
-\begin{tabular}{c|c|c|c|c|}
-\cline{2-5}
-                              & AIN1  & AIN2  & BIN1  & BIN2  \\ \hline
-\multicolumn{1}{|c|}{Forward} & True  & False & True  & False \\ \hline
-\multicolumn{1}{|c|}{Reverse} & False & True  & False & True  \\ \hline
-\multicolumn{1}{|c|}{Left}    & False & True  & True  & False \\ \hline
-\multicolumn{1}{|c|}{Right}   & True  & False & False & True  \\ \hline
-\multicolumn{1}{|c|}{Stop}    & False & False & False & False \\ \hline
+\begin{tabular}{|c|c|c|c|}
+\hline
+xIN1 & xIN2 & xOUT1 & xOUT2 \\ \hline
+0    & 0    & Z     & Z     \\ \hline
+0    & 1    & H     & L     \\ \hline
+1    & 0    & L     & H     \\ \hline
+1    & 1    & L     & L     \\ \hline
 \end{tabular}
 \end{table}
 
-The table above shows the possible combinations of pins to achieve different desired directions, where the pins must be set to high and low according to what is the direction of choice. The input pins on the motor controller also allow for control with PWM (Pulse Width Modulation), which will change the length of the duty cycle and influence the speed of which the rover is moving at\cite{DRV8833}. %Code for testing the directions of the motors can be found in the appendix.  <-- Only if we have the room for it in the appendix
+The table above shows the possible combinations of pins to achieve different desired directions/states, where the pins must be set to high and low according to what is the direction of choice. To allow turn the rover, the A and B inputs will be flipped, so that when AOUT goes forward, the BOUT reverses, which results in the rover turning in its place.
+The input pins on the motor controller also allow for control with PWM (Pulse Width Modulation), which will change the length of the duty cycle and influence the speed of which the rover is moving at\cite{DRV8833}.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=.5\linewidth]{images/labelled.jpg}
 \end{figure}
 
-To enable easier access to the pins on the motor controller, as custom board was created for ease of use. The green terminals A and B are connection terminals for the AOUT and BOUT respectively. The terminal C is for the battery pack that supplies the voltage, which in this case is 5 AA batteries. The label D is the Pololu DRV8833 and the final label E are the connections to the Rasperry Pi. 
+To enable easier access to the pins on the motor controller, a custom board has been created for ease of use. The green terminals A and B are connection terminals for the AOUT and BOUT respectively. The terminal C is for the battery pack that supplies the voltage to the motor controller and the DC motors, which in this case is 5 AA batteries. The label D is the Pololu DRV8833 and the final label E are the connections to the Rasperry Pi. 
 
-Operating the motor controller requires 5 pins from the Raspberry Pi, 4 to control the input pins on the DRV8833 and a ground pin.
+Operating the motor controller requires 5 pins from the Raspberry Pi, 4 to control the input pins on the DRV8833 and a ground pin. Since we are controlling the motor controller using HIGH and LOW, the controller can be connected to any of the regular digital GPIO pins.
