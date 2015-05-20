@@ -1,25 +1,39 @@
 \clearpage
-\section{Laser}
+\section{Laser} %ROHS complian and Class 1 laser - removing the casing can cause problems and decalssify it
 
-A SoC (System-on-a-Chip) solution for optical distance measurements applications. The PulsedLight LIDAR has a 4.7 - 5.5 V nominal and 6 V potentially maximum DC operating range. The sensor has a theoretical limit of 40m range and 100Hz rep rate. The laser emitters' accuracy is estimated to be +/- 2.5cm with an aquisition time of less then 0.02sec. These specifications allows us to get an accurate image of the environments specified in our test cases.
-%TODO: Specify testing environments in the testsing section.
-
-%How the laser works
-
-At distances less than a meter, the beam is about the size of the lens, at distances longer than that you can estimate it using this equation: 
-\\ d/100 = bsize \\
-where d = distance and bsize = the beam size at that specific distance, in whatever units you measured it in. The actual spread is ~8 milli-radians or ~1/2 degree. 
-%REF: http://kb.pulsedlight3d.com/support/solutions/articles/5000566352-what-is-the-spread-of-the-laser-beam-
-
+Our laser of choice, the LIDAR-Lite SEN-13167, is a SoC (System-on-a-Chip) solution for optical distance measurements applications. It has a 4.7 - 5.5 V nominal and 6 V potentially maximum DC operating range. The sensor has a theoretical limit of 40m range and 100Hz rep rate. The laser emitters' accuracy is estimated to be +/- 2.5cm with an aquisition time of less then 0.02sec. These specifications allows us to get an accurate image of the environments specified in our test cases~\cite{lidarsum}.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=.4]{images/internallidar.png}
-	\caption{The internal of the PulsedLight LIDAR sensor}
+	\caption{An overview of the laser's internals}
 	\label{fig:internallidar}
 \end{figure}
 
-%diagram showing the laser signal
+As we discussed prior how rangefinders lasers work (Figure~\ref{fig:rangefinderIMG}), our laser has two 14mm optic lenses, one as a transmitter emitting a 905nm infrared pulse and a receiver, measuring the time it takes for the pulse to travel back and the angle it comes in.
+
+At distances less than a meter, the pulse is about the size of the receiver optic lens, at distances longer than that, you can estimate it using the following equation: \textit{d/100 = psize}, where d = distance and psize = the pulse size at that specific distance, in the units they are measured in. The actual spread is $\sim 8$ Mil or $\sim1/2$ degree\cite{spreadofbeam}.
+
+It is possible to receive multiple valid return signals from a single measurement if the pulse illuminates more than one surface along the beam path. The sensor has the capability to process two distinct reflections as long as they are separated by more than 3.5 meters and the reflection at the shorter distance does not saturate the correlation record masking the more distant object. 
+
+The figure below shows an example of two reflections in the signal correlation record separated by approximately 3.5 meters.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=.2]{images/tworeflection.png}
+	\caption{Measuring two valid return signals from one measurement~\cite{howtopulse}}
+	\label{fig:tworeflections}
+\end{figure}
+
+The sensor detection criteria may be selected to pick the nearer signal, the more distant signal or the strongest signal strength.
+
+A reference signal fed from the transmitter prior to the distance measurement and a received pulse reflected from the target. The time delay between these two stored signals is estimated through a signal processing approach known as \textit{correlation}, which effectively provides a signature match between these two closely related signals. This accurately calculates the time delay, which is translated into distance based on the known speed-of-light~\cite{howtopulse}.
+
+By default the sensor runs about 50 Hz (give or take depending on reflected signal strength and distance). Sometimes you may want it to read faster. 100Hz is about the max you can get out of the sensor without sacrificing too much accuracy.
+Decrease the max-acquisition count (register 0x02). By default register 0x02 is 0x80, if you decrease this the maximum number of acquisitions the sensor can take and use to get a reading will decrease. As this decreases accuracy will also decrease.
+%TODO:ref{http://kb.pulsedlight3d.com/support/solutions/articles/5000583786-how-can-i-get-faster-acquisition-than-50hz-}
+
+The advantage for powering down the preamp between measurements is reduced power consumption and less thermal rise above ambient temperature when operating at low pulse rates 1-10 Hz
 
 The assembling of the laser happened in the following way:
 
@@ -42,10 +56,12 @@ The assembling of the laser happened in the following way:
 	\end{tabular}
 	\caption{Raspberry pins mapped to the LIDAR pins}
 \end{table}
-
+%Can be interfaced through I2C and PWM.
 We started using a library called lidarLite, which provides a simple C interface to the LIDAR on a Raspberry. It is based on the WiringPi interface, which is a GPIO access library written in C for the BCM2835 SoC used in the Raspberry Pi. It is usable from C and C++ and many other languages with suitable wrappers. It was designed very familiarly to Arduino's wiring library.
 
 With the lidarLite library, we managed to set up a connection using the I2C protocol. By enabling the built in I2C support in the Raspberry Pi kernel, and after the wiring of the components, a connection has been set up between the LIDAR laser and the controller.
+
+The default I2C address for the laser is 0x62.
 
 %https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c
 %https://github.com/answer17/lidarLite
@@ -54,8 +70,10 @@ A small program was written in order to test the output of the laser sensor, nam
 
 % sample output here
 
-This output is generated by the function called \textit{lidar\_read(int fd)} from the lidarLite library. This code simply calculates the low and high value from the sensor and returns the distance measurements in centimeters, in form of an integer value. The guide on how to compile and run this small test application is available in the Appendix \\ %TODO: Add readme.md from laser-module folder to appendix.
+This output is generated by the function called \textit{lidar\_read(int fd)} from the lidarLite library. This code simply calculates the low and high value from the sensor and returns the distance measurements in centimeters, in form of an integer value. The guide on how to compile and run this small test application is available in the Appendix \\ 
+%TODO: Add readme.md from laser-module folder to appendix.
 
+%TODO: add this too in {http://wiki.ros.org/rospy/Overview/Publishers%20and%20Subscribers#Choosing_a_good_queue_size}
 \lstinputlisting[firstline=47, lastline=64, title=lidarLite.c, language=C]{../code/laser_scan_publisher_tutorial/src/lidarLite.c}
 
 We then tried to incorporate this code with a stepper-motor, so that it would return the distances around a circle.
