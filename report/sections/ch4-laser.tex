@@ -62,11 +62,16 @@ We then tried to incorporate this code with a stepper-motor, so that it would re
 
 The first version had the stepper-motor spinning the laser around at a constant speed, driven by an arduino, while the laser made measurements, driven by the Pi.
 
+According to some testing, the wiringPi library takes ~0.024s to execute the function that reads the laser. We adjusted the speed of the stepper-motor accordingly.
+
 %measurements of how long it takes to lidar_read
-%1000 lidar_reads: 24.372,24.476,24.49
-%2000 lidar_reads: 48.4,48.111,48.172
+%1000 lidar_reads + init: 24.372,24.476,24.49
+%2000 lidar_reads + init: 48.4,48.111,48.172
 %conclusion: 0.024s per lidar_read
 
 This proved ineffective, since the rotation and measurements were independent of eachother, which caused the measurements to be skewed over time.
 
-Then we attempted to controll the stepper-motor with the Pi, in the same code as we were running the laser, however, the wiringPi library required root privileges, and ROS cannot be run with root privileges easily. The solution was to use a system call library to call some external code which would drive the stepper-motor. This makes the stepping and measuring synchronous, but making system call is very expensive, meaning the code is significantly slower that the top speed of the laser.
+Then we attempted to controll the stepper-motor with the Pi, in the same code as we were running the laser. However, the wiringPi library required root privileges, and ROS cannot be run with root privileges easily. The solution was to use a system call library to call some external code which would drive the stepper-motor. This makes the stepping and measuring synchronous, but making system call is very expensive, meaning the code is significantly slower that the top speed of the laser.
+
+%laser_scan_publisher.cpp
+%gpiothing.sh
