@@ -1,9 +1,8 @@
 \clearpage
 \section{Configuring ROS for mapping}
 
-During the installation of ROS on Ubuntu a new package named Hector-slam was discovered. 
-%TODO add additional information here
-This package allows ROS to generate a map without the use of the GMapping package. Its biggest advantage is that it does not rely on odometry to know whether the reference frame has changed.
+During the installation of ROS on Ubuntu a new package named Hector-slam was discovered.
+This package allows ROS to generate a map without the use of the GMapping package, which was one of the packages that caused issue during the installation process on Raspbian. Its biggest advantage is that it does not rely on odometry to know whether the reference frame has changed.
 
 \subsection{something}
 During our development, we gained a deep understanding of how all the moving parts in ROS work together.
@@ -12,13 +11,13 @@ During our development, we gained a deep understanding of how all the moving par
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=.8\linewidth]{images/ROSflow.png}
+	\includegraphics[width=1\linewidth]{images/ROSflow.png}
 	\caption{Ros flow}
 \end{figure}
 
 Roscore is the main process behind ROS. It allows for all running nodes to talk to each other. By itself it does nothing.
 
-Nodes are the smalles pieces of ROS that are put together to form a full aplication. They are run as separate applications, all with their own executable files. The only way nodes communicate is through roscore. To make a node, it is necessary to use the ROS library in whatever programming language is chosen.
+Nodes are the smallest pieces of ROS that are put together to form a full application. They are run as separate applications, all with their own executable files. The only way nodes communicate is through the roscore. To make a node, it is necessary to use the ROS library in whatever programming language is desired.
 
 Roslaunch is the ROS command that allows starting multiple nodes, and also allows giving parameters to nodes. Roslaunch executes nodes that are specified in an XML file you give it, called the launchfile.
 %our launchfile here
