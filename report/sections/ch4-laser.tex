@@ -90,5 +90,5 @@ Then we attempted to controll the stepper-motor with the Pi, in the same code as
 
 \lstinputlisting[firstline=1, lastline=, title=mainCode, language=C++]{../code/laser_scan_publisher_tutorial/src/laser_scan_publisher.cpp}
 
-\lstinputlisting[firstline=1, lastline=16, title=gpioWrapper, language=shell]{../code/gpiothing.sh}
+\lstinputlisting[firstline=1, lastline=16, title=gpioWrapper, language=shell]{../code/gpioThing.sh}
 The only purpose of this code is to be called from the main file. The gpio utility is capable of interfacing with the GPIO pins on the Pi without root privileges. The change from low to high causes a micro-step, and 8 micro-steps make one full step.
