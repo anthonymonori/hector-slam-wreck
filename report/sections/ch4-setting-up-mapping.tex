@@ -11,6 +11,13 @@ This package allows ROS to generate a map without the use of the GMapping packag
 \subsection{something}
 During our development, we gained a deep understanding of how all the moving parts in ROS work together.
 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.8\linewidth]{images/ROSflow.png}
+	\caption{Ros flow}
+\end{figure}
+
 Roscore is the main process behind ROS. It allows for all running nodes to talk to each other. By itself it does nothing.
 
 Nodes are the smalles pieces of ROS that are put together to form a full aplication. They are run as separate applications, all with their own executable files. The only way nodes communicate is through roscore. To make a node, it is necessary to use the ROS library in whatever programming language is chosen.
