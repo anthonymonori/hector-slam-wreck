@@ -9,11 +9,14 @@ The installation process using Ubuntu ARM was much faster and more fluent compar
 This package allows ROS to generate a map without the use of the GMapping package. Its biggest advantage is that it does not rely on odometry to know whether the reference frame has changed.
 
 \subsection{something}
-Roscore is the main process behind ROS. It allows for all running nodes to talk to each other.
+During our development, we gained a deep understanding of how all the moving parts in ROS work together.
 
-Nodes are the smalles pieces of ROS that are put together to form a full aplication.
+Roscore is the main process behind ROS. It allows for all running nodes to talk to each other. By itself it does nothing.
 
-Roslaunch is the ROS command that allows starting multiple nodes, and also allows giving parameters to nodes.
+Nodes are the smalles pieces of ROS that are put together to form a full aplication. They are run as separate applications, all with their own executable files. The only way nodes communicate is through roscore. To make a node, it is necessary to use the ROS library in whatever programming language is chosen.
+
+Roslaunch is the ROS command that allows starting multiple nodes, and also allows giving parameters to nodes. Roslaunch executes nodes that are specified in an XML file you give it, called the launchfile.
+%our launchfile here
 
 \subsection{something else}
 During this stage of testing, ROS gathers the data and generates the map directly on the Raspberry Pi. The Raspberry Pi is accessed through SSH and the generated map is then broadcast to computer through the SSH connection.
