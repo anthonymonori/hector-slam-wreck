@@ -50,23 +50,17 @@ extern "C" int lidar_read(int);
 // use for setting up the motorcontroller
 
 //PIN18 is the pin #18 on the pi diagram
-// use for controlling the steps 
+// use for controlling the steps
 
 void setUpPins(){
     system("gpio export 23 out");
     system("gpio export 24 out");
     system("gpio -g write 23 1");
-/*    wiringPiSetupGpio();
-    pinMode(PIN16,OUTPUT);
-    pinMode(PIN18,OUTPUT);
-    digitalWrite(PIN16,HIGH);*/
 }
 
 void step(int steps){
     for(int i = 0; i<steps; i++){
         system("/home/ubuntu/gpioThing.sh");
-/*        digitalWrite(PIN18,HIGH);
-        digitalWrite(PIN18,LOW);*/
     }
 }
 
@@ -87,13 +81,10 @@ int main(int argc, char** argv){
     const unsigned int num_readings = 200; //number of readings in one packet.
     const unsigned int num_steps = 1;
     const double laser_frequency = 0.5/*MIGHT CHANGE*/; //how many spins in one second
-//    double ranges[num_readings];
 
-    //ros::Rate fullScan(0.1/*MIGHT CHANGE*/);
-    //ros::Rate singleStep(0.25/*MIGHT CHANGE*/);
     while(n.ok()){
         ros::Time scan_time = ros::Time::now();
-        
+
         //sets up the relevant info about the laser
         sensor_msgs::LaserScan scan;
         scan.header.frame_id = "laser";
@@ -111,11 +102,8 @@ int main(int argc, char** argv){
         for(unsigned int i = 0; i < num_readings; ++i){
             step(num_steps);
             scan.ranges[i] = lidar_read(fd)/100.0;
-//            std::cout << scan.ranges[i] << std::endl;
-//            singleStep.sleep();
         }
 
         scan_pub.publish(scan);
-//        fullScan.sleep();
     }
 }
