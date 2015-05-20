@@ -63,3 +63,5 @@ When the distance threshold is set to a lower length (e.g 20cm), the rover ends 
 
 The current algorithm for the rover get stuck in a loop if the rover drives directly into a corner(figure a). The reason for the looping is that the distance towards to wall of either side of the rover are equal, so it can not determine which direction it should turn.\\
 Because of the skewed angles of the object in the test course, the rover would sometimes hit them. Figure b clear shows the rover hitting the object face on, because the ultrasonic sensors were not able to read the distance to the walls of the box because they are at an angle.
+
+When the rover turned to avoid the walls and other objects, it would skid across the floor. This resulted in the rover not turning on the spot, therefore reducing the accuracy of the steering.
