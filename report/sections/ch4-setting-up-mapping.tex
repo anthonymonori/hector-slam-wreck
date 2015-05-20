@@ -6,8 +6,16 @@ During the initial stages of using ROS we attempted to get the installation up a
 Instead of continuing to deal with the ROS issues on the raspbian installation, Ubuntu ARM was instead installed on the Raspberry Pi.
 The installation process using Ubuntu ARM was much faster and more fluent compared to installing ROS on the raspbian installation. During the installation of ROS on Ubuntu a new package named Hector-slam was discovered. 
 %TODO add additional information here
-This package allows ROS to generate a map without the use of the GMapping package.
+This package allows ROS to generate a map without the use of the GMapping package. Its biggest advantage is that it does not rely on odometry to know whether the reference frame has changed.
 
+\subsection{something}
+Roscore is the main process behind ROS. It allows for all running nodes to talk to each other.
+
+Nodes are the smalles pieces of ROS that are put together to form a full aplication.
+
+Roslaunch is the ROS command that allows starting multiple nodes, and also allows giving parameters to nodes.
+
+\subsection{something else}
 During this stage of testing, ROS gathers the data and generates the map directly on the Raspberry Pi. The Raspberry Pi is accessed through SSH and the generated map is then broadcast to computer through the SSH connection.
 
 \begin{figure}[H]
