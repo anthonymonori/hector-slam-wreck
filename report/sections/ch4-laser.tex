@@ -1,7 +1,7 @@
 \clearpage
-\section{Laser} %ROHS complian and Class 1 laser - removing the casing can cause problems and decalssify it
+\section{Laser} %TODO: ROHS complian and Class 1 laser - removing the casing can cause problems and decalssify it - ADD THIS TO IT'S OWN SECTION
 
-Our laser of choice, the LIDAR-Lite SEN-13167, is a SoC (System-on-a-Chip) solution for optical distance measurements applications. It has a 4.7 - 5.5 V nominal and 6 V potentially maximum DC operating range. The sensor has a theoretical limit of a 40m range and 100Hz rep rate. The laser emitters' accuracy is estimated to be +/- 2.5cm with an aquisition time of less then 0.02sec. These specifications allows us to get an accurate image of the environments specified in our test cases~\cite{lidarsum}.
+Our laser of choice, the LIDAR-Lite SEN-13167, is a SoC (System-on-a-Chip) solution for optical distance measurements applications. It has a 4.7 - 5.5 V nominal and 6 V potentially maximum DC operating range. The sensor has a theoretical limit of a 40m range and 100Hz rep rate. The laser emitters' accuracy is estimated to be +/- 2.5cm with an acquisition time of less then 0.02s or 20ms. These specifications allows us to get an accurate image of the environments specified in our test cases~\cite{lidarsum}.
 
 \begin{figure}[H]
 	\centering
@@ -9,38 +9,41 @@ Our laser of choice, the LIDAR-Lite SEN-13167, is a SoC (System-on-a-Chip) solut
 	\caption{An overview of the laser's internals}
 	\label{fig:internallidar}
 \end{figure}
+%TODO: Do we understand this figure completely? Does it make sense to keep it here?
 
-As we discussed prior how laser rangefinders work (Figure~\ref{fig:rangefinderIMG}), our laser has two 14mm optic lenses, one as a transmitter emitting a 905nm infrared pulse and a receiver, which is measuring the time it takes for the pulse to travel back and the angle of which it comes in.
+As previously discussed how the laser rangefinders work (Figure~\ref{fig:rangefinderIMG}), our laser has two 14mm optic lenses, one as a transmitter emitting a 905nm infrared (IR) pulse and a receiver, which is measuring the time it takes for the pulse to travel back and the angle at which it comes in.
 
-At distances less than a meter, the pulse is about the size of the receiver optic lens, at distances longer than that, you can estimate it using the following equation: $\frac{d}{100} = psize$, where d = distance and psize = the pulse size at that specific distance, in the units they are measured in. The actual spread is $\sim 8$ Mil or $\sim\frac{1}{2}\degree$\cite{spreadofbeam}.
-%Thomas: Mil? (Also changed the things to fractions instead of 1/2, and such. Also added the degree sign instead of the writing.
+At distances less than a meter, the pulse is about the size of the receiver's optic lens, and at distances longer than that, you can estimate it using the following equation: $\frac{d}{100} = psize$, where d = distance and psize = the pulse size at that specific distance, in the units they are measured in. The actual spread is $\sim 8$ Mil or $\sim\frac{1}{2}\degree$\cite{spreadofbeam}.
+%Thomas: Mil?
 
-It is possible to receive multiple valid return signals from a single measurement if the pulse illuminates more than one surface along the beam path. The sensor has the capability to process two distinct reflections as long as they are separated by more than 3.5 meters and the reflection at the shorter distance does not saturate the correlation record masking the more distant object. 
+It is possible to receive multiple valid return signals from a single measurement if the pulse illuminates more than one surface along the beam path. The sensor has the capability to process two distinct reflections as long as they are separated by more than 3.5m and the reflection at the shorter distance does not saturate the correlation record masking the more distant object. 
 
-The figure below shows an example of two reflections in the signal correlation record separated by approximately 3.5 meters.
+The figure below shows an example of two reflections in the signal correlation record separated by approximately 3.5m.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=.2]{images/tworeflection.png}
+	\includegraphics[scale=.3]{images/tworeflection.png}
 	\caption{Measuring two valid return signals from one measurement~\cite{howtopulse}}
 	\label{fig:tworeflections}
 \end{figure}
 
-The sensor detection criteria may be selected to pick the nearer signal, the more distant signal or the strongest signal strength.
+The sensor detection criteria may be selected to pick the nearer signal, the more distant signal or the strongest signal strength. Currently, we do not handle multiple reflection in our code.
 
-A reference signal fed from the transmitter prior to the distance measurement and a received pulse reflected from the target.%Thomas: This sentence before this comment confuses me.
- The time delay between these two stored signals is estimated through a signal processing approach known as \textit{correlation}, which effectively provides a signature match between these two closely related signals. This accurately calculates the time delay, which is translated into distance based on the known speed-of-light~\cite{howtopulse}.
+A reference signal is sent from the transmitter to the receiver, prior to the first distance measurement with a received pulse reflected from the target.%TODO: Look at this sentance.
+The time delay between these two stored signals is estimated through a signal processing approach known as \textit{correlation}, which effectively provides a signature match between these two closely related signals. This accurately calculates the time delay, which is translated into distance based on the known speed-of-light, which is $\sim3.3ns\textbackslash m$\cite{howtopulse}.
 
-By default the sensor runs at about 50 Hz (could vary given the signal strength and distance). To optimize the rep rate, it is possible to decrease the max-acquisition count (on register 0x02). By default register 0x02 is 0x80, if you decrease this the maximum number of acquisitions the sensor can take and use to get a reading will decrease\cite{reprate}.
+By default, the sensor runs at about 50Hz, but could vary given the signal strength and distance. To optimize the rep rate, it is possible to decrease the max-acquisition count (on register 0x02). By default, register 0x02 is 0x80 (128 in decimal), if you decrease this, the maximum number of acquisitions the sensor can take and use to get a reading, will decrease\cite{reprate}.
 %Thomas: Missing a word or two in the final sentence? Not sure what to do.
+%TODO: Look at this sentance
 
 \pagebreak
+
 The assembling of the laser happened in the following way:
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=.3]{images/laderraspberryconnection.png}
-	\caption{The pinout and wiring of the LIDAR and Raspberry Pi}
+	\includegraphics[scale=.35]{images/laderraspberryconnection.png}
+	\caption{The pinout and wiring of the LIDAR-Lite laser and Raspberry Pi}
 	\label{fig:wiringlidarpi}
 \end{figure}
 
@@ -57,7 +60,7 @@ The assembling of the laser happened in the following way:
 	\caption{The pins of the microcontroller mapped to the laser pins}
 \end{table}
 
-The laser can be interfaced through I2C or PWM~\cite{lidarsum}. The default I2C address for the laser is 0x62, which we could validate by running:
+The laser can be interfaced through I2C (Inter-Integrated Circuit) or PWM (Pulsed Width Modulation)~\cite{lidarsum}. The default I2C address for the laser is 0x62, which we could validate by running the following command:
 \lstset{language=sh}
 \begin{lstlisting}
 	>>	sudo i2cdetect -y 1
@@ -73,27 +76,29 @@ The laser can be interfaced through I2C or PWM~\cite{lidarsum}. The default I2C 
 		  70: -- -- -- -- -- -- -- -- 
 \end{lstlisting}
 
-As you see the output shows, the address is available and the I2C connection is good. The -y 1 relates to the revision B of the Raspberry Pi board.
+As the output shows, the address is available and the I2C connection is good. The -y 1 relates to the revision B of the Raspberry Pi board.
 
-We started using a library called lidarLite, which provides a simple C interface to the LIDAR on the Raspberry Pi. It is using the WiringPi GPIO access library written in C for the BCM2835 SoC, used on the Raspberry Pi. It is usable with C and C++ and many other languages with suitable wrappers. It was designed very familiarly to Arduino's wiring library.
+We started using a library called lidarLite, which provides a simple C interface to the LIDAR-Lite laser on the Raspberry Pi. It is using the WiringPi GPIO access library written in C for the BCM2835 SoC, used on the Raspberry Pi. It is usable with C and C++ or many other languages with suitable wrappers. It was designed very familiarly to Arduino's wiring library.
+%TODO: reference last sentance?
 
-With the lidarLite library\cite{lidarlib}, we managed to read data using the I2C protocol. To do this, we had to enable the kernel support for I2C on the Raspberry Pi\cite{i2csetup}.
+With the lidarLite library\cite{lidarlib}, we managed to read data using the I2C protocol. To do this, we had to enable the kernel support for I2C on the Raspberry Pi~\cite{i2csetup}.
 
 A small program was been written in order to test the output of the laser sensor, namely to read out the distance value of the next closest point in centimeters. 
 
 %TODO: sample output here
 
 This output is generated by the function called \textit{lidar\_read(int fd)} from the lidarLite library. This code simply calculates the low and high value from the sensor and returns the distance measurements in centimeters, in form of an integer value.
-%Thomas: The seems to be referencing to the sample output here.
+%Thomas: The seems to be referencing to the sample output here. DUH
 
-%TODO: add this too in {http://wiki.ros.org/rospy/Overview/Publishers%20and%20Subscribers#Choosing_a_good_queue_size}
+%TODO: Maybe discuss the queue size  {http://wiki.ros.org/rospy/Overview/Publishers%20and%20Subscribers#Choosing_a_good_queue_size}
 \lstinputlisting[firstline=47, lastline=64, title=lidarLite.c, language=C]{../code/laser_scan_publisher_tutorial/src/lidarLite.c}
-%Thomas: Is this the sample output?
+
 We then tried to incorporate this measurement code with a stepper-motor, so that it would return the distances around a circle. The first version had the stepper-motor spinning the laser around at a constant speed, which was driven by an Arduino board (Code reference ~\ref{arduinocode1}), while the laser made measurements that was driven by the Pi.
 
-In order to determine how long it takes for the lidarLite \textit{lidar\_read(int fd)} function to execute, some testing was made
+In order to determine how long it takes for the lidarLite \textit{lidar\_read(int fd)} function to execute, some testing was made.
 
-%asd.cpp
+%asd.cpp 
+%TODO: What is that comment above? Do you want to include the test code you wrote, Gustavo?
 
 This code was run with the settings of 1000 and 2000, each version was run 3 times.
 
@@ -135,18 +140,18 @@ The sequence diagram below gives us an overview of the calls happening in the co
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=.6]{images/laser-module.png}
-	\caption{Stuffstuff}
+	\caption{Sequence diagram of the main function call in filename.cpp}
 	\label{fig:lasermodule}
 \end{figure}
 
-%talk about code here.
-The first step is to initialize the the LIDAR by giving a dummy "wake-up" call to it via the wiringPi library using the I2C protocol. There is a 100 millisec delay, which is necessary for the device to wake up and the reading of registry to be completed. If the initialization fails, the program terminates by printing out a message to the terminal.
+The first step is to initialize the the LIDAR-Lite laser sensor, by giving a dummy "wake-up" call to it via the wiringPi library, using the I2C protocol. There is a 100 millisec delay, which is necessary for the device to wake up and for the reading of registry to be completed. If the initialization fails, the program terminates by printing out a message to the terminal.
 
 Thereafter, we call the setUpPins() function which makes the system call 3 separate calls using the GPIO utility, setting up the GPIO on the Raspberry Pi to be able to communicate with the stepper motor.
 
 The initialization of ROS happens afterwards, by calling the \textit{init} function with arguments and the name of our module. The module name is used as the node name in ROS. In the next line, ROS also starts to advertise messages to \textbackslash\textit{scan}, where all the scan results are being pushed to.
 
-The rest of the code consists of two loops, one while loop and one for loop. The while loop loops until the node returns anything other than OK. In here, a new LaserScan is being created where we ask ROS for the current time, set some hardcoded values and populate an array with the readings. The for loop is then used to get 100 readings from the LIDAR using the \textit{lidar\_read(fs)} function and we also rotate the stepper motor before each of the calculation using the \textit{step(num\_step)} function. The \textit{step(num\_step)} function is calling a shell script that is doing calls to the GPIO interface, making the stepper motor take 8 micro-steps, or in other terms, one full step. Before the end of the while loop, the message is being published to \textbackslash\textit{scan}.
+The rest of the code consists of two loops, one \textit{while} loop and one \textit{for} loop. The \textit{while} loop loops until the node returns anything other than OK. In here, a new LaserScan is being created where we ask ROS for the current time, set some hardcoded values and populate an array with the readings. The \textit{for} loop is then used to get 100 readings from the LIDAR using the \textit{lidar\_read(fs)} function and we also rotate the stepper motor before each of the calculation using the \textit{step(num\_step)} function. The \textit{step(num\_step)} function is calling a shell script that is doing calls to the GPIO interface, making the stepper motor take 8 micro-steps, or in other terms, one full step. Before the end of the while loop, the message is being published to \textbackslash\textit{scan}.
+%TODO: Allign the number of readings to the final code.
 %Thomas: The final sentence seems to appear from out of nowhere
 
 \lstinputlisting[firstline=1, lastline=16, title=gpioStuff.sh, language=sh]{../code/gpioThing.sh}
