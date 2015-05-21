@@ -78,19 +78,22 @@ int main(int argc, char** argv){
     ros::NodeHandle n;
     ros::Publisher scan_pub = n.advertise<sensor_msgs::LaserScan>("scan", 10);
 
-    const unsigned int num_readings = 200; //number of readings in one packet.
+    const unsigned int num_readings = 50; //number of readings in one packet.
     const unsigned int num_steps = 1;
     const double laser_frequency = 0.5/*MIGHT CHANGE*/; //how many spins in one second
+    const unsigned short circle_segments = 4;
+    const double pi = 3.141592;
 
+    int i = 0;
     while(n.ok()){
         ros::Time scan_time = ros::Time::now();
 
         //sets up the relevant info about the laser
         sensor_msgs::LaserScan scan;
         scan.header.frame_id = "laser";
-        scan.angle_min = -3.14;//angles in radians
-        scan.angle_max = 3.14;
-        scan.angle_increment = 6.28 / (200/num_steps);
+        scan.angle_min = i*(0.5*pi); // angles in radians
+        scan.angle_max = (++i)*(0.5*pi);
+        scan.angle_increment = 2*pi / (200/num_steps);
         scan.time_increment = (1 / laser_frequency) / (num_readings); //time between measurements in seconds
         scan.range_min = 0.1;//the distance range. in meters
         scan.range_max = 40.0;//set to 40 or less for our laser
