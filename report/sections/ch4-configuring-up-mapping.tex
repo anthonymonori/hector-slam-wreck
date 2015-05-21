@@ -20,12 +20,12 @@ Nodes are the smallest parts of ROS that are put together to form a full applica
 
 \lstinputlisting[firstline=1, lastline=11, title=lidar.launch, language=xml]{../code/lidar.launch}
 
-\textbf{Bagfiles} are used for storing ROS message data, transmitted over any topic visible to list by calling \textit{rostopic list} command. Bags are typically created by a tool like rosbag, which subscribe to one or more ROS topics, and store the serialized message data in a file as it is received. These bag files can also be played back in ROS to the same topics they were recorded from, or even remapped to new topics. Once the current node setup has been established and the correct information is transmitted over the topics, the data will be stored in a .bag file.
+\textbf{Bagfiles} are used for storing ROS message data, transmitted over any topic visible to list by calling \textit{rostopic list} command. Bags are typically created by a tool like rosbag, which is subscribed to one or more ROS topics, and store the serialized message data in a file as it is received. These bag files can also be played back in ROS to the same topics they were recorded from, or even remapped to new topics. Once the current node setup has been established and the correct information is transmitted over the topics, the data will be stored in a .bag file.
 
 \subsection{Developing for ROS}
-During this stage of development, the gathering the data happens on the Raspberry Pi, while a map is generated using ROS. The Raspberry Pi is accessed through SSH and the generated map is then broadcasted to another computer through that SSH connection, for visualization using the tool called rviz. 
+During this stage of development, the gathering of the data happens on the Raspberry Pi, while a map is generated using ROS. The Raspberry Pi is accessed through SSH and the generated map is then broadcasted to another computer through that SSH connection, for visualization the tool called rviz is used. 
 
-To achieve this, we had to set up a direct connection between one of our developer computers running Ubuntu and the Raspberry Pi using a CAT5 Ethernet cable. Then we created a new network settings, set the IPv4 method to be 'Shared to other computers' which bridge the two network adapters and get internet access to the Raspberry Pi from our own computers, connected to the internet via Wi-Fi. Then we located the leases and found the IP address assigned to the connected device. To connect via ssh we used the following command line:
+To achieve this, we had to set up a direct connection between one of our developer computers running Ubuntu and the Raspberry Pi using a CAT5 Ethernet cable. Then we created a new network settings, set the IPv4 method to be 'Shared to other computers' which bridged the two network adapters and transmitted internet access to the Raspberry Pi from our own computers, connected to the internet via Wi-Fi. Then we located the leases and found the IP address assigned to the connected device. To connect via ssh we used the following command line:
 \lstset{language=sh}
 \begin{lstlisting}
 	>> $ ssh -Y username@ip-address
