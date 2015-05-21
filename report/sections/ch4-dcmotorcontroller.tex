@@ -23,8 +23,9 @@ xIN1 & xIN2 & xOUT1 & xOUT2 \\ \hline
 1    & 0    & L     & H     \\ \hline
 1    & 1    & L     & L     \\ \hline
 \end{tabular}
+\caption{The truth table for the outputs}
+\label{motorcontrollertruthtabel}
 \end{table}
-%TODO: Missing caption and label!
 
 The table above shows the possible combinations of pins to achieve different desired directions/states, where the pins must be set to high and low according to what is the direction of choice. To allow turn the rover, the A and B inputs will be flipped, so that when AOUT goes forward, the BOUT reverses, which results in the rover turning in its place.
 The input pins on the motor controller also allow for control with PWM (Pulse Width Modulation), which will change the length of the duty cycle and influence the speed of which the rover is moving at\cite{DRV8833}.
@@ -32,8 +33,9 @@ The input pins on the motor controller also allow for control with PWM (Pulse Wi
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=.5\linewidth]{images/labelled.jpg}
+	\caption{Custom board for the motor controller}
+	\label{customboardmc}	
 \end{figure}
-%TODO: Missing caption and label!
 
 To enable easier access to the pins on the motor controller, a custom board has been created for ease of use. The green terminals A and B are connection terminals for the AOUT and BOUT respectively. The terminal C is for the battery pack that supplies the voltage to the motor controller and the DC motors, which in this case is 5 AA batteries. The label D is the Pololu DRV8833 and the final label E are the connections to the Raspberry Pi. 
 
