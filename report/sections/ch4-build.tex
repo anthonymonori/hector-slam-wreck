@@ -1,20 +1,20 @@
 \clearpage
-\section{The build}
+\section{The building process}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=.4\linewidth]{images/chassis.jpg}
 \end{figure}
 
-To attach the different sensors to the rover, different enclosures and brackets were needed. For the ultrasonic sensors, two different kind of brackets have been designed, since the main chassis required them to be mounted differently based on their placement on the chassis of the rover. Using Autodesk Inventor the two enclosures for the ultrasonic sensors have been modelled and 3D-printed.
+To attach the different sensors to the rover, different enclosures and brackets were needed. For the ultrasonic sensors, two different kind of brackets have been designed, since the main chassis required them to be mounted differently based on their placement on the chassis of the rover. Using Autodesk Inventor the two enclosures for the ultrasonic sensors have been modelled and 3D printed.
 
 \begin{figure}[H]
 	\centering
-	\begin{subfigure}[H]{0.4\textwidth}
+	\begin{subfigure}[]{0.4\textwidth}
 		\includegraphics[width=\textwidth]{images/ultrasonicholder.jpg}
 	\end{subfigure}%
 	\quad
-	\begin{subfigure}[H]{0.4\textwidth}
+	\begin{subfigure}[]{0.4\textwidth}
 		\includegraphics[width=\textwidth]{images/ultrasonicholder-upsidedown.jpg}
 	\end{subfigure}
 	\caption{The enclosures used to mount the ultrasonic sensors on the chassis}
@@ -28,25 +28,25 @@ The enclosures for the ultrasonic sensors have be designed to place all of the s
 	\caption{Front view of the mounted ultrasonic sensors}
 \end{figure}
 
-The design for the Lidar laser enclosure was found on the internet, modelled by someone who is working on a project using the same Lidar. The enclosure enables the sensor to rotate 360degrees using 3D printed gears that are driven by a stepper motor.\cite{lidarenclosure}.
+The design for the LIDAR-Lite laser sensor enclosure was found on the Internet, modelled by someone who is working on a project using the same laser sensors as us. The enclosure enables the sensor to rotate $360\degree$ using 3D printed gears that are driven by a stepper motor~\cite{lidarenclosure}.
 
-The enclosure design required a high-end 3D printer due to its size and print time. The prints were completed within a day.
+The enclosure design required a high-end 3D printer due to its size and print time. The prints were completed within a day, which would have taken much longer with our personal 3D printers.
 
 \begin{figure}[H]
 	\centering
-	\begin{subfigure}[H]{0.4\textwidth}
+	\begin{subfigure}[]{0.3\textwidth}
 		\includegraphics[width=\textwidth]{images/lidarcase-base.png}
 	\end{subfigure}%
 	\quad
-	\begin{subfigure}[H]{0.4\textwidth}
+	\begin{subfigure}[]{0.3\textwidth}
 		\includegraphics[width=\textwidth]{images/lidarcase-mount.png}
 	\end{subfigure}
 	\newline
-	\begin{subfigure}[H]{0.4\textwidth}
+	\begin{subfigure}[]{0.3\textwidth}
 		\includegraphics[width=\textwidth]{images/lidarcase-bracket.png}
 	\end{subfigure}
 	\quad
-	\begin{subfigure}[H]{0.4\textwidth}
+	\begin{subfigure}[]{0.3\textwidth}
 		\includegraphics[width=\textwidth]{images/lidarcase-steppergear.png}
 	\end{subfigure}
 	\caption{Parts of the enclosure used for rotating the LIDAR laser sensor}
@@ -54,8 +54,8 @@ The enclosure design required a high-end 3D printer due to its size and print ti
 
 The idea of using a separate enclosure driven by a stepper motor to rotate the laser sensor is to constantly get a 360$\degree$ map of the environment by rotating the sensor separately from the chassis, rather than rotating the chassis to do so. This way, we can also continue to update the map while the rover is on the move. The strength behind using a stepper motor is that it is possible to control each step with great precision, which makes it more reliable when rotating it.
 
-%TODO: Write about assembly
-The project ended up being assembled in two separate parts: The rover with the ultrasonic sensors and the Lidar by itself.
+%TODO: Write about assembly | of what???
+The project ended up being assembled in two separate parts: The rover with the ultrasonic sensors and the LIDAR-Lite laser sensor module by itself.
 
 \begin{figure}[H]
 	\centering
