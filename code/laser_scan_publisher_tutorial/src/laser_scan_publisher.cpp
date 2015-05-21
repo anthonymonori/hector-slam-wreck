@@ -91,8 +91,8 @@ int main(int argc, char** argv){
         //sets up the relevant info about the laser
         sensor_msgs::LaserScan scan;
         scan.header.frame_id = "laser";
-        scan.angle_min = i*(0.5*pi); // angles in radians
-        scan.angle_max = (++i)*(0.5*pi);
+        scan.angle_min = i*((2.0/circle_segments)*pi); // angles in radians
+        scan.angle_max = (++i)*((2.0/circle_segments)*pi);
         scan.angle_increment = 2*pi / (200/num_steps);
         scan.time_increment = (1 / laser_frequency) / (num_readings); //time between measurements in seconds
         scan.range_min = 0.1;//the distance range. in meters
