@@ -2,14 +2,12 @@
 \section{Stepper motor}
 Stepper motors are electrical motors that can be precisely controlled. They divide a full rotation into a discrete amount of steps, each equally big.
 
-Stepper motors are usually used with a specific circuit to control them, which is called a stepper-motor controller. Stepper-motor controllers allow for microstepping, which further divides a step into smaller pieces. We used 8 micro-steps per step
-%Thomas: End of the sentence?
+Stepper motors are usually used with a specific circuit to control them, which is called a stepper-motor controller. Stepper-motor controllers allow for microstepping, which further divides a step into smaller pieces. We used 8 micro-steps per step.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=.5]{images/steppermotor.png}
-	\caption{Gustavo will write here}
-	%Thomas: *cough* Speaks for itself.
+	\caption{Connection chart for stepper-motor}
 	\label{fig:steppermotor}
 \end{figure}
 
@@ -18,11 +16,11 @@ The stepper motor controller we used is an EasyDriver.\cite{steppercontroller}
 
 \lstinputlisting[firstline=1, lastline=20, title=Arduino\_Code, language=C++, label=arduinocode1]{../code/arduino_code.cpp}
 
-Since the stepper motor we use divides a full cycle into 200 steps, this means that the resolution is 1.8$\degree$ per step. At a distance of 1m, 1.8$\degree$ can resolve a distance of ~3.1cm, and this increases linearly with a larger distance.~\ref{arduinocode1}
-%Thomas: The reference to the arduino code looks weird in the pdf
+Since the stepper motor we use divides a full cycle into 200 steps, this means that the resolution is 1.8$\degree$ per step. With this, the we can calculate the minumum distance we can resolve.
 
 $\frac{x}{sin(1.8deg)} = \frac{1m}{sin(89.1deg)}$ \\
 $x = \frac{sin(1.8deg)}{sin(89.1deg)}m$ \\
 $x = 3.14cm$ \\
-%Thomas: This seems to be floating by itself. 
 
+At a distance of 1m, 1.8$\degree$ can resolve a distance of ~3.1cm, and this increases linearly with a larger distance.~\ref{arduinocode1}
+%Thomas: The reference to the arduino code looks weird in the pdf
