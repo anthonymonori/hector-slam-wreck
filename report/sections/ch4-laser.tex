@@ -97,10 +97,9 @@ We then tried to incorporate this measurement code with a stepper-motor, so that
 
 In order to determine how long it takes for the lidarLite \textit{lidar\_read(int fd)} function to execute, some testing was made.
 
-%asd.cpp 
-%TODO: What is that comment above? Do you want to include the test code you wrote, Gustavo?
+\lstinputlisting[firstline=1, lastline=8, title=laserTiming.cpp, language=C++]{../code/asd.cpp}
 
-This code was run with the settings of 1000 and 2000, each version was run 3 times.
+This code was run with the settings of 1000 and 2000, each version was run 3 times. It was timed using the unix "time" utility.
 
 Measurements of how long it takes to run \textit{lidar\_read(int fd)}
 
