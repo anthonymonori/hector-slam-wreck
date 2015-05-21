@@ -122,7 +122,7 @@ $23.782s = 1000*t_{lidar}$ \\
 $t_{lidar} = 0.023782s \approx 0.024s$ \\
 
 
-This proved ineffective, since the rotation and measurements were independent of each other, which caused the measurements to be skewed over time.
+This proved ineffective, since the rotation and measurements were independent of each other. If the time for one measurement is not precise enough the measurements to be skewed over time.
 
 We then attempted to control the stepper-motor with the Raspberry Pi, added to the same code as we were running the laser with. However, the wiringPi library required root privileges, and ROS cannot easily be run with root privileges. The solution was to use a system call library to call some external code which would drive the stepper-motor. This makes the stepping and measuring synchronous, but making system call is very expensive in terms of computational resources, meaning that the code is significantly slower than the top speed that the laser is capable of.
 
