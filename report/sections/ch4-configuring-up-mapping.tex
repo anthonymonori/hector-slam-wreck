@@ -37,7 +37,5 @@ During this stage of testing, ROS gathers the data and generates the map directl
 
 After testing the Hector SLAM some lag issues were experienced, which seemed to be caused by multiple things: One thing could be that generating the map on the actual Raspberry Pi required too many resources from the CPU, another could be that the transfer of the visualization to the computer screen required more bandwidth than there could be supplied.
 
-%TODO Needs expanding?
-
 To reduce the amount of resources used by the Raspberry Pi, the map needs to be generated and visualized using separate computing unit. ROS is built to have separate nodes with a main computing unit.
 

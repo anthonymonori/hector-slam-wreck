@@ -19,7 +19,7 @@ The stepper motor controller we used is an EasyDriver~\cite{steppercontroller}.
 
 \lstinputlisting[firstline=1, lastline=20, title=Arduino\_Code, language=C++, label=arduinocode1]{../code/arduino_code.cpp}
 
-Since the stepper motor we use divides a full cycle into 200 steps, this means that the resolution is 1.8$\degree$ per step. With this, the we can calculate the minimum distance we can resolve. %TODO: resolve?
+Since the stepper motor we use divides a full cycle into 200 steps, this means that the resolution is 1.8$\degree$ per step. With this, the we can calculate the minimum distance we can resolve.
 
 $\frac{x}{sin(1.8deg)} = \frac{1m}{sin(89.1deg)}$ \\
 $x = \frac{sin(1.8deg)}{sin(89.1deg)}m$ \\
