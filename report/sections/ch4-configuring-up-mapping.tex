@@ -20,7 +20,7 @@ Nodes are the smallest parts of ROS that are put together to form a full applica
 
 \lstinputlisting[firstline=1, lastline=11, title=lidar.launch, language=xml]{../code/lidar.launch}
 
-%TODO: Talk about bag files here
+\textbf{Bagfiles} are used for storing ROS message data, transmitted over any topic visible to list by calling \textit{rostopic list} command. Bags are typically created by a tool like rosbag, which subscribe to one or more ROS topics, and store the serialized message data in a file as it is received. These bag files can also be played back in ROS to the same topics they were recorded from, or even remapped to new topics. Once the current node setup has been established and the correct information is transmitted over the topics, the data will be stored in a .bag file.
 
 \subsection{Developing for ROS}
 During this stage of development, the gathering the data happens on the Raspberry Pi, while a map is generated using ROS. The Raspberry Pi is accessed through SSH and the generated map is then broadcasted to another computer through that SSH connection, for visualization using the tool called rviz. 
@@ -28,7 +28,7 @@ During this stage of development, the gathering the data happens on the Raspberr
 To achieve this, we had to set up a direct connection between one of our developer computers running Ubuntu and the Raspberry Pi using a CAT5 Ethernet cable. Then we created a new network settings, set the IPv4 method to be 'Shared to other computers' which bridge the two network adapters and get internet access to the Raspberry Pi from our own computers, connected to the internet via Wi-Fi. Then we located the leases and found the IP address assigned to the connected device. To connect via ssh we used the following command line:
 \lstset{language=sh}
 \begin{lstlisting}
-	>> ssh -Y username@ip-address
+	>> $ ssh -Y username@ip-address
 \end{lstlisting}
 This enabled us to connect to the Raspberry and by using the \textit{-Y} flag, it allowed us to stream the graphical application using X11 forwarding.
 
@@ -45,7 +45,16 @@ Looking at the figure above, we can observe several things by running the mappin
 To reduce the amount of resources used by the Raspberry Pi, the map needs to be generated and visualized using separate computing unit. ROS is built to have separate nodes with a main computing unit.
 
 To copy files to and from the Raspberry, we used the \textit{scp} utility, and therefore no version control setup was not necessary on the controller. The command line was used to transfer .bag files and source code:
-\lstset{language=sh}
 \begin{lstlisting}
-	>> scp username@from-ip-address:~/file /home/mylocaluser/to-location/
+	>> $ scp username@from-ip-address:~/file /home/mylocaluser/to-location/
 \end{lstlisting}
+
+When the custom laser node written by us, has been started, it starts publishing laser readings in form of a LaserScan message, to the \textbackslash\textit{scan} topic. By using the following command, we could listen to it and see the outcome of our scanning:
+
+\begin{lstlisting}
+	>> $ rostopic echo /scan
+	>> $ ONE EXAMPLE OUTPUT HERE
+\end{lstlisting}
+%TODO: Add output there as soon as possible
+
+With this, we set up everything for starting to create a map in 2D using Hector-slam.
