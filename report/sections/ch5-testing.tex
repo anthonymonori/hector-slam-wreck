@@ -21,47 +21,60 @@ Therefore we can conclude that the test requirements set previously are all pass
 \clearpage
 \section{Close proximity}
 
-The first was to figure out the location of the rovers blind spots. To figure out what measuring angle the our specific sensors are using, a piece of paper with a ruler on was placed beneath the rover at a guide. The ultrasonic sensor test script from the appendix was then run multiple times to figure out when the object placed on the ruler was detected.
+The first test that was conducted on the rover, was to figure out what the measuring angle of the ultrasonic sensors are. We used the calculated blind spot distance to place an object on a piece of paper with a ruler, which was then placed beneath the rover as a guide.
+
+\lstinputlisting[firstline=31, lastline=53, title=triple\_ultrasonic\_test.py, language=Python]{../code/autonomous-rover/triple-ultrasonic-test.py}
+
+The code above was used to test the distance measurements from the ultrasonic sensor. As shown on figure \ref{bs-read} and \ref{bs-test}, an object on the ruler was moved back and forth to find out where the point was just before the ultrasonic sensor would pick up the object.
 
 \begin{figure}[H]
 	\centering
-	\begin{subfigure}[H]{0.3\textwidth}
+	\begin{subfigure}[H]{0.4\textwidth}
 		\includegraphics[width=\textwidth]{images/test-blindspotcmd.jpg}
 		\subcaption{Blind spot readings}
+		\label{bs-read}
 	\end{subfigure}%
 	\quad
-	\begin{subfigure}[H]{0.3\textwidth}
+	\begin{subfigure}[H]{0.5\textwidth}
 		\includegraphics[width=\textwidth]{images/blindspot_test.jpg}
 		\subcaption{Measuring the blind spot}
+		\label{bs-test}
 	\end{subfigure}%
 	\quad
-	\begin{subfigure}[H]{0.3\textwidth}
-		\includegraphics[width=\textwidth]{images/testing-course.jpg}
-		\subcaption{The testing course}
-	\end{subfigure}
 \end{figure}
 
-Through testing we determined that the ultrasonic sensors used for the particular project has a measuring angle of $15\degree$. This increases the rovers risk of running into a blind spot, since the blind areas are much larger than with the sensors with the larger viewing angle. The left-most figure shows the readings from the ultrasonic sensors, while the pen on the center figure was being moved back and forth. The center figure display where the tipping point(14.5cm from the sensors) is for the blind spot, if the test had been performed with a slimmer object compared to the pen, the blind spot threshold would be closer to the calculated one at around 19cm.\\
-The testing course has been created arbitrarily, with the purpose of placing some objects for the rover to detect, avoid and navigate around.
 
+Through testing we determined that the tipping point for the blind spot was at around 15cm. If the object used for the testing had been smaller in diameter, it would have been possible to get closer to the theoretical calculation (which is 19.8cm). Since the tipping spot was at length greater than 7.5cm (from figure \ref{calculationdiagram}, this then means that the ultrasonic sensors used for the particular project has a measuring angle of $15\degree$. \\
 
-When the distance threshold is set to a lower length (e.g 20cm), the rover ends up getting too close to objects before determining a new path. If the distance threshold is set to a high value (e.g 50cm), the rover has an easier time navigation/avoiding objects in its path, the downside is though that with a large distance threshold value, the rover never reaches certain parts of the course, because it detects today many nearby objects and therefore does not approach the area.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{images/testing-course.jpg}
+	\caption{The testing course}
+	\label{testcourse}
+\end{figure}
 
-\clearpage
+The testing course had been created arbitrarily, with the purpose of placing some random objects for the rover to detect, avoid and navigate around.\\
+The rover was tested using different threshold distances, which means that the rover will sense objects and walls according to that set threshold. When the distance was set to a lower length (e.g. 20cm), the rover would get really close to objects before determining a new path, this occasionally also led to the rover hitting some of the objects or the walls of the test course. If the distance threshold is set to a higher value (e.g. 50cm), the rover has an easier time navigating/avoiding objects in its path, the downside is though that with such a great distance, the rover never reaches certain parts of the course, because it often detects too many nearby objects and therefore never approaches certain areas. The rover would also sometimes get stuck in the middle of an open space, oscillating  left and right whilst slowly moving forward, the cause of this is because each time the the rover turned in one direction the rover detected a new object within a short distance, and immediately turns again - continuing in an endless loop.
+
 \begin{figure}[H]
 	\centering
 	\begin{subfigure}[H]{0.4\textwidth}
 		\includegraphics[width=\textwidth]{images/test-stuckincorner.jpg}
-		\subcaption{}
+		\subcaption{Rover stuck in a corner}
+		\label{corner}
 	\end{subfigure}%
 	\quad
 	\begin{subfigure}[H]{0.4\textwidth}
 		\includegraphics[width=\textwidth]{images/test-badmeasuringangle.jpg}
-		\subcaption{}
+		\subcaption{Bad angle for measurements}
+		\label{badangle}
 	\end{subfigure}
 \end{figure}
 
-The current algorithm for the rover get stuck in a loop if the rover drives directly into a corner(figure a). The reason for the looping is that the distance towards to wall of either side of the rover are equal, so it can not determine which direction it should turn.\\
-Because of the skewed angles of the object in the test course, the rover would sometimes hit them. Figure b clear shows the rover hitting the object face on, because the ultrasonic sensors were not able to read the distance to the walls of the box because they are at an angle.
+The current algorithm for the rover gets stuck in a loop if the rover drives directly into a corner(figure \ref{corner}). The reason for the looping is that the distance towards to wall of either side of the rover are equal, so it can not determine which direction it should steer towards.\\
+Because of the skewed angles of the object in the test course, the rover would sometimes hit them. Figure \ref{badangle} clearly shows the rover hitting the object face on, because the ultrasonic sensors were not able to read the distance to the walls of the box because they are at a bad angle.
 
-When the rover turned to avoid the walls and other objects, it would skid across the floor. This resulted in the rover not turning on the spot, therefore reducing the accuracy of the steering.
+When the rover would turn to avoid objects or change its direction, it would skid across the floor. This resulted in the rover not turning on the spot, which reduces the accuracy of the steering.
+
+\clearpage
+\section{2D Mapping}
