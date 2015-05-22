@@ -1,14 +1,10 @@
 <launch>
-
     <param name="/use_sim_time" value="true" />
-
     <node pkg="hector_mapping" type="hector_mapping" name="hector_mapping" output="screen">
-
         <param name="base_frame" value="base_link"/>
         <param name="odom_frame" value="base_link"/>
         <param name="pub_map_odom_transform" value="true"/>
         <param name="scan_subscriber_queue_size" value="25"/>
-
         <!-- Map size / start point -->
         <param name="map_resolution" value="0.050"/>
         <param name="map_size" value="2048"/>
@@ -16,14 +12,8 @@
         <param name="map_start_y" value="0.5" />
         <param name="map_multi_res_levels" value="2" />
     </node>
-
     <include file="$(find hector_geotiff)/launch/geotiff_mapper.launch"> </include>
-
     <node pkg="tf" type="static_transform_publisher" name="map_nav_broadcaster" args="0 0 0 0 0 0 b$
-
     <node pkg="tf" type="static_transform_publisher" name="map_to_base"      args="0 0 0 0 0 0 /map$
-
     <node pkg="tf" type="static_transform_publisher" name="map_to_frame"      args="0 0 0 0 0 0 /ma$
-
-
 </launch>
