@@ -2,7 +2,6 @@
 \section{Risk management}
 Possible risks that could occur before, during and after the implementation of the proposed 2D mapping system, elaborated in this report, and presented in the form of a table together with a mitigation plan for each and every identified risk.
 
-\subsection{Overview} 
 We listed most of the risks that would influence the design process of our product. These risks will be used as criteria for the end-product.
 
 Risks are considered on two different scales with 4 levels. As the legend under the table shows, it starts from Very High (VH) being the most severe to Low (L), which can be considered as a minor issue. The two scales are \textbf{Probability}, which represents the chance of occurrence, and \textbf{Impact}, which represents the severity of the risk in case it would actually appear.
@@ -11,12 +10,12 @@ Risks are considered on two different scales with 4 levels. As the legend under 
 	\begin{tabular}{ | p{4.5cm} | l | l | p{5cm} |}
 		\hline
 		\bfseries Risk factor & \bfseries Probability & \bfseries Impact & \bfseries Mitigation strategy \\ \hline
-		Going over the budget & M & VL & \\ \hline
-		Parts not arriving in time & L & VH & \\ \hline
-		Short-circuiting electronics during development & VL & H & \\ \hline
-		Lack of knowledge about ROS & M & H & \\ \hline
-		Compatibility issues or lack of support for hardware & L & VH & \\ \hline
-		Too big of a scope and too little time to complete & H & H & \\
+		Going over the budget & M & VL & Carefully select the products and make sure we order the same models as specified in the excursion request form \\ \hline
+		Parts not arriving in time & L & VH & Estimate a 2 week delivery time for each package\\ \hline
+		Short-circuiting electronics during development & VL & H & Buy new one or consider replacing with a similar hardware, like the Raspberry Pi with an Arduino if possible \\ \hline
+		Lack of knowledge about ROS & M & H & Find and compile a list of contact persons with knowledge about it and time to support us\\ \hline
+		Compatibility issues or lack of support for hardware & L & VH & Research before ordering/selecting parts; otherwise replace \\ \hline
+		Too big of a scope and too little time to complete & H & H & Cut down on scope and write a solid argument in the discussion about it \\
 	\hline
 	\end{tabular}
 	\caption{Risk management and mitigation}
