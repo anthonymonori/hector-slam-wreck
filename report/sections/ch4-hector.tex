@@ -35,5 +35,7 @@ Hector mapping takes the information given from the transform and laser measurem
 	\includegraphics[width=1\linewidth]{images/hector_flow.png}
 	\caption{Hector mapping flowchart.}
 \end{figure}
-%Thomas: I enlarged the picture to 100% width, but the text is unreadable. We need to do something about that.
-%TODO: fix picture
+
+We made a .bag file recording the $/$scan topic on the raspberry pi, then it was copied to a laptop running ubuntu and ros. The bag file was played on the laptop and hector mapping, with transform published, was run. The outcome was a hector map. 
+
+\lstinputlisting[firstline=1, lastline=19, title=main.launch, language=xml]{../code/main.launch} 

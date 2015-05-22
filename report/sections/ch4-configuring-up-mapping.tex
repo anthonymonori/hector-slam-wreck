@@ -18,8 +18,6 @@ Nodes are the smallest parts of ROS that are put together to form a full applica
 
 \textbf{Roslaunch} is the ROS command that allows starting multiple nodes, and also allows giving parameters to nodes. Roslaunch executes nodes that are specified in an XML file you give it, called the launchfile.
 
-\lstinputlisting[firstline=1, lastline=11, title=lidar.launch, language=xml]{../code/lidar.launch}
-
 \textbf{Bagfiles} are used for storing ROS message data, transmitted over any topic visible to list by calling \textit{rostopic list} command. Bags are typically created by a tool like rosbag, which is subscribed to one or more ROS topics, and store the serialized message data in a file as it is received. These bag files can also be played back in ROS to the same topics they were recorded from, or even remapped to new topics. Once the current node setup has been established and the correct information is transmitted over the topics, the data will be stored in a .bag file.
 
 \subsection{Developing for ROS}
@@ -51,7 +49,7 @@ To copy files to and from the Raspberry, we used the \textit{scp} utility, and t
 
 When the custom laser node written by us, has been started, it starts publishing laser readings in form of a LaserScan message, to the \textbackslash\textit{scan} topic. By using the following command, we could listen to it and see the outcome of our scanning:
 
-\lstinputlisting[firstline=1, lastline=17, language=C++]{../code/sampleOutput}
+\lstinputlisting[firstline=1, lastline=17, language=C++]{../code/sampleOutput.txt}
 
 As the output shows, the number of readings is being stored in an array that is published to \textbackslash scan and then used by ROS to visualize or transform it later on. These readings are represented in a floating-point number in meters. Range is also represented in meters, but they are hard-coded, as the minimum and maximum value of the range does not change, but rather set by the manufacturer. The messages are time-stamped, which turned out to be very important when ROS transforms them for mapping and there is also a scan time, which tells the time between the scans in seconds. The angle values are radians of the start and end angle of the scan, while the angle increment is the angular distance between measurements. Our laser does not provide intensity-data, therefore we did the array has been left empty.
 
