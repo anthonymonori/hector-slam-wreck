@@ -1,0 +1,116 @@
+LidarLite V0.1
+
+write res=0
+Lo=34
+Hi=0  34 cm
+STATUS BYTE: 0x4 signal overflow
+19write res=0
+Lo=34
+Hi=0  34 cm
+STATUS BYTE: 0x4 signal overflow
+19write res=0
+Lo=34
+Hi=0  34 cm
+STATUS BYTE: 0x4 signal overflow
+19write res=0
+Lo=33
+Hi=0  33 cm
+STATUS BYTE: 0x4 signal overflow
+19write res=0
+Lo=34
+Hi=0  34 cm
+STATUS BYTE: 0x4 signal overflow
+19write res=0
+Lo=33
+Hi=0  33 cm
+STATUS BYTE: 0x4 signal overflow
+19write res=0
+Lo=33
+Hi=0  33 cm
+STATUS BYTE: 0x4 signal overflow
+19write res=0
+Lo=33
+Hi=0  33 cm
+STATUS BYTE: 0x4 signal overflow
+19write res=0
+Lo=34
+Hi=0  34 cm
+STATUS BYTE: 0x4 signal overflow
+19write res=0
+Lo=35
+Hi=0  35 cm
+STATUS BYTE: 0x4 signal overflow
+19write res=0
+Lo=35
+Hi=0  35 cm
+STATUS BYTE: 0x4 signal overflow
+19write res=0
+Lo=35
+Hi=0  35 cm
+19write res=0
+Lo=32
+Hi=0  32 cm
+STATUS BYTE: 0x4 signal overflow
+19write res=0
+Lo=16
+Hi=0  16 cm
+19write res=0
+Lo=14
+Hi=0  14 cm
+STATUS BYTE: 0x4 signal overflow
+19write res=0
+Lo=13
+Hi=0  13 cm
+STATUS BYTE: 0x4 signal overflow
+19write res=0
+Lo=19
+Hi=0  19 cm
+STATUS BYTE: 0x4 signal overflow
+19write res=0
+Lo=24
+Hi=0  24 cm
+STATUS BYTE: 0x4 signal overflow
+19write res=0
+Lo=29
+Hi=0  29 cm
+STATUS BYTE: 0x4 signal overflow
+19write res=0
+Lo=32
+Hi=0  32 cm
+STATUS BYTE: 0x4 signal overflow
+19write res=0
+Lo=33
+Hi=0  33 cm
+STATUS BYTE: 0x4 signal overflow
+19write res=0
+Lo=30
+Hi=0  30 cm
+STATUS BYTE: 0x4 signal overflow
+19write res=0
+Lo=31
+Hi=0  31 cm
+STATUS BYTE: 0x4 signal overflow
+19write res=0
+Lo=28
+Hi=0  28 cm
+STATUS BYTE: 0x4 signal overflow
+19write res=0
+Lo=20
+Hi=0  20 cm
+STATUS BYTE: 0x4 signal overflow
+19write res=0
+Lo=32
+Hi=0  32 cm
+STATUS BYTE: 0x4 signal overflow
+19write res=0
+Lo=33
+Hi=0  33 cm
+STATUS BYTE: 0x4 signal overflow
+19write res=0
+Lo=32
+Hi=0  32 cm
+STATUS BYTE: 0x4 signal overflow
+19write res=0
+Lo=33
+Hi=0  33 cm
+STATUS BYTE: 0x4 signal overflow
