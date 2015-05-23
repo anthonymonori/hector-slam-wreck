@@ -60,7 +60,7 @@ The assembling of the laser happened in the following way:
 	\caption{The pins of the microcontroller mapped to the laser pins}
 \end{table}
 
-The laser can be interfaced through I2C (Inter-Integrated Circuit) or PWM (Pulsed Width Modulation)~\cite{lidarsum}. The default I2C address for the laser is 0x62, which we could validate by running the following command:
+The laser can be interfaced through $I^2C$ (Inter-Integrated Circuit) or PWM (Pulsed Width Modulation)~\cite{lidarsum}. The default $I^2C$ address for the laser is 0x62, which we could validate by running the following command:
 \lstset{language=sh}
 \begin{lstlisting}
 	>> $ sudo i2cdetect -y 1
@@ -76,12 +76,12 @@ The laser can be interfaced through I2C (Inter-Integrated Circuit) or PWM (Pulse
 		  70: -- -- -- -- -- -- -- -- 
 \end{lstlisting}
 
-As the output shows, the address is available and the I2C connection is good. The -y 1 relates to the revision B of the Raspberry Pi board.
+As the output shows, the address is available and the $I^2C$ connection is good. The -y 1 relates to the revision B of the Raspberry Pi board.
 
 We started using a library called lidarLite, which provides a simple C interface to the LIDAR-Lite laser on the Raspberry Pi. It is using the WiringPi GPIO access library written in C for the BCM2835 SoC, used on the Raspberry Pi. It is usable with C and C++ or many other languages with suitable wrappers. It was designed very familiarly to Arduino's wiring library.
 %TODO: reference last sentance?
 
-With the lidarLite library\cite{lidarlib}, we managed to read data using the I2C protocol. To do this, we had to enable the kernel support for I2C on the Raspberry Pi~\cite{i2csetup}.
+With the lidarLite library\cite{lidarlib}, we managed to read data using the $I^2C$ protocol. To do this, we had to enable the kernel support for $I^2C$ on the Raspberry Pi~\cite{i2csetup}.
 
 A small program was been written in order to test the output of the laser sensor, namely to read out the distance value of the next closest point in centimeters. 
 
@@ -129,8 +129,7 @@ This proved ineffective, since the rotation and measurements were independent of
 
 We then attempted to control the stepper-motor with the Raspberry Pi, added to the same code as we were running the laser with. However, the wiringPi library required root privileges, and ROS cannot easily be run with root privileges. The solution was to use a system call library to call some external code which would drive the stepper-motor. This makes the stepping and measuring synchronous, but making system call is very expensive in terms of computational resources, meaning that the code is significantly slower than the top speed that the laser is capable of.
 
-%TODO: I would move the source code to the Appendix and leave the sequence diagram. - Anonymous
-\lstinputlisting[firstline=55, lastline=109, title=mainCode.cpp, language=C++]{../code/laser_scan_publisher_tutorial/src/laser_scan_publisher.cpp}
+%TODO: Reference full code in Appendix
 
 \clearpage
 The sequence diagram below gives us an overview of the calls happening in the code:
@@ -142,7 +141,7 @@ The sequence diagram below gives us an overview of the calls happening in the co
 	\label{fig:lasermodule}
 \end{figure}
 
-The first step is to initialize the the LIDAR-Lite laser sensor, by giving a dummy "wake-up" call to it via the wiringPi library, using the I2C protocol. There is a 100 millisec delay, which is necessary for the device to wake up and for the reading of registry to be completed. If the initialization fails, the program terminates by printing out a message to the terminal.
+The first step is to initialize the the LIDAR-Lite laser sensor, by giving a dummy "wake-up" call to it via the wiringPi library, using the $I^2C$ protocol. There is a 100 millisec delay, which is necessary for the device to wake up and for the reading of registry to be completed. If the initialization fails, the program terminates by printing out a message to the terminal.
 
 Thereafter, we call the setUpPins() function which makes the system call 3 separate calls using the GPIO utility, setting up the GPIO on the Raspberry Pi to be able to communicate with the stepper motor.
 

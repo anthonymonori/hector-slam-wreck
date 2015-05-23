@@ -13,12 +13,15 @@ Early on in the project we decided that ROS would be the core of our prototype, 
 
 The ROS installation process proved to be quite the challenge, which then lead to a setback in terms of development. Many of the ROS packages caused different conflicts with Raspbian operating system, even though these packages should have been compatible with the system out-the-box. After spending too much time on fixing the many errors and getting it to work on Raspbian, we decided to switch to Ubuntu ARM, where the installation process was much easier compared to the previous one.
 
-Using the $I_2C$ interface on the Raspberry Pi we were able to gather measurement data from the Lidar, the next big issue we then encountered was transmitting the gathered data and interpreting it using ROS. Many of the resource regarding gathering data from LIDAR-Lite lasers were mostly regarding USB-based, higher-end devices. %TODO: expand 
+Using the $I^2C$ interface on the Raspberry Pi we were able to gather measurement data from the Lidar, the next big issue we then encountered was transmitting the gathered data and interpreting it using ROS. Many of the resource regarding gathering data from LIDAR-Lite lasers were mostly regarding USB-based, higher-end devices. %TODO: expand 
 
-%In the beginning of our development period we had some downtime caused by shipping times.
+When we realised that we would not have the time and resources to make a completely autonomous vehicle, we instead decided to split the prototype into two separate parts: 
+\begin{itemize}
+	\item Navigation system
+	\item Mapping system
+\end{itemize}
 
-We then at this point realised that we would not have the time and resource to able to make a completely autonomous vehicle, so we instead decided to split the prototype into two separate parts: Navigation and Mapping.\\
-What we then aimed to achieve with the laser was to produce a map using SLAM technique. %Add more here, when we know how well it went.
+%What we then aimed to achieve with the laser was to produce a map using SLAM technique. %Add more here, when we know how well it went.
 
 The close proximity detection system, is a low-intelligence autonomous navigation system for the rover. If we succeeded in completing our original scope, the autonomous navigation would have needed to interface with sensors to ensure that it avoided objects at a height that is not recorded by the Lidar and mapping algorithms. So what we have currently achieved is a navigation system that is able to successfully navigate between obstacles by avoiding them and recalculating its direction according to where it detected the obstacles.\\
 
@@ -39,3 +42,6 @@ Currently, when the mapping device is mounted to the rover, the rover is able to
 
 
 Too much time during this project was spent chasing the idea of getting SLAM to work. It was a bad combination of tools, because it seems like ROS is made for more advanced computing units, with better interfacing. 
+
+
+%TODO: Discuss delay in shipping in the process analysis.
