@@ -1,8 +1,7 @@
 \clearpage
 \section{Hector SLAM}
 During development we decided to use hector slam to make a 2D SLAM map. Hector mapping is a ROS library that we can use without odometry.\cite{hectormapping}
-This allowed us to skip using the optical flow sensor for publishing movement on the $x$ and $y$ plane. Hector mapping uses reference points in its surroundings to keep track of movement in the $xy$ plane. It is also possible to give hector mapping information about movement in $z$ scale, tilt and yaw. This is beneficial for a robot that travels in terrain with big changes or even flying for a flying robot. 
-%TODO: flying for a flying robot?
+This allowed us to skip using the optical flow sensor for publishing movement on the $x$ and $y$ plane. Hector mapping uses reference points in its surroundings to keep track of movement in the $xy$ plane. It is also possible to give hector mapping information about movement in $z$ scale, tilt and yaw. This is beneficial for a robot that travels in terrain with big changes or even when controlling flight for a drone or quadcoptor
 
 \begin{figure}[H]
 	\centering
