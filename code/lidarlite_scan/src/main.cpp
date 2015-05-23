@@ -64,7 +64,6 @@ void step(int steps){
     }
 }
 
-
 int main(int argc, char** argv){
     int fd = lidar_init(false);//set to true for printouts
     setUpPins();
@@ -73,15 +72,15 @@ int main(int argc, char** argv){
         printf("initialization error\n");
     }
 
-    ros::init(argc, argv, "laser_scan_publisher");
+    ros::init(argc, argv, "laser_scan");
 
     ros::NodeHandle n;
     ros::Publisher scan_pub = n.advertise<sensor_msgs::LaserScan>("scan", 10);
 
-    const unsigned int num_readings = 50; //number of readings in one packet.
+    const unsigned int num_readings = 200; //number of readings in one packet.
     const unsigned int num_steps = 1;
     const double laser_frequency = 0.5/*MIGHT CHANGE*/; //how many spins in one second
-    const unsigned short circle_segments = 4;
+    const unsigned short circle_segments = 1;
     const double pi = 3.141592;
 
     int i = 0;
