@@ -54,3 +54,5 @@ When the custom laser node written by us, has been started, it starts publishing
 As the output shows, the number of readings is being stored in an array that is published to \textbackslash scan and then used by ROS to visualize or transform it later on. These readings are represented in a floating-point number in meters. Range is also represented in meters, but they are hard-coded, as the minimum and maximum value of the range does not change, but rather set by the manufacturer. The messages are time-stamped, which turned out to be very important when ROS transforms them for mapping and there is also a scan time, which tells the time between the scans in seconds. The angle values are radians of the start and end angle of the scan, while the angle increment is the angular distance between measurements. Our laser does not provide intensity-data, therefore we did the array has been left empty.
 
 With this, we set up everything for starting to create a map in 2D using Hector-slam.
+
+%TODO: add instruction how to run our project somewhere: here or Appendix?
