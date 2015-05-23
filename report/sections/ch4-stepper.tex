@@ -17,7 +17,7 @@ The only use of the arduino in this picture is to serve as a 5V source, as we we
 The stepper motor we used in our project is a NEMA-17 Bipolar Stepper Motor~\cite{steppermotor}.
 The stepper motor controller we used is an EasyDriver~\cite{steppercontroller}.
 
-\lstinputlisting[firstline=1, lastline=20, title=Arduino\_Code, language=C++, label=arduinocode1]{../code/arduino_code.cpp}
+\lstinputlisting[firstline=1, lastline=20, title=Code 4.10, language=C++, label=code:arduinocode]{../code/arduino_code.cpp}
 
 Since the stepper motor we use divides a full cycle into 200 steps, this means that the resolution is 1.8$\degree$ per step. With this, the we can calculate the minimum distance we can resolve.
 
@@ -25,4 +25,4 @@ $\frac{x}{sin(1.8deg)} = \frac{1m}{sin(89.1deg)}$ \\
 $x = \frac{sin(1.8deg)}{sin(89.1deg)}m$ \\
 $x = 3.14cm$ \\
 
-At a distance of 1m, 1.8$\degree$ can resolve a distance of ~3.1cm, and this increases linearly with a larger distance (Code reference~\ref{arduinocode1}).
+At a distance of 1m, 1.8$\degree$ can resolve a distance of ~3.1cm, and this increases linearly with a larger distance (Code reference~\ref{code:arduinocode}).
