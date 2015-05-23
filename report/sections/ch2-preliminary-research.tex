@@ -1,57 +1,25 @@
 \clearpage
 \section{Preliminary research}
-%TODO: At some point, remove this
-% ------------------------------------------ Links for Emil ---------------------------------
-
-% Good talk about making 3D maps on Mars
-
-% http://content.stamen.com/how_to_make_3d_maps_of_mars
-
-% Ultra sharp 3D maps
-
-% http://video.mit.edu/watch/ultrasharp-3-d-maps-66/
-
-% GPS links
-
-% http://en.wikipedia.org/wiki/Global_Positioning_System
-
-% http://www.gps.gov/systems/gps/space/
-
-% http://spectrum.ieee.org/aerospace/space-flight/interplanetary-gps-comes-a-step-closer
-
-% http://science.howstuffworks.com/how-is-gps-used-in-spaceflight.htm
-
-% UAV 3D mapping
-
-% http://www.geometh.ethz.ch/uav_g/proceedings/neitzel
-
-% 3D mapping reference points
-
-% http://digital.csic.es/bitstream/10261/30058/1/doc1.pdf
 
 \subsection{GPS theory}
 
-\textit{"The Global Positioning System (GPS) is a space-based satellite navigation system that provides location and time information in all weather conditions, anywhere on or near the Earth where there is an unobstructed line of sight to four or more GPS satellites. The system	 provides critical capabilities to military, civil, and commercial users around the world. The United States government created the system, maintains it, and makes it freely accessible to anyone with a GPS receiver."\cite{GPS1}}
+\textit{"The Global Positioning System (GPS) is a space-based satellite navigation system that provides location and time information in all weather conditions, anywhere on or near the Earth where there is an unobstructed line of sight to four or more GPS satellites. The system provides critical capabilities to military, civil, and commercial users around the world. The United States government created the system, maintains it, and makes it freely accessible to anyone with a GPS receiver."\cite{GPS1}}
 
-The GPS satellites each carry an atomic clock and positions the user when connected to 4 or more satellites. The satellites measure the time it takes for the signal to go back and forth between the satellites and a GPS receiver\cite{GPS1}. There is also a space "GPS" system in development, that would use the X-ray signal from dying stars to give you the exact location in space with an error rate of about 5 km\cite{GPS2}.
+The GPS satellites each carry an atomic clock and positions the user when connected to 4 or more satellites. The satellites measure the time it takes for the signal to go back and forth between the satellites and a GPS receiver\cite{GPS1}. There is also a space "GPS" system in development, that would use the X-ray signal from dying stars to give you the exact location in space with an error rate of about 5km\cite{GPS2}.
 
-Either of those systems would not be beneficial for our project in space, since we would need a high-accuracy location of each picture we take to make a map and a model for navigation purposes. Later in the future when people will \textit{hypothetically} be moving to Mars, another GPS-like system have to be put in place up for navigation purposes. For now, we would need to use encoders and short-to-medium range, high-accuracy signals. But these signal systems needs to be different for every planet we would go to. 
-
-Both of those systems would not benefit this project in space since we would need a high accuracy location of each picture to make a map and a model. Later in the future when people will be moving to Mars another GPS system will be put in place up there. But for now we would need to use encoders and short to medium range high accuracy signals. But the signal systems would need to be different for what planet we would go to. 
+Either of those systems would not be beneficial for our project in space, since we would need a high-accuracy location of each picture we take to make a map and a model for navigation purposes. Later in the future when people will \textit{hypothetically} be moving to Mars, another GPS-like system have to be put in place up for navigation purposes. For now, we would need to use encoders and short-to-medium range, high-accuracy signals. But these signal systems needs to be different for every planet we would go to.  
 
 \subsection{Photogrammetry theory}
 
-\textit{"Photogrammetry is the practice of determining the geometric properties of objects from
-	photographic images. This is done by comparing and matching pixels or reference points across a series
-	of photos."\cite{Photogrammetry}}
+\textit{"Photogrammetry is the practice of determining the geometric properties of objects from photographic images. This is done by comparing and matching pixels or reference points across a series of photos."\cite{Photogrammetry}}
 
-As a simple example, a map can be constructed from a series of images by overlaying them in such a way that the areas the pictures have in common overlap. The distance between two points that lie on a plane parallel to the photographic image plane can be determined by measuring their distance on the image, if the scale (s) of the image is known. This is done by multiplying the measured distance by $1/s$\cite{photo}.
+As a simple example, a map can be constructed from a series of images by overlaying them in such a way that the areas the pictures have in common, overlap. The distance between two points that lie on a plane parallel to the photographic image plane can be determined by measuring their distance on the image, if the scale (s) of the image is known. This is done by multiplying the measured distance by $1/s$\cite{photo}.
 
-Algorithms for photogrammetry typically attempt to minimize the sum of the squares of errors over the coordinates and relative displacements of the reference points. This minimization is known as bundle adjustment and is often performed using the Levenberg–Marquardt algorithm\cite{photo}.
+Algorithms for photogrammetry typically attempt to minimize the sum of the squares of errors over the coordinates and relative displacements of the reference points. This minimization is known as bundle adjustment and is often performed using the \textit{Levenberg–Marquardt algorithm}\cite{photo}.
 
 Photogrammetry could also be used in our project with an AUV or a rover. There is no need for outdoor reference points to make the 3D model. But this technology is much more complicated to set-up and maintain without an outside assistance, which is major inconvenience when used for space exploration. It would also takes a large quantity of pictures in a high resolution so more space on hard drives are needed. The algorithm needs to create the 3D model from the pictures, which will need a lot of computing power and memory. So doing on board rendering would be really hard and resource consuming.
 
-For higher resolution maps and more detailed the use of photogrammetry is beneficial, But to start with, it would be easier to take another approach. %like?
+For higher resolution maps and more detailed the use of photogrammetry is beneficial, But to start with, it would be easier to take another approach. %TODO: Maybe elaborate on this other approach?!
 
 \subsection{Reference points theory}
 
@@ -59,26 +27,25 @@ To make a 2D or 3D map, a reference point is needed. It can be GPS positions of 
 
 \subsection{SLAM}
 
-Simultaneous Localization and Mapping (SLAM) is a particular method used to construct maps. In SLAM, the mapping device maps its environment whilst simultaneously keeping track of its location within that map, hence the name. SLAM is used mostly in autonomous vehicles that need to traverse some terrain without any prior information about it. More precisely, SLAM is a combination of algorithms, most notably Kalman filtering, that all relate to either mapping or navigation. The specifics of these algorithms are too complex for the purpose and timescale of this project.
+Simultaneous Localization and Mapping (SLAM) is a particular method used to construct maps. In SLAM, the mapping device maps its environment whilst simultaneously keeping track of its location within that map, hence the name. SLAM is used mostly in autonomous vehicles that need to traverse some terrain without any prior information about it. More precisely, SLAM is a combination of algorithms, most notably \textit{Kalman filtering}, that all relates to either mapping or navigation. The specifics of these algorithms are too complex for the purpose and timescale of this project.
 
 \subsection{Sensors}
 \subsubsection{Pressure Based}
 Pressure-based sensors work by simply measuring how much pressure there is in a point in space. They can be used to measure the vertical distance between two points in a planet with an atmosphere\cite{barometric1}\cite{barometric2}. By combining height information with the data gathered by other sensors, it is possible to create a crude three-dimensional map.
 
 \subsubsection{Image Based}
-Image-based sensors are usually just cameras. %usually, just? not clear enough statement
+Image-based sensors are usually just cameras. %TODO:Usually, just? not clear enough statement
  The pictures that the sensor takes, must be mathematically processed to yield any useful data. The two most common types of image sensors are stereoscopic and projected image sensors.
 
-A projected image sensor is very simple, %subjective? what?
- some known image is projected on the environment (a grid, for example), then a camera takes a picture. Since the projection is known, it is simple to detect the distance of an object on the image based on what the projection looks like. This method is limited to how fine the projected image is. %what qualifies a fine image?
+A projected image sensor is very simple, %TODO:Too subjective?!
+ some known image is projected on the environment (a grid, for example), then a camera takes a picture. Since the projection is known, it is simple to detect the distance of an object on the image based on what the projection looks like. This method is limited to how fine the projected image is.
 
 Stereoscopy, also known as stereo-photogrammetry, is more complicated, but also more reliable. Two photos of the same scene, but from different vantage points, are taken. Small sections of one of the images are taken, and overlayed onto the other image. By finding the place on the other image where the small section fits, the algorithm can determine the depth of each pixel in that subsection. This procedure is repeated until the whole image has been processed.
 
 \subsection{Optical-flow sensor}
-Optical-flow sensor is a camera mounted on a PCB board that compares changes in pixels to look out for drift and movement in a system. The concept is the same as your computer mouse follows. It will tell you the movement of your vehicle in a XY-grid. We will implement this sensor for our reference points. Need to add more here
+Optical-flow sensor is a camera mounted on a PCB board that compares changes in pixels to look out for drift and movement in a system. The concept is the same as your computer mouse follows. It will tell you the movement of your vehicle in a $XY$-grid.
 
-\subsubsection{Rangefinder}%NOTE: This section might be a little rambly
-%TODO:Integrate this article in here: http://kb.pulsedlight3d.com/support/solutions/articles/5000554104-reflectivity
+\subsubsection{Rangefinder}
 A rangefinder is a device that measures the distance between itself, and a point some at a certain distance away from it. Rangefinders work based on the principle that the speed of an object is defined to be \textit{distance travelled over time travelled}, which means that the \textit{distance travelled} is the speed of an object times the amount of time it travelled. To put this in math terms: \(v=d/t\) or \(d=t*v\).
 
 Most rangefinders work on either sound or light. Both sound- and light-based rangefinders work by emitting a pulse in a specific direction, and counting how long it takes for the pulse to come back. Since the pulse has travelled back and forth, the distance is calculated as \(1/2*v*t\), where \(v\) is the speed of the pulse, and \(t\) is the time between the emission and the detection.
@@ -87,7 +54,7 @@ The pulse will travel from the rangefinder, straight towards whatever object is 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=.4\linewidth]{images/rangefinder.jpg}
+	\includegraphics[width=.6\linewidth]{images/rangefinder.jpg}
 	\caption{A slightly more complex laser rangefinder.}
 	\label{fig:rangefinderIMG}
 \end{figure}
@@ -97,12 +64,8 @@ This requires the rangefinder to know what the speed of the pulse is, which is a
 The main cause for a pulse to travel at a different speed than expected is in situations where the environment the sensor is in varies in density, which depends on temperature\cite{refraction}. Hence, a simple rangefinder is not fit for an environment that varies heavily in temperature.
 
 Sound moves faster through denser mediums, where light travels slower. The speed of light is less affected by density than sound is. In earth-like atmospheres, light only travels 0.03\% slower in air when compared to the vacuum.\cite{refraction}\cite{speedOfSound}.
-%TODO: Image http://arxiv.org/pdf/1003.1508.pdf
 
-Another issue in environments with a high variation in density is refraction. Refraction is a phenomenon that occurs when a wave switches between mediums where it travels at different speeds. This change causes the wave to change its direction. %TODO:What is this? Please format it correctly! - Anthony (next row)
-%TODO:cite{snell:Wolf, K. B. (1995), "Geometry and dynamics in refracting systems", European Journal of Physics 16: 14–20.} 
-Refraction would cause rangefinders to become effectively blind, as neither their direction nor the length measured can be trusted.
-%TODO:A cite needs to be fixed above - Thomas
+Another issue in environments with a high variation in density is refraction. Refraction is a phenomenon that occurs when a wave switches between mediums where it travels at different speeds. This change causes the wave to change its direction\cite{snell}. Refraction would cause rangefinders to become effectively blind, as neither their direction nor the length measured can be trusted.
 
 \begin{figure}[H]
 	\centering
@@ -111,18 +74,30 @@ Refraction would cause rangefinders to become effectively blind, as neither thei
 	\label{fig:refractionIMG}
 \end{figure}
 
+We can categorize reflectivity of an object or surface into three categories:\cite{reflectivity}
+
+\begin{itemize}
+	\item Diffuse reflective
+	\item Specular
+	\item Retro-reflective
+\end{itemize}
+
+Just to expand upon these categories, it is possible to look at the reflective characteristics of an object's surface.
+
+We find \textbf{diffuse reflective} objects to have a textured quality, which causes the reflected energy to disperse uniformly from the object. These materials are tend to be read very well by a large number of laser sensors, due to the relatively predictable percentage of dispersed laser energy finding its way back to the laser receiver. Some examples of these objects would be: paper, granite, texture walls. It is important to note, that different wavelengths may exhibit unexpected results in certain receivers.
+
+\textbf{Specular} objects or surfaces tend to not read very well, due to the emitted energy not being dispersed correctly. Examples of specular surfaces are glasses and mirrors.
+
+With very reflective properties, we categorize objects and surfaces as \textbf{retro-reflective}. These usually return a very high percentage of emitted energy to the receiver, therefore are a good target to many lasers. Some examples would be: reflectors, license plates and animals' eyes.
+
 \subsection{Autonomous Vehicles and Robots}
 
-Autonomous robots or vehicles can work for an extended period of time, gathering information from its surroundings, to be able to work without human interaction. The robot or vehicle gathers different kinds of data, depending on what the goal of the device is. Positional data can be utilized for navigation and path finding in a known and unknown environment. Intelligent autonomous robots and vehicles are able to adapt to changes happening in its surroundings.
-Currently there are many robots on the market that are self-reliant, ranging from autonomous vacuum cleaner to drones and helicopters\cite{autonomousbasic}.
+Autonomous robots or vehicles can work for an extended period of time, gathering information from its surroundings, to be able to work without human interaction. The robot or vehicle gathers different kinds of data, depending on what the goal of the device is. Positional data can be utilized for navigation and path finding in a known and unknown environment. Intelligent autonomous robots and vehicles are able to adapt to changes happening in its surroundings. Currently there are many robots on the market that are self-reliant, ranging from autonomous vacuum cleaner to drones and helicopters\cite{autonomousbasic}.
 
 Simple autonomous robots use ultrasonic sensors or infrared LEDs to manipulate its own behaviour, if it detects obstacles or unexpected scenarios in the environment. This is useful for obstacle-avoidance and mapping of unknown areas, where the robot, through different reference points, can pin-point the obstacles it has encountered along the way and in the future, more efficiently avoid them.
 More advanced robots use vision to grant them the ability to see their surroundings, algorithms analyse the vision data and gives the robot a depth perception, which grants the ability to instantly identify objects and locate them and memorize them immediately\cite{obstacles}.
 
-There are two main kinds of autonomous robots: a single computer-autonomous robot and insect robots. The single-computer autonomous robot uses its own on-board computing unit to do its computations and its decisions, whereas the insect robots are a fleet of many, which are controlled by a single and separate computing unit.
-The advantage of having a single-computer autonomous robot is that the tasks it performs can be done using more dedicated computer resources. It has the possibility of utilizing the computing power to its full potential, instead of relying on a separate unit that is also making decisions and calculations for many other robots.
-The insect robots are usually fairly simple in terms of capabilities, but the whole robot fleet can be utilized to perform advanced and possibly more sophisticated tasks, that requires a fleet simpler robots designed to work together autonomously\cite{singleandinsect}.
-
+There are two main kinds of autonomous robots: a single computer-autonomous robot and insect robots. The single-computer autonomous robot uses its own on-board computing unit to do its computations and its decisions, whereas the insect robots are a fleet of many, which are controlled by a single and separate computing unit. The advantage of having a single-computer autonomous robot is that the tasks it performs can be done using more dedicated computer resources. It has the possibility of utilizing the computing power to its full potential, instead of relying on a separate unit that is also making decisions and calculations for many other robots. The insect robots are usually fairly simple in terms of capabilities, but the whole robot fleet can be utilized to perform advanced and possibly more sophisticated tasks, that requires a fleet simpler robots designed to work together autonomously\cite{singleandinsect}.
 
 \subsection{Pathfinding and Mapping}
 
@@ -160,10 +135,10 @@ The D* algorithm creates an initial path, based on assumed and known information
 Whenever an on-board sensor receives information about an obstacle, the algorithm can edit the path based on what possible routes there are available near-by.
 D* is fast at navigating large scale unknown environments because during its exploration it is able to edit and repair its desired path and navigate towards its goal. It would require too much effort to re-plan everything from scratch every time it failed, especially for large scale environments\cite{dstar}\cite{moredstar}.
 
-The \textit{figure(a)} shows the map where the given robot knowns its environment (the grey boxes) and can therefore easily determine the optimal path or the "Complete Map" in this case. \textit{Figure (b)} on the other hand shows the "Optimistic Map", since before navigating on the planned path it assumes that there are no obstacles. Whenever the robot meets an obstacle during the optimistic map, it adjust its course to continue towards its goal. On figure (b) it only displays the obstacles which the robot met during its journey navigation along the path.
+The \textit{figure (a)} shows the map where the given robot knowns its environment (the gray boxes) and can therefore easily determine the optimal path or the \textit{Complete Map} in this case. \textit{Figure (b)} on the other hand shows the \textit{Optimistic Map}, since before navigating on the planned path it assumes that there are no obstacles. Whenever the robot meets an obstacle during the optimistic map, it adjust its course to continue towards its goal. On figure (b) it only displays the obstacles which the robot met during its journey navigation along the path.
 
 Simple autonomous robots navigate by the use of infrared LEDs or photo-resistors and LEDs, by following lines drawn on a surface. Robots that use photo-resistors to follow a line are continuously looking for a change in brightness of the surface. If a line-following robot is tracking a black line, then whenever the photo-resistor picks up the brightness from the surface that is not a black line, the path will change accordingly. A large number of photo-resistors can be used to increase the intelligence of an autonomous line-following robot, since the greater amount of LEDs can detect intersections between lines and different routes and be identified\cite{linetrack}.\\
-Some autonomous robots and vehicles use multiples of different range-sensors and other sensory equipment, to map and locate themselves in indoor and outdoor environments. The map that is generated can be used to keep track of static items in the environment such as structures and difference in terrain, but the map can also distinguish non-static items such as humans and other moving objects, from the static items. Since the maps are created by the vehicle itself whilst exploring, this technology can be used in places where there are no reference points, such as GPS\cite{rangesens}\cite{rangesensarc}. Robots and vehicles have been created using this technology to explore known and unknown environments. Because of advanced algorithms and hardware these autonomous devices are capable of performing some tasks more efficiently than humans, but are also able to perform them in places that are unsafe and hard to reach. %Add: for humans. ?
+Some autonomous robots and vehicles use multiples of different range-sensors and other sensory equipment, to map and locate themselves in indoor and outdoor environments. The map that is generated can be used to keep track of static items in the environment such as structures and difference in terrain, but the map can also distinguish non-static items such as humans and other moving objects, from the static items. Since the maps are created by the vehicle itself whilst exploring, this technology can be used in places where there are no reference points, such as GPS\cite{rangesens}\cite{rangesensarc}. Robots and vehicles have been created using this technology to explore known and unknown environments. Because of advanced algorithms and hardware these autonomous devices are capable of performing some tasks more efficiently than humans, but are also able to perform them in places that are unsafe and hard to reach.
 
 Autonomous robots also use these tools to work together. Using a shared map, the robots can keep track of one another and either perform tasks together or separately, depending on what is required from them.
 
