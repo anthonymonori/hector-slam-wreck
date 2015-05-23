@@ -3,10 +3,25 @@
 
 \clearpage
 
-\section{Code of laser sensor module}\label{code:laser-full}
+\section{Code for laser sensor module}\label{code:laser-full}
 \lstinputlisting[firstline=37, title=main.cpp, language=C++]{../code/lidarlite_scan/src/main.cpp}
 
-%TODO: Any more code to add?
+\clearpage
 
+\section{Libraries used for the laser sensor module}\label{code:laser-libs}
+\lstinputlisting[firstline=27, title=lidarLite.h, language=C]{../code/lidarlite_scan/src/lidarLite.h}
+\clearpage
+\lstinputlisting[firstline=29, title=lidarLite.c, language=C]{../code/lidarlite_scan/src/lidarLite.c}
+
+WiringPi library to be found here: \url{https://github.com/WiringPi/WiringPi}.
+
+\clearpage
+
+\section{General instruction for project}
+\begin{itemize}
+	\item Install Ubuntu ARM on a Raspberry Pi 2 Model B (or newer, similar hardware configuration).
+	\item Install ROS Indigo distribution for Ubuntu ARM.
+	\item
+\end{itemize}
 
 
