@@ -17,23 +17,12 @@ During our development phase, we realised that we would not have the time and re
 
 The ROS installation process proved to be quite the challenge, which then lead to a setback in terms of development. Many of the ROS packages caused different conflicts with Raspbian operating system, even though these packages should have been compatible with the system out of the box. After spending too much time on fixing the many errors and getting it to work on Raspbian, we decided to switch to Ubuntu ARM, where the installation process was much easier compared to the previous one.
 
-Using the $I^2C$ interface via the lidarLite library on the Raspberry Pi we were able to gather measurement data from the laser. Another issue we encountered while transmitting the gathered data and interpreting it using ROS. Many of the resource regarding gathering data from laser were mostly regarding USB-based, higher-end devices, therefore we had to interface through the $I^2C$ protocol. The library that we used for this matter, the wiringPi library together with the lidarLite library that offered a C interface for the laser for the Raspberry PI through $I^2C$ and GPIO interface was not well optimized for large amount of read and write operations and could have caused our problem of slow data transmission.
+For the prototype, we used a CAD design we found on the Internet as a case and rotation platform for the laser. This design was good enough for a prototype, but one of the desing-faults we observed was the jittering of the gears when rotated by a stepper motor. This limited us doing small step-based calculations using the laser, because it would not take precise microsteps, and therefore our measurements would be off. To overcome this, we would have needed to speed up the rotation. We had separate code for rotating the laser and reading measurements running asynchronously, which made it hard to sync the measurements with the rotation up, and therefore the maps plotted were too off. We calculated how much time it took to gather readings and tried adjusting the rotation speed accordingly, which in the end turned out to fix our issues, but the speed was too slow according to our expectations. It took approximately 5 seconds to take a full circle and gather readings at every single angle the stepper motor took. 
+Either of the wiringPi and lidarLite libraries used for communicating with the laser through $I^2C$ were well optimized for the application we wanted to use them in, namely faster data acquisitions. We think this was caused because of a mixture of async- and synchronous code executed in these libraries when writing and reading through the $I^2C$ registry for acquiring new laser data.
 
-For the prototype, we used a CAD design we found on the Internet for case and rotation platform for the laser. This design was good enough for a prototype, but one of the first problems we encountered was the jittering gears when rotating by a stepper motor. This limited us doing small step-based calculations using the laser, because it would not take precise microsteps. To overcome this, we would have needed to speed up the rotation, but that would be out of sync with the calculations our laser does.
+The laser rotation platform was pretty well thought out, but if our resources would have allowed us, we would have designed our own to fit everything into it and to potentially design better hears.
 
-we didn't know the speed and calculations
-tried speeding it up
-shit map
-stepped motor was not precise enough because two speed
-out of sync
-gear jittering
-combining the two code, syncronous
-
-
-%TODO:add part about SLAM testing
-%TODO:"HOW" the laser mounted on the vehicle works (we basically haven't done this, so it's pure imagination)
-
-Currently, when the mapping device is mounted to the rover, the rover is able to navigating areas whilst the mapping devices creates a map. Due to the low-intelligence of the rover, it is not able to distinguish unknown places from known places, it functions purely by avoiding an object and thereafter determining an optimal direction away from said object.
+Hypothetically, if the mapping device would be mounted to the rover, the rover would be able to navigating areas whilst the mapping device creates a map. However, due to the low-intelligence of the rover, fast speed of movement and the slow rotation and reading of the laser, it would not be able to distinguish unknown places from known places. It would function purely by avoiding an object and thereafter determining an optimal direction away from said object, not navigating based on the map. 
 
 The close proximity detection system, is a low-intelligence autonomous navigation system for the rover. If we succeeded in completing our original scope, the autonomous navigation would have needed to interface with sensors to ensure that it avoided objects at a height that is not recorded by the LIDAR-Lite laser and mapping algorithms. So what we have currently achieved is a navigation system that is able to successfully navigate between obstacles by avoiding them and recalculating its direction according to where it detected the obstacles.\\
 
