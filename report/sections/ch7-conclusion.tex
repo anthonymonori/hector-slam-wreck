@@ -8,5 +8,5 @@ The laser of choice for the prototype seemed to be a good fit, but it does come 
 Mapping based on multiple sets of measurements, taken from different locations, is an incredibly difficlut thing to do. It makes no sense to try and reinvent the wheel, as there are plenty of mapping libraries that are already usable. We choose to use SLAM, and we choose SLAM because it is simultaneus, meaning the processing of the data, mapping, and navigating all go hand in hand. This is the best suited approach for mapping unknown, unaccessable terrain. However, our particular choice of SLAM library did not go very well with our choice of hardware, at least in the time frame we had for the project.
 
 %autonomous navigation/collision-detection - What happened? What did we do?
-
+After realizing that getting the mapping part of our prototype to work required more effort than first expected, the scope for the rover navigation was made much smaller. Instead of a highly intelligent autonomous system, the autonomous navigation turned out to become a close proximity detection system. This system adds a low level of intelligence to the rover, which makes it avoid objects in its path and change the direction accordingly. 
 %summary - Are we satisfied with the results?
