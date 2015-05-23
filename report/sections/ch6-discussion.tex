@@ -13,7 +13,7 @@ Early on in the project we decided that ROS would be the core of our prototype, 
 
 The ROS installation process proved to be quite the challenge, which then lead to a setback in terms of development. Many of the ROS packages caused different conflicts with Raspbian operating system, even though these packages should have been compatible with the system out-the-box. After spending too much time on fixing the many errors and getting it to work on Raspbian, we decided to switch to Ubuntu ARM, where the installation process was much easier compared to the previous one.
 
-Using the $I^2C$ interface on the Raspberry Pi we were able to gather measurement data from the Lidar, the next big issue we then encountered was transmitting the gathered data and interpreting it using ROS. Many of the resource regarding gathering data from LIDAR-Lite lasers were mostly regarding USB-based, higher-end devices. %TODO: expand 
+Using the $I^2C$ interface on the Raspberry Pi we were able to gather measurement data from the LIDAR-Lite laser, the next big issue we then encountered was transmitting the gathered data and interpreting it using ROS. Many of the resource regarding gathering data from laser were mostly regarding USB-based, higher-end devices. The limitations of the wiringPi library that interfaced with the Raspberry through $I^2C$ and GPIO interface was not well optimized for large amount of read and writes. 
 
 When we realised that we would not have the time and resources to make a completely autonomous vehicle, we instead decided to split the prototype into two separate parts: 
 \begin{itemize}
