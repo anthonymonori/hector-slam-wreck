@@ -21,7 +21,7 @@ Photogrammetry could also be used in our project with an AUV or a rover. There i
 
 For higher resolution maps and more detailed the use of photogrammetry is beneficial, But to start with, it would be easier to take another approach. %TODO: Maybe elaborate on this other approach?! 
 %Thomas: I think it should just be deleted.
-
+%gustavo: agree. having it wouldn't add anything really
 \subsection{Reference points theory}
 
 To make a 2D or 3D map, a reference point is needed. It can be GPS positions of every picture taken or it can also be by comparing two pictures and overlapping them. It is also possible to combine both options, but with the lack of GPS in space and the cost of memory and power to make an overlapping 3D map, another solution is needed. For an example, Mars has a thin atmosphere, so using sound sensors could be a possibility. The sensors would need to be calibrated to work correctly on Mars, since there is a difference in the speed of sound. Other sensors such as light (X-ray, laser, etc.) can also be used. That would mean setting up and array of sensors, so a rover or an AUV could potentially connect to them and know their position. The use of encoders and the wheels of the rover is also another solution, but this requires error calculation in it, since sometimes the tires will attempt to move in a circle but there is no traction to help create the movement\cite{reference}.
@@ -57,6 +57,8 @@ The pulse will travel from the rangefinder, straight towards whatever object is 
 	\caption{A slightly more complex laser rangefinder.}
 	\label{fig:rangefinderIMG}
 \end{figure}
+
+In this picture we see a different setup for a rangefinder. Instead of measuring the time it takes for the pulse to get back, it measures the distance between where the pulse was emmited, and where it was absorbed. Given this distance, and the fact that the pulse is emmited at a right angle to this distance, simple trigonometry can be used to determine the distance the pulse travelled.
 
 It is required that rangefinders know what the speed of the pulse is, which is a problem in unknown environments. For a rangefinder to be reliably used in such environments, it needs either to have the speed of its pulse pre-calculated, or it needs to measure the speed of the pulse by itself. Also, in situations where the speed of the pulse varies, a rangefinder is either not useful, or it needs a more complicated model of the environment it is in.
 
@@ -110,7 +112,7 @@ There are different pathfinding algorithms already existing that are used for so
 	\label{fig:sub2}
 \end{figure}
 
-The A* algorithm is most commonly used in video games. The algorithm splits a known map into nodes (these can be any geometric shape, for example squares), and assigns a cost to each node. It also notes which nodes cannot be moved to, such as pits or walls. Based on this map, it determines the cost of movement from its position to some adjacent node(G), and estimates the cost of movement from that node to its final destination(H). It assigns this node with the value F which is the sum of G and H. It continues checking adjacent nodes with the same procedure, occasionally changing the calculated path based on the F values of various nodes\cite{astar}.
+The A* algorithm is most commonly used in video games. The algorithm splits a known map into nodes (these can be any geometric shape, for example squares), and assigns a cost between each node. It also notes which nodes cannot be moved to, such as pits or walls. Based on this map, it determines the cost of movement from its position to some adjacent node(G), and estimates the cost of movement from that node to its final destination(H). It assigns this node with the value F which is the sum of G and H. It continues checking adjacent nodes with the same procedure, occasionally changing the calculated path based on the F values of various nodes\cite{astar}.
 
 In the early stages of robot automation, it was always assumed that the environment around the robot was known and the path was generated based on this. This was okay until the robot was introduced to the unknown, and then started to meet inconsistencies and obstacles in its path (this being discrepancies between the true state and the world state), the robot then either had to re-plan completely from scratch or alter the plan through trial-and-error. Computational wise, it would require too much power to re-plan from scratch (Even though this is the optimal choice) and most of the time trial-and-error does not yield an optimal outcome.
 
@@ -157,7 +159,7 @@ For the purpose of exploration and resource gathering, planets can be split into
 	\item{\textbf{Gas giants}, also known as the \textit{Jovian planets} or the \textit{Outer Planets}}
 \end{itemize}
 
-There is very little reason to explore a gassy giant, as they smoothly transition between gas, liquid, and solid. This means that it is extremely difficult to colonize such a planet, or build anything on it for that matter, due to the layers of condensed helium and hydrogen that make out their atmosphere\cite{outerplanetatmosphere}.
+There is very little reason to explore a gas giant, as they smoothly transition between gas, liquid, and solid. This means that it is extremely difficult to colonize such a planet, or build anything on it for that matter, due to the layers of condensed helium and hydrogen that make out their atmosphere\cite{outerplanetatmosphere}.
 On the other hand, Earth-like planets have a larger variety of resources, and it is easier to build upon them. These planets are often composed largely of metals and silicon, which is what gives them their rocky and sandy surfaces.
 
 \subsection{Environment}
