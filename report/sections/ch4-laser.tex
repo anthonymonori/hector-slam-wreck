@@ -143,3 +143,12 @@ The rest of the code consists of two loops, one \textit{while} loop and one \tex
 \lstinputlisting[firstline=1, lastline=16, title=gpioStuff.sh, language=sh]{../code/gpioThing.sh}
 
 The only purpose of the code above, is to be called from the main file. The gpio utility is capable of interfacing with the GPIO pins on the Pi without root privileges. The change from low to high causes a micro-step, and 8 micro-steps makes one full step.
+
+\clearpage
+\subsection{Laser Safety Analysis}
+
+In the following section we analyse and review the classification of the laser product of choice, the LIDAR-Lite rangefinder laser. 
+
+This product emits laser radiation and it is classified as a \textit{Class 1 laser product} during all procedures of operation. This means that the laser is safe to look at with the unaided eye, however, it is very advisable to avoid looking into the beam and power the module off when not in use\cite{laserclass}.
+
+The operation of LIDAR-Lite, without proper housing and optics, or modification of the housing or optics that exposes the laser source may result in direct exposure to laser radiation and the risk of permanent eye damage. Removal or modification of the diffuser in front of the laser optic may result in the risk of permanent eye damage and the declassification of the laser as a \textit{Class 1 laser product}. The product is also RoHS compliant\cite{laserrohs}.
