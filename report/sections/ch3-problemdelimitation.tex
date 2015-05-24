@@ -17,15 +17,15 @@ Based on previous discussions, the following equipment has been selected:
   \item[Motor controller:] \hfill \\
   Used to power the motors used on the rover.
   \item[Power source:] \hfill \\
-  %TODO: Add missing information here%
+  Used to power the various microcontrollers and equipment.
 \end{description}
 
 \subsection{Prototype delimitation}
-The main limiting-factor for us is time. In the time-frame of this project, we cannot build a full-scope product. Finding all the parts, ordering, and assembling them completely would take too long to complete and over our given budget. Furthermore, we do not have the tools or place to build a full-scope product, either. Hence we will build a prototype as a proof of concept using the means we have available.
+The main limiting-factor for us is time. In the time-frame of the project, we cannot build a full-scope product. Finding all the parts, ordering, and assembling them completely would take too long to complete and over our given budget. Furthermore, we do not have the tools or place to build a full-scope product, either. Hence we will build a prototype as a proof of concept using the means we have available.
 
 For the prototype, we decided to use a laser to gather the data needed for a 2D map as a proof of concept, but at the same time allowing the capability of implementing cameras for 3D mapping. A laser can also be used for 3D mapping, but it would be easier to make a 3D map from cameras and using cameras would also give a better picture of the surroundings.
 
-The optical flow sensor is used to determine reference points. We will be using Simultaneous Localization and Mapping (SLAM) technique for the mapping. The laser will be mounted on top and spin 360$^{\circ}$ using a brushless DC motor. The optical flow sensor will tell the system about the movement of the rover on a $XY$ grid, to determine the direction and distance the vehicle has travelled. 
+The optical flow sensor is used to determine reference points. We will be using Simultaneous Localization and Mapping (SLAM) technique for the actual map creation. The laser will be mounted on top of the rover and spin 360$^{\circ}$ using a stepper motor. The optical flow sensor will tell the system about the movement of the rover on a $XY$ grid, to determine the direction and distance the vehicle has travelled. 
 
 This prototype will not have all the features we wish to have for the final product, but the goal is to show the interaction between an laser sensor for 2D mapping and a rover navigating through unknown terrain, using a Raspberry Pi.
 
