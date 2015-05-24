@@ -4,6 +4,8 @@
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=.4\linewidth]{images/chassis.jpg}
+	\label{fig:chassis}
+	\caption{The chassis used for our prototype}
 \end{figure}
 
 To attach the different sensors to the rover, different enclosures and brackets were needed. For the ultrasonic sensors, two different kind of brackets have been designed, since the main chassis required them to be mounted differently based on their placement on the chassis of the rover. Using Autodesk Inventor the two enclosures for the ultrasonic sensors have been modelled and 3D printed.
@@ -18,6 +20,7 @@ To attach the different sensors to the rover, different enclosures and brackets 
 		\includegraphics[width=\textwidth]{images/ultrasonicholder-upsidedown.jpg}
 	\end{subfigure}
 	\caption{The enclosures used to mount the ultrasonic sensors on the chassis}
+	\label{fig:ultrasonic-enclosures}
 \end{figure}
 
 The enclosures for the ultrasonic sensors have be designed to place all of the sensors at the same height on each side of the chassis, to ensure that the measurements are similar. The left-most holder is the one which is primarily used.
@@ -26,9 +29,10 @@ The enclosures for the ultrasonic sensors have be designed to place all of the s
 	\centering
 	\includegraphics[width=.6\linewidth]{images/mounted_ultrasonic_sensors.jpg}
 	\caption{Front view of the mounted ultrasonic sensors}
+	\label{fig:ultrasonic-mounted}
 \end{figure}
 
-The design for the LIDAR-Lite laser sensor enclosure was found on the Internet, modelled by someone who is working on a project using the same laser sensors as us. The enclosure enables the sensor to rotate $360\degree$ using 3D printed gears that are driven by a stepper motor~\cite{lidarenclosure}.
+The design for the LIDAR-Lite laser sensor enclosure was found on the Internet, modelled by someone who is working on a project using the same laser sensors as us. The enclosure enables the sensor to rotate $360^\circ$ using 3D printed gears that are driven by a stepper motor~\cite{lidarenclosure}.
 
 The enclosure design required a high-end 3D printer due to its size and print time. The prints were completed within a day, which would have taken much longer with our personal 3D printers.
 
@@ -50,9 +54,10 @@ The enclosure design required a high-end 3D printer due to its size and print ti
 		\includegraphics[width=\textwidth]{images/lidarcase-steppergear.png}
 	\end{subfigure}
 	\caption{Parts of the enclosure used for rotating the LIDAR laser sensor}
+	\label{fig:lidar-enclosure}
 \end{figure}
 
-The idea of using a separate enclosure driven by a stepper motor to rotate the laser sensor is to constantly get a 360$\degree$ map of the environment by rotating the sensor separately from the chassis, rather than rotating the chassis to do so. This way, we can also continue to update the map while the rover is on the move. The strength behind using a stepper motor is that it is possible to control each step with great precision, which makes it more reliable when rotating it.
+The idea of using a separate enclosure driven by a stepper motor to rotate the laser sensor is to constantly get a 360$^\circ$ map of the environment by rotating the sensor separately from the chassis, rather than rotating the chassis to do so. This way, we can also continue to update the map while the rover is on the move. The strength behind using a stepper motor is that it is possible to control each step with great precision, which makes it more reliable when rotating it.
 
 The project ended up being assembled in two separate parts: The rover with the ultrasonic sensors and the LIDAR-Lite laser sensor module by itself.
 
@@ -66,6 +71,6 @@ The project ended up being assembled in two separate parts: The rover with the u
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=.6\linewidth]{images/lidarpi.jpg}
-	\caption{The final prototype for the Lidar}
+	\caption{The final prototype for the LIDAR-Lite laser sensor}
 	\label{lidar_prototype_pic}
 \end{figure}

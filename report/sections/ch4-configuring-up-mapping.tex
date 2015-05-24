@@ -1,7 +1,7 @@
 \clearpage
 \section{Configuring ROS for mapping}
 
-During the installation of ROS on Ubuntu, a new package named Hector-slam was discovered. This package allows ROS to generate a map without the use of the GMapping package, which was one of the packages that caused issue during the installation process on Raspbian. Its biggest advantage is that it does not rely on odometry to know whether the reference frame has changed. Odometry is the use of data from sensors to estimate the difference in position over time. It is used by robotic systems to estimate their position relative to a starting point. It is also important to highlight that is does not determine, but estimates this position in space and time.
+During the installation of ROS on Ubuntu, a new package named \textit{Hector-slam} was discovered. This package allows ROS to generate a map without the use of the GMapping package, which was one of the packages that caused issue during the installation process on Raspbian. Its biggest advantage is that it does not rely on odometry to know whether the reference frame has changed. Odometry is the use of data from sensors to estimate the difference in position over time. It is used by robotic systems to estimate their position relative to a starting point. It is also important to highlight that is does not determine, but estimates this position in space and time.
 
 \subsection{How ROS works}
 During our development, we gained a deep understanding of how all the moving parts in ROS work well together. The following diagram showcases the general flow of how the ROS system that we built up works.
@@ -23,7 +23,7 @@ Nodes are the smallest parts of ROS that are put together to form a full applica
 \subsection{Developing for ROS}
 During this stage of development, the gathering of the data happens on the Raspberry Pi, while a map is generated using ROS. The Raspberry Pi is accessed through SSH and the generated map is then broadcasted to another computer through that SSH connection, for visualization the tool called rviz is used. 
 
-To achieve this, we had to set up a direct connection between one of our developer computers running Ubuntu and the Raspberry Pi using a CAT5 Ethernet cable. Then we created a new network settings, set the IPv4 method to be 'Shared to other computers' which bridged the two network adapters and transmitted internet access to the Raspberry Pi from our own computers, connected to the internet via Wi-Fi. Then we located the leases and found the IP address assigned to the connected device. To connect via ssh we used the following command line:
+To achieve this, we had to set up a direct connection between one of our developer computers running Ubuntu and the Raspberry Pi using a CAT5 Ethernet cable. Then we created a new network settings, set the IPv4 method to be 'Shared to other computers' which bridged the two network adapters and transmitted Internet packages to the Raspberry Pi from our own computers, connected to the Internet via Wi-Fi. Then we located the leases and found the IP address assigned to the connected device. To connect via ssh we used the following command line:
 \lstset{language=sh}
 \begin{lstlisting}
 	>> $ ssh -Y username@ip-address
@@ -46,13 +46,17 @@ To copy files to and from the Raspberry, we used the \textit{scp} utility, and t
 \begin{lstlisting}
 	>> $ scp username@from-ip-address:~/file /home/mylocaluser/to-location/
 \end{lstlisting}
-
-When the custom laser node written by us, has been started, it starts publishing laser readings in form of a LaserScan message, to the \textbackslash\textit{scan} topic. By using the following command, we could listen to it and see the outcome of our scanning:
+When the custom laser node written by us has been started, it started publishing laser readings in form of a LaserScan message, to the \textbackslash\textit{scan} topic. By using the following command, we could listen to it and see the outcome of our scanning:
 
 \lstinputlisting[firstline=1, lastline=17, language=C++]{../code/sampleOutput.txt}
 
-As the output shows, the number of readings is being stored in an array that is published to \textbackslash scan and then used by ROS to visualize or transform it later on. These readings are represented in a floating-point number in meters. Range is also represented in meters, but they are hard-coded, as the minimum and maximum value of the range does not change, but rather set by the manufacturer. The messages are time-stamped, which turned out to be very important when ROS transforms them for mapping and there is also a scan time, which tells the time between the scans in seconds. The angle values are radians of the start and end angle of the scan, while the angle increment is the angular distance between measurements. Our laser does not provide intensity-data, therefore we did the array has been left empty.
+As the output shows, the number of readings are being stored in an array that is published to \textbackslash scan and then used by ROS to visualize or transform it later on. These readings are represented in a floating-point number in meters. Range is also represented in meters, but they are hard-coded, as the minimum and maximum value of the range does not change, but rather set by the manufacturer. The messages are time-stamped, which turned out to be very important when ROS transforms them for mapping and there is also a scan time, which tells the time between the scans in seconds. The angle values are radians of the start and end angle of the scan, while the angle increment is the angular distance between measurements. Our laser does not provide intensity-data, therefore the array has been left empty.
 
 With this, we set up everything for starting to create a map in 2D using Hector-slam.
 
-%TODO: add instruction how to run our project somewhere: here or Appendix?
+To run the code written by us, we had to place it in the ROS workspace, use the command catkin\_make to build our code into a package that ROS also understands and run the following command:
+
+\begin{lstlisting}
+	>> $ rosrun lidarlite_laser laser_scan
+\end{lstlisting}
+In order to access the $I^2C$ interface on the Raspberry with no root privileges, we had to give the local user full permissions to \textit{/dev/i2c-1}.
