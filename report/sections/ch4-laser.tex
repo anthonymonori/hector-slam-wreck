@@ -1,7 +1,7 @@
 \clearpage
 \section{Laser}
 
-Our laser of choice, the LIDAR-Lite SEN-13167, is a SoC (System-on-a-Chip) solution for optical distance measurements applications. It has a 4.7 - 5.5 V nominal and 6 V potentially maximum DC operating range. The sensor has a theoretical limit of a 40m range and 100Hz rep rate. The laser emitters' accuracy is estimated to be +/- 2.5cm with an acquisition time of less then 20ms. These specifications allows us to get an accurate image of the environments specified in our test cases\cite{lidarsum}.
+Our laser of choice, the LIDAR-Lite SEN-13167, is a SoC (System-on-a-Chip) solution for optical distance measurement applications. It has a 4.7 - 5.5 V nominal and 6 V potentially maximum DC operating range. The sensor has a theoretical limit of a 40m range and 100Hz rep rate. The laser emitters' accuracy is estimated to be +/- 2.5cm with an acquisition time of less then 20ms. These specifications allows us to get an accurate image of the environments specified in our test cases\cite{lidarsum}.
 
 \begin{figure}[H]
 	\centering
@@ -16,7 +16,7 @@ At distances less than a meter, the pulse is about the size of the receiver's op
 
 It is possible to receive multiple valid return signals from a single measurement if the pulse illuminates more than one surface along the beam path. The sensor has the capability to process two distinct reflections as long as they are separated by more than 3.5m and the reflection at the shorter distance does not saturate the correlation record masking the more distant object. 
 
-The figure below shows an example of two reflections in the signal correlation record separated by approximately 3.5m.
+Figure \ref{fig:tworeflections} shows an example of two reflections in the signal correlation record separated by approximately 3.5m.
 
 \begin{figure}[H]
 	\centering
@@ -33,7 +33,7 @@ By default, the sensor runs at about 50Hz, but could vary given the signal stren
 
 \pagebreak
 
-The assembling of the laser happened in the following way:
+The assembling of the laser happened as shown on figure \ref{fig:wiringlidarpi}.
 
 \begin{figure}[H]
 	\centering
@@ -123,7 +123,7 @@ This proved ineffective, since the rotation and measurements were independent fr
 
 We then attempted to control the stepper-motor with the Raspberry Pi, added to the same code as we were running the laser with. However, the wiringPi library required root privileges, and ROS was not designed to be run under root privileges. The solution was to use a system call library to call an external file, which then would drive the stepper-motor. This makes the stepping and measuring synchronous, but making system call is very expensive in terms of computational resources, meaning that the code is significantly slower than the top speed that the laser is capable of.
 
-The full code written for the laser sensor can be found in Appendix \ref{code:laser-full}. The sequence diagram below gives us an overview of the calls happening in the code:
+The full code written for the laser sensor can be found in Appendix \ref{code:laser-full}. The sequence diagram shown in figure \ref{fig:lasermodule} gives us an overview of the calls happening in the code.
 
 \begin{figure}[H]
 	\centering

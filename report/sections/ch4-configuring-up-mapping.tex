@@ -1,7 +1,7 @@
 \clearpage
 \section{Configuring ROS for mapping}
 
-During the installation of ROS on Ubuntu, a new package named \textit{Hector-slam} was discovered. This package allows ROS to generate a map without the use of the GMapping package, which was one of the packages that caused issue during the installation process on Raspbian. Its biggest advantage is that it does not rely on odometry to know whether the reference frame has changed. Odometry is the use of data from sensors to estimate the difference in position over time. It is used by robotic systems to estimate their position relative to a starting point. It is also important to highlight that is does not determine, but estimates this position in space and time.
+During the installation of ROS on Ubuntu, a new package named \textit{Hector-slam} was discovered. This package allows ROS to generate a map without the use of the GMapping package, which was one of the packages that caused issues during the installation process on Raspbian. Its biggest advantage is that it does not rely on odometry to know whether the reference frame has changed. Odometry is the use of data from sensors to estimate the difference in position over time. It is used by robotic systems to estimate their position relative to a starting point. It is also important to highlight that is does not determine, but estimates this position in space and time.
 
 \subsection{How ROS works}
 During our development, we gained a deep understanding of how all the moving parts in ROS work well together. The following diagram showcases the general flow of how the ROS system that we built up works.
@@ -12,7 +12,7 @@ During our development, we gained a deep understanding of how all the moving par
 	\caption{ROS flow diagram, showcasing the map generation from sensory readings}
 \end{figure}
 
-\textbf{Roscore} is the main process behind ROS and it allows for all running nodes to talk to each other, although by itself it does nothing, just keeps running in the background.
+\textbf{Roscore} is the main process behind ROS and it allows for all running nodes to talk to each other, although by itself it does nothing, it just keeps running in the background.
 
 Nodes are the smallest parts of ROS that are put together to form a full application. They are run as separate processes, all with their own executable files. The only way nodes communicate is through the roscore. To make a node, it is necessary to use or create a ROS library, written in any desired programming language.
 
@@ -36,9 +36,10 @@ Although, this seemed to be working quite well, this operation required quite a 
 	\centering
 	\includegraphics[width=.8\linewidth]{images/rvisScreenshotCropped.jpg}
 	\caption{The resource usage}
+	\label{resources_used}
 \end{figure}
 
-Looking at the figure above, we can observe several things by running the mapping operation: by generating the actual map directly on the Raspberry Pi required too many resources from the CPU, and that the rendering of the visualization tool, rviz, channeled through the SSH connection to the computer screen required more bandwidth than there could be supplied. This caused a terrible lag and a bad experience both for us developing, but for the end result too.
+Looking at figure \ref{resources_used}, we can observe several things by running the mapping operation: by generating the actual map directly on the Raspberry Pi required too many resources from the CPU, and that the rendering of the visualization tool, rviz, channeled through the SSH connection to the computer screen required more bandwidth than there could be supplied. This caused a terrible lag and a bad experience both for us developing, but for the end result too.
 
 To reduce the amount of resources used by the Raspberry Pi, the map needs to be generated and visualized using separate computing unit. ROS is built to have separate nodes with a main computing unit.
 
@@ -46,7 +47,7 @@ To copy files to and from the Raspberry, we used the \textit{scp} utility, and t
 \begin{lstlisting}
 	>> $ scp username@from-ip-address:~/file /home/mylocaluser/to-location/
 \end{lstlisting}
-When the custom laser node written by us has been started, it started publishing laser readings in form of a LaserScan message, to the \textbackslash\textit{scan} topic. By using the following command, we could listen to it and see the outcome of our scanning:
+When the custom laser node written by us has been started, it starts publishing laser readings in form of a LaserScan message, to the \textbackslash\textit{scan} topic. By using the following command, we could listen to it and see the outcome of our scanning:
 
 \lstinputlisting[firstline=1, lastline=17, language=C++]{../code/sampleOutput.txt}
 
