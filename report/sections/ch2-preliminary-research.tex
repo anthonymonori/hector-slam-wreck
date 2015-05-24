@@ -19,9 +19,6 @@ Algorithms for photogrammetry typically attempt to minimize the sum of the squar
 
 Photogrammetry could also be used in our project with an AUV or a rover. There is no need for outdoor reference points to make the 3D model. But this technology is much more complicated to set-up and maintain without an outside assistance, which is a major inconvenience when used for space exploration. It would also take a large quantity of pictures in a high resolution, so in turn more space on hard drives are needed. The algorithm needs to create the 3D model from the pictures, which will need a lot of computing power and memory. So doing on board rendering would be really hard and resource consuming for smaller computing units.
 
-For higher resolution maps and more detailed the use of photogrammetry is beneficial, But to start with, it would be easier to take another approach. %TODO: Maybe elaborate on this other approach?! 
-%Thomas: I think it should just be deleted.
-%gustavo: agree. having it wouldn't add anything really
 \subsection{Reference points theory}
 
 To make a 2D or 3D map, a reference point is needed. It can be GPS positions of every picture taken or it can also be by comparing two pictures and overlapping them. It is also possible to combine both options, but with the lack of GPS in space and the cost of memory and power to make an overlapping 3D map, another solution is needed. For an example, Mars has a thin atmosphere, so using sound sensors could be a possibility. The sensors would need to be calibrated to work correctly on Mars, since there is a difference in the speed of sound. Other sensors such as light (X-ray, laser, etc.) can also be used. That would mean setting up and array of sensors, so a rover or an AUV could potentially connect to them and know their position. The use of encoders and the wheels of the rover is also another solution, but this requires error calculation in it, since sometimes the tires will attempt to move in a circle but there is no traction to help create the movement\cite{reference}.
@@ -54,7 +51,7 @@ The pulse will travel from the rangefinder, straight towards whatever object is 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=.6\linewidth]{images/rangefinder.jpg}
-	\caption{A slightly more complex laser rangefinder.}
+	\caption{A slightly more complex laser rangefinder.\cite{comp}}
 	\label{fig:rangefinderIMG}
 \end{figure}
 
@@ -71,7 +68,7 @@ Another issue in environments with a high variation in density is refraction. Re
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=.4\linewidth]{images/refraction.png}
-	\caption{An illustration of refraction into a denser medium.}
+	\caption{An illustration of refraction into a denser medium.\cite{refracfig}}
 	\label{fig:refractionIMG}
 \end{figure}
 
@@ -108,7 +105,7 @@ There are different pathfinding algorithms already existing that are used for so
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=.7\linewidth]{images/aStar2.jpg}
-	\caption{Upper-left number is F, Lower-left G and Lower-right H}
+	\caption{Upper-left number is F, Lower-left G and Lower-right H\cite{astarfig}}
 	\label{fig:sub2}
 \end{figure}
 
