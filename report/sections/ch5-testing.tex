@@ -132,7 +132,7 @@ The outside tests were conducted between H-building, the main building and Idea 
 	\label{fig:outsideslam}
 \end{figure}
 
-While running testing outside in areas with distances longer than 40m the laser outputted a measurement of 255cm. The reason behind this is that if the laser does not get a signal back it prints a error message with the integer 255. If that is not dealt with in the code the \textbackslash scan topic will output a measurement of 2.55m. We included a if statement that write 0 if a message with 255 is received, to temporarily fix the issue and get a correct 2D map generated. 
+While running testing outside in areas with distances longer than 40m the laser outputted a measurement of 255cm. The reason behind this is that if the laser does not get a signal back it prints a error message with the integer 255. If that is not dealt with in the code the \textit{/scan} topic will output a measurement of 2.55m. We included a if statement that write 0 if a message with 255 is received, to temporarily fix the issue and get a correct 2D map generated. 
 
 \begin{figure}[H]
 	\centering
