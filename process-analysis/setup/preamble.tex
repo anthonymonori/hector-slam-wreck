@@ -1,5 +1,20 @@
+%  A simple AAU report template.
+%  2013-03-06 v. 1.0.0
+%  Copyright 2010-2013 by Jesper Kjær Nielsen <jkn@es.aau.dk>
+%
+%  This is free software: you can redistribute it and/or modify
+%  it under the terms of the GNU General Public License as published by
+%  the Free Software Foundation, either version 3 of the License, or
+%  (at your option) any later version.
+%
+%  This is distributed in the hope that it will be useful,
+%  but WITHOUT ANY WARRANTY; without even the implied warranty of
+%  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%  GNU General Public License for more details.
+%
+%  You can find the GNU General Public License at <http://www.gnu.org/licenses/>.
+%
 \documentclass[12pt,twoside,a4paper]{report}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Language, Encoding and Fonts
 % http://en.wikibooks.org/wiki/LaTeX/Internationalization
@@ -23,6 +38,123 @@
 % Use the vector font Latin Modern which is going
 % to be the default font in latex in the future.
 \usepackage{lmodern}
+\usepackage{lastpage}
+% Choose the font encoding
+\usepackage[T1]{fontenc}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Graphics and Tables
+% http://en.wikibooks.org/wiki/LaTeX/Importing_Graphics
+% http://en.wikibooks.org/wiki/LaTeX/Tables
+% http://en.wikibooks.org/wiki/LaTeX/Colors
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% load a colour package
+\usepackage{xcolor}
+\definecolor{aaublue}{RGB}{33,26,82}% dark blue
+% The standard graphics inclusion package
+\usepackage{graphicx}
+% Trying to use this package put to replace the logo 
+% with an eps vector image
+\usepackage[outdir=./images/]{epstopdf}
+% Set up how figure and table captions are displayed
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{multirow}
+\captionsetup{%
+  font=footnotesize,% set font size to footnotesize
+  labelfont=bf % bold label (e.g., Figure 3.2) font
+}
+% Make the standard latex tables look so much better
+\usepackage{array,booktabs}
+% Enable the use of frames around, e.g., theorems
+% The framed package is used in the example environment
+\usepackage{framed}
+\usepackage{gensymb}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Mathematics
+% http://en.wikibooks.org/wiki/LaTeX/Mathematics
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Defines new environments such as equation,
+% align and split 
+\usepackage{amsmath}
+% Adds new math symbols
+\usepackage{amssymb}
+% Use theorems in your document
+% The ntheorem package is also used for the example environment
+% When using thmmarks, amsmath must be an option as well. Otherwise \eqref doesn't work anymore.
+\usepackage[framed,amsmath,thmmarks]{ntheorem}
+% Emil added this for psuedo code
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,                    % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=C++,                 % the language of the code
+  morekeywords={*,...},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,                       % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page Layout
+% http://en.wikibooks.org/wiki/LaTeX/Page_Layout
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Change margins, papersize, etc of the document
+\usepackage[margin=3cm]{geometry}
+% Modify how \chapter, \section, etc. look
+% The titlesec package is very configureable
+\usepackage{titlesec}
+\titleformat*{\section}{\normalfont\Large\bfseries\color{aaublue}}
+\titleformat*{\subsection}{\normalfont\large\bfseries\color{aaublue}}
+\titleformat*{\subsubsection}{\normalfont\normalsize\bfseries\color{aaublue}}
+%\titleformat*{\paragraph}{\normalfont\normalsize\bfseries\color{aaublue}}
+%\titleformat*{\subparagraph}{\normalfont\normalsize\bfseries\color{aaublue}}
+\usepackage{parskip}% http://ctan.org/pkg/parskip
+\setlength{\parindent}{0pt}
+
+
+% Change the headers and footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} %delete everything
+\renewcommand{\headrulewidth}{0pt} %remove the horizontal line in the header
+\fancyhead[RE]{\color{aaublue}\small\nouppercase\leftmark} %even page - chapter title
+\fancyhead[LO]{\color{aaublue}\small\nouppercase\rightmark} %uneven page - section title
+\fancyhead[LE,RO]{\thepage} %page number on all pages
+% Do not stretch the content of a page. Instead,
+% insert white space at the bottom of the page
+\raggedbottom
+% Enable arithmetics with length. Useful when
+% typesetting the layout.
+\usepackage{calc}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bibliography
@@ -39,46 +171,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Misc
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Page Layout
-% http://en.wikibooks.org/wiki/LaTeX/Page_Layout
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Change margins, papersize, etc of the document
-\usepackage[margin=3cm]{geometry}
-% Modify how \chapter, \section, etc. look
-% The titlesec package is very configureable
-\usepackage{titlesec}
-%\titleformat*{\section}{\normalfont\Large\bfseries\color{black}}
-%\titleformat*{\subsection}{\normalfont\large\bfseries\color{black}}
-%\titleformat*{\subsubsection}{\normalfont\normalsize\bfseries\color{black}}
-%\titleformat*{\paragraph}{\normalfont\normalsize\bfseries\color{black}}
-%\titleformat*{\subparagraph}{\normalfont\normalsize\bfseries\color{black}}
-\usepackage{parskip}% http://ctan.org/pkg/parskip
-\setlength{\parindent}{0pt}
-% Change the headers and footers
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{} %delete everything
-\renewcommand{\headrulewidth}{0pt} %remove the horizontal line in the header
-\fancyhead[RE]{\color{black}\small\nouppercase\leftmark} %even page - chapter title
-\fancyhead[LO]{\color{black}\small\nouppercase\rightmark} %uneven page - section title
-\fancyhead[LE,RO]{\thepage} %page number on all pages
-% Do not stretch the content of a page. Instead,
-% insert white space at the bottom of the page
-\raggedbottom
-% Enable arithmetics with length. Useful when
-% typesetting the layout.
-\usepackage{calc}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Hyphenations
-% see, e.g., http://en.wikibooks.org/wiki/LaTeX/Formatting#Hyphenation
-% for more information on word hyphenation
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\hyphenation{ex-am-ple hy-phen-a-tion short}
-\hyphenation{long la-tex}
+% Add bibliography and index to the table of
+% contents
+\usepackage[nottoc]{tocbibind}
+% Add the command \pageref{LastPage} which refers to the
+% page number of the last page
+\usepackage[
+%  disable, %turn off todonotes
+  colorinlistoftodos, %enable a coloured square in the list of todos
+  textwidth=\marginparwidth, %set the width of the todonotes
+  textsize=scriptsize, %size of the text in the todonotes
+  ]{todonotes}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Hyperlinks
@@ -95,17 +198,42 @@
 	pdfsubject={Subject},%
 	bookmarksnumbered=true,%
 	colorlinks,%
-	citecolor=black,%
-	filecolor=black,%
-	linkcolor=black,% 
-	urlcolor=black,%
+	citecolor=aaublue,%
+	filecolor=aaublue,%
+	linkcolor=aaublue,%
+	urlcolor=aaublue,%
 	pdfstartview=FitH%
 }
 
-\usepackage[english]{babel}
-%For figures and graphics
-\usepackage{graphicx}
-%For [H]
-\usepackage{float}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Listings
+% http://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Using the package listings you can add non-formatted text 
+% as you would do with \begin{verbatim} but its main aim is 
+% to include the source code of any programming language within 
+% your document. If you wish to include pseudocode or algorithms, 
+% you may find Algorithms and Pseudocode useful also.
+\usepackage{listings}
+\usepackage{color}
 
-\usepackage{multicol}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+	language=Java,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\small\ttfamily},
+	numbers=none,
+	numberstyle=\tiny\color{gray},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen},
+	stringstyle=\color{mauve},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=3
+}
