@@ -33,6 +33,8 @@ A robotic system designed to take advantage of already existing technologies to 
 - python /utils/obstacle-avoidance.py
 - Using rviz, visualize the generated map.
 
+For further description of the project and how to replicate it, please consult the paper.pdf report.
+
 ### Contributors:
 - [utommo](https://github.com/utommo)
 - [emilioamores](https://github.com/emilioamores)
