@@ -1,8 +1,26 @@
-# ED2-P2-H103
-Project repo for ED2.P2-H103
+# hector-slam-wreck
+A robotic system designed to take advantage of already existing technologies to create a 2d/3d map of a room.
 
-Link to the [Wiki](https://github.com/utommo/ED2-P2-H103/wiki)<br>
-Link to our [Kanban board](https://kanbanflow.com/board/dc2fb732294a2b2d232a524f076db0e5)<br>
-Link to the [Milestones](https://github.com/utommo/ED2-P2-H103/wiki/Milestones)<br>
-<br>
-Link to the [Gantt](https://docs.google.com/spreadsheets/d/1c4sWAT_YWYXnZU-c8dQTXhRY5WFqpXglzqyx0POVCEg/edit?usp=sharing)
+### Modules
+1. An obstacle-avoidance system written in Python that uses ultrasonic sensors to navigate.
+2. A motor controller module written in Python that utilizes PWM on the DC motors connected to the rover.
+3. A lidar-laser module that collects 360 deg information regarding it's surrounding to later create a 2d/3d map using ROS.
+
+### Requirements
+1. Raspberry Pi 2 Model B 512 MB or higher microcontroller
+2. Ubuntu distribution with ROS framework installed and set up
+3. hector-slam module
+4. LIDAR Lite v1 or v2 laser
+
+### General instruction to run the project
+• Install Ubuntu ARM on a Raspberry Pi 2 Model B (or newer, similar hardware configuration).
+• Install ROS Indigo distribution for Ubuntu ARM with desktop tools.
+• Clone code, install libraries, dependencies.
+• Setup nodes, run roscore, start necessary nodes: rosrun lidarlite_laser laser_scan
+• Using rviz, visualize the generated map.
+
+Contributors:
+[utommo](https://github.com/utommo)
+[emilioamores](https://github.com/emilioamores)
+[42f87d89](https://github.com/42f87d89)
+[anthonymonori](https://github.com/anthonymonori)
