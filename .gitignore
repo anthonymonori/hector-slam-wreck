@@ -7,7 +7,6 @@
 *.out
 *.toc
 *.bak
-*.pdf
 
 ## Intermediate documents:
 *.dvi
@@ -119,7 +118,7 @@ sympy-plots-for-*.tex/
 
 # xindy
 *.xdy
- 
+
 # Mac IDE files
 *.swp
 *~
@@ -127,7 +126,7 @@ sympy-plots-for-*.tex/
 Backup[ ]of[ ]*.pages/
 Backup[ ]of[ ]*.key/
 Backup[ ]of[ ]*.numbers/
- 
+
 # Mac finder files and hidden folders
 .DS_Store
 .AppleDouble

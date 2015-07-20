@@ -1,16 +1,12 @@
 <?xml version="1.0"?>
 <package>
-  <name>laser_scan_publisher_tutorial</name>
-  <version>0.2.0</version>
-  <description>The laser_scan_publisher_tutorial package</description>
+  <name>lidarlite_scan</name>
+  <version>1.0.0</version>
+  <description>The lidarlite_scan package</description>
 
-  <maintainer email="william@osrfoundation.org">William Woodall</maintainer>
+  <maintainer email="anthonymonori@gmail.com">Antal János Monori<maintainer>
 
   <license>BSD</license>
-
-  <url type="website">http://ros.org/wiki/laser_scan_publisher_tutorial</url>
-  <url type="repository">https://github.com/ros-planning/navigation_tutorials</url>
-  <url type="bugtracker">https://github.com/ros-planning/navigation_tutorials/issues</url>
 
   <author>Eitan Marder-Eppstein</author>
 
