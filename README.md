@@ -2,9 +2,8 @@
 A robotic system designed to take advantage of already existing technologies to create a 2d/3d map of a room.
 
 ### Modules
-1. An obstacle-avoidance system written in Python that uses ultrasonic sensors to navigate.
-2. A motor controller module written in Python that utilizes PWM on the DC motors connected to the rover.
-3. A lidar-laser module that collects 360 deg information regarding it's surrounding to later create a 2d/3d map using ROS.
+1. An obstacle-avoidance system written in Python that uses ultrasonic sensors to navigate and 4 DC motors through PWM for movement.
+2. A lidar-laser module that collects 360 deg information regarding it's surrounding to later create a 2d/3d map using ROS.
 
 ### Requirements
 - Raspberry Pi 2 Model B 512 MB or higher microcontroller
@@ -20,11 +19,8 @@ A robotic system designed to take advantage of already existing technologies to 
 - Using rviz, visualize the generated map.
 
 ### Contributors:
-[utommo](https://github.com/utommo)
-
-[emilioamores](https://github.com/emilioamores)
-
-[42f87d89](https://github.com/42f87d89)
-
-[anthonymonori](https://github.com/anthonymonori)
+- [utommo](https://github.com/utommo)
+- [emilioamores](https://github.com/emilioamores)
+- [42f87d89](https://github.com/42f87d89)
+- [anthonymonori](https://github.com/anthonymonori)
 
